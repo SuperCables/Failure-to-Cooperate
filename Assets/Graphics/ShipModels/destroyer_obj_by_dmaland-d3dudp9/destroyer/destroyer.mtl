@@ -1,0 +1,189 @@
+# Blender3D MTL File: destroyerassembly.blend
+# Material Count: 17
+newmtl stripe_cannonmap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.800000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd cannonmap.png
+
+
+newmtl stripe.002_bodymap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.800000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd bodymap.png
+
+
+newmtl grey_largebridgemap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.222745 0.222745 0.222745
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd largebridgemap.png
+
+
+newmtl stripe.001_largebridgemap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.800000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd largebridgemap.png
+
+
+newmtl ID3.002_largebridgemap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.461176 0.542745 0.627451
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd largebridgemap.png
+
+
+newmtl blue_cannonmap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.461176 0.542745 0.627451
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd cannonmap.png
+
+
+newmtl grey.001_cannonmap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.222745 0.222745 0.222745
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd cannonmap.png
+
+
+newmtl energycore_cannonmap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.000000 0.800000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd cannonmap.png
+
+
+newmtl ID3_bodymap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.461176 0.542745 0.627451
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd bodymap.png
+
+
+newmtl ID17_bodymap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.222745 0.222745 0.222745
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd bodymap.png
+
+
+newmtl check.002_bodymap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd bodymap.png
+
+
+newmtl enginemap_enginemap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.432941 0.495686 0.558431
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd enginemap.png
+
+
+newmtl check_largebridgemap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd largebridgemap.png
+
+
+newmtl torplaunchmap_torplauncher.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.432941 0.495686 0.558431
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd torplauncher.png
+
+
+newmtl enginecore_enginemap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.000000 0.800000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd enginemap.png
+
+
+newmtl glass_largebridgemap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.250980 0.250980 0.250980
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd largebridgemap.png
+
+
+newmtl check.001_cannonmap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd cannonmap.png
+
+

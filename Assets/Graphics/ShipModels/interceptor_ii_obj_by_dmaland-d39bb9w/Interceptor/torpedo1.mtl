@@ -1,0 +1,35 @@
+# Blender3D MTL File: interceptorassembly.blend
+# Material Count: 3
+newmtl torpedoglow_torpedomap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.317647 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd torpedomap.tga
+
+
+newmtl torpedogrey_torpedomap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.278431 0.278431 0.278431
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd torpedomap.tga
+
+
+newmtl torpedomap_torpedomap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.678431 0.784314
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd torpedomap.tga
+
+

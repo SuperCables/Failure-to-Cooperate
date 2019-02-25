@@ -1,0 +1,189 @@
+# Blender3D MTL File: interceptorassembly.blend
+# Material Count: 17
+newmtl cockpittop
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.278431 0.278431 0.278431
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd cockpittop.tga
+
+
+newmtl pylonuv.001_pylonmap.tga.001
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.678431 0.784314
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd pylonmap.tga
+
+
+newmtl bodyaccents_bodymapunified.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.222745 0.222745 0.222745
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd bodymapunified.tga
+
+
+newmtl cockpitinsignia
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.678431 0.784314
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd cockpitinsigniapanel.tga
+
+
+newmtl bodymapunified_bodymapunified.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd bodymapunified.tga
+
+
+newmtl engineuv_enginemap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.678431 0.784314
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd enginemap.tga
+
+
+newmtl enginecore_enginemap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.498039 1.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd enginemap.tga
+
+
+newmtl cockpitdecals
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.678431 0.784314
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd cockpitridges2.tga
+
+
+newmtl cockpitglass_cockpitwindows.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.140000 0.140000 0.140000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd cockpitwindows.tga
+
+
+newmtl energyweaponuv_energyweaponmap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.678431 0.784314
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd energyweaponmap.tga
+
+
+newmtl pylonuv_pylonmap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.678431 0.784314
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd pylonmap.tga
+
+
+newmtl cockpitmain
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.678431 0.784314
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd cockpitmain.tga
+
+
+newmtl energyweaponcore_energyweaponmap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.510000 0.760000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd energyweaponmap.tga
+
+
+newmtl launcheruv_launchermap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.678431 0.784314
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd launchermap.tga
+
+
+newmtl cockpittrim
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.278431 0.278431 0.278431
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd cockpitborders.tga
+
+
+newmtl cockpitstripe
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 0.952450 0.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd cockpitridges.tga
+
+
+newmtl cockpitnosestripe
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 0.952450 0.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd cockpitnose.tga
+
+

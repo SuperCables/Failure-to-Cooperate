@@ -1,0 +1,134 @@
+# Blender3D MTL File: corvette body.blend
+# Material Count: 12
+newmtl pylonuv_pylonmap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.678431 0.784314
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd pylonmap.tga
+
+
+newmtl greeblemap_greeblemap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.461176 0.542745 0.627451
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd greeblemap.png
+
+
+newmtl torpedogrey_torpedomap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.278431 0.278431 0.278431
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd torpedomap.tga
+
+
+newmtl energyweaponuv_energyweaponmap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.678431 0.784314
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd energyweaponmap.tga
+
+
+newmtl torpedomap_torpedomap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.678431 0.784314
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd torpedomap.tga
+
+
+newmtl enginecore_enginemap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.498039 1.000000 0.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd enginemap.tga
+
+
+newmtl bodymap_corvette_body_map.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.461176 0.542745 0.627451
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd corvette body map.png
+
+
+newmtl bodymap_bridgemodulemap.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.461176 0.542745 0.627451
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd bridgemodulemap.png
+
+
+newmtl launcheruv_launchermap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.678431 0.784314
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd launchermap.tga
+
+
+newmtl engineuv_enginemap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.678431 0.784314
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd enginemap.tga
+
+
+newmtl pylonuv.001_pylonmap.tga.001
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.576471 0.678431 0.784314
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd pylonmap.tga
+
+
+newmtl glow_torpedomap.tga
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.317647 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd torpedomap.tga
+
+
