@@ -78,7 +78,7 @@ public class RadarBlipUI : MonoBehaviour { //an object on the radar
             }
         }
 
-        SetVisible(statsBars, mouseOver || selected);
+        SetVisible(statsBars, mouseOver || selected || targetedStat > 0);
         SetVisible(selectedIcon, selected);
 
     }

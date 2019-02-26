@@ -26,16 +26,21 @@ public class Global : MonoBehaviour
     public Camera playerCamera;
 
 	void Start () {
-		
-	}
+        RefreshCurrentVesselLinks();
+
+    }
 	
 	void Update () {
+        RefreshCurrentVesselLinks();
+    }
+
+    void RefreshCurrentVesselLinks()
+    {
         entity = localConnection?.playerEntity;
         vessel = entity?.vessel;
         moveing = vessel?.movement;
         hull = entity?.hull;
         weaponManager = vessel?.weaponManager;
-
     }
 
 	public void AddUnit(Entity unit) {
