@@ -21,25 +21,32 @@ public class EngineMananger : BaseSystemManager
     void Rebuild()
     {
         engines = GetComponentsInChildren<EngineMount>();
+        float thisWattage = 0;
+        float thisMaxThrust = 0;
+        foreach (EngineMount v in engines)
+        {
+            if (v.engine != null)
+            {
+                thisWattage += v.engine.wattage;
+                thisMaxThrust += v.engine.thrust;
+            }
+        }
+        maxWattage = thisWattage;
+        maxThrust = thisMaxThrust;
     }
 
     public override void Update()
     {
         base.Update();
         float thisThrust = 0;
-        float thisMaxThrust = 0;
-        float thisWattage = 0;
+
         foreach (EngineMount v in engines)
         {
             if (v.engine != null)
             {
                 thisThrust += v.engine.thrust * v.usability;
-                thisMaxThrust += v.engine.thrust;
-                thisWattage += v.engine.wattage;
             }
         }
         thrust = thisThrust;
-        maxThrust = thisMaxThrust;
-        maxWattage = thisWattage;
     }
 }

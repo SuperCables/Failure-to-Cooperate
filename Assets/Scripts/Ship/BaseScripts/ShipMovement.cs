@@ -18,20 +18,17 @@ public class ShipMovement : NetworkBehaviour
     [SyncVar]
     public float inputAngle;
     [SyncVar]
-    public float targetDepth;
+    public float inputDive;
     [SyncVar]
-    public Vector2 rcsInput;
-    
-    
-    [Header("Values")]
+    public Vector3 inputRCS;
+    [Space(10)]
     public float perfectMaxSpeed;
-    public float perfectMaxDive;
 
     [HideInInspector]
     [SyncVar]
     public float speed;
     [HideInInspector]
-    public Vector2 direction;
+    public Vector3 direction;
     [HideInInspector]
     [SyncVar]
     public float angle;
@@ -46,13 +43,13 @@ public class ShipMovement : NetworkBehaviour
     float maxEngineThrust = 0;
     float engineWattage = 0;
 
-    //[HideInInspector]
+    [HideInInspector]
     public Rigidbody body;
-    //[HideInInspector]
+    [HideInInspector]
     public Vessel vessel;
-    //[HideInInspector]
+    [HideInInspector]
     public EngineMananger engineManager;
-    //[HideInInspector]
+    [HideInInspector]
     public BallastPumpsMananger ballastPumpsMananger;
 
     void Start () {
@@ -94,21 +91,6 @@ public class ShipMovement : NetworkBehaviour
         }
     }
 
-    void UpdateDive()
-    {
-        if (ballastPumpsMananger != null)
-        {
-            
-
-            float diveSpeed = body.velocity.y;
-            diveSpeed -= diveSpeed * 0.1f;
-            diveSpeed += 1 / 10;
-
-            //thisDiveVelocity = Vector3.up * diveSpeed; //set velocity to new value
-
-        }
-    }
-
     void UpdateImpulse() {
         float impulseAccel = engineThrust / 5; //engine.acceleration;
         maxSpeed = engineThrust; //  thrust / mass or somthing
@@ -117,22 +99,22 @@ public class ShipMovement : NetworkBehaviour
             speed = body.velocity.magnitude;
         }
 
-		Vector2 velocity = (Vector2)(Quaternion.Euler (0, 0, angle) * Game.V3toV2(body.velocity)); //ship relitive speed. (right,up)
-		Vector2 targetRCS = Mathf.Max(MaxRCSSpeed - speed, 0) * rcsInput;
-		Vector2 targetVelocity = (Vector2.up * inputThrottle * perfectMaxSpeed) + targetRCS; //what velocity does the ship want to go?
-		Vector2 diffVelocity = targetVelocity - velocity; //how off we are
+		Vector3 velocity = (Quaternion.Euler (0, -angle, 0) * body.velocity); //ship relitive speed. (right, up, forward)
+		Vector3 targetRCS = Mathf.Max(MaxRCSSpeed - speed, 0) * inputRCS;
+		Vector3 targetVelocity = (Quaternion.Euler(inputDive, 0, 0) * Vector3.forward * inputThrottle * perfectMaxSpeed) + targetRCS; //what velocity does the ship want to go?
+		Vector3 diffVelocity = targetVelocity - velocity; //how off we are
 		float frameMaxAccel = impulseAccel * Time.fixedDeltaTime; //delta for this frame
         //how much acceleration for this frame?
         float frameImpulse = Mathf.Min (diffVelocity.magnitude, frameMaxAccel, engineManager.energy / (engineWattage * Time.fixedDeltaTime));
 		frameImpulse = Mathf.Max(frameImpulse, 0); //dont go backwards!
 
-        if (frameMaxAccel > 0) //if we can't move, dont devide by 0
+        if (frameMaxAccel > 0) //if we can't move, don't devide by 0
         {
-            Vector2 frameThrust = diffVelocity.normalized * frameImpulse; //force to correct for this frame;
+            Vector3 frameThrust = diffVelocity.normalized * frameImpulse; //force to correct for this frame;
             velocity += frameThrust;
             engineManager.energy -= (frameImpulse / frameMaxAccel) * engineWattage * Time.fixedDeltaTime; //consume power
         }
-        body.velocity = (Quaternion.Euler(0, angle, 0) * Game.V2toV3(velocity)); //set velocity to new value
+        body.velocity = (Quaternion.Euler(0, angle, 0) * velocity); //set velocity to new value
     }
 
     void UpdateTurn() {

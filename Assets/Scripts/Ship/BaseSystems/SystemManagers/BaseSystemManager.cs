@@ -27,8 +27,8 @@ public class BaseSystemManager : MonoBehaviour //more of a consumer mananger, do
 
     void Rebuild()
     {
-        //maxEnergy = maxWattage * 10; //seconds of power
-        maxEnergy = 50;
+        maxEnergy = maxWattage * 10; //seconds of power
+        //maxEnergy = 50;
     }
 
     public virtual void Update()
