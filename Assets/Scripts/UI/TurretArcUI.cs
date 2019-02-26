@@ -28,7 +28,7 @@ public class TurretArcUI : MonoBehaviour
     void Update()
     {
         length = repArray.maxRange * radar.scale;
-        angle = repArray.aimArc.x;
+        angle = repArray.aimArc;
         Refresh();
     }
 

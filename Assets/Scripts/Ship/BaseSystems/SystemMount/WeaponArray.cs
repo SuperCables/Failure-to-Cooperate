@@ -5,7 +5,7 @@ using Mirror;
 
 public class WeaponArray : NetworkBehaviour
 {
-    public Vector2 aimArc = new Vector2(60, 40); //H, V swivel range
+    public float aimArc = 60; //swivel range
     public float maxRange;
 
     public Entity FireAt;
@@ -62,16 +62,17 @@ public class WeaponArray : NetworkBehaviour
 
     bool AimAt(Entity target)
     {//this is only called by the server, so this will never run on the client
-        float mountAngle = transform.rotation.eulerAngles.y;
-        Vector2 pos = Game.V3toV2(transform.position);
-        Vector2 targetPos = Game.V3toV2(target.transform.position);
+        
+        Vector3 pos = transform.position;
+        Vector3 targetPos = target.transform.position;
 
         //Lead target here!
-        Vector2 leadPoint = targetPos;
+        Vector3 leadPoint = targetPos;
 
-        float targetAngle = 270 - Game.Vector2ToDegree(pos - leadPoint);
-        float aimAngle = Mathf.DeltaAngle(mountAngle, targetAngle);
-        if (Mathf.Abs(aimAngle * 2) < aimArc.x) //if in arc
+        Quaternion aimAngle = Quaternion.Inverse(transform.rotation) * Quaternion.LookRotation(leadPoint - pos, Vector3.up);
+        //print(aimAngle.eulerAngles);
+        
+        if (Quaternion.Angle(Quaternion.identity, aimAngle) < aimArc) //if in arc
         {
             //transform.localRotation = Quaternion.Euler(0, aimAngle, 0);
             FireAt = target;
@@ -80,7 +81,7 @@ public class WeaponArray : NetworkBehaviour
         else
         {
             FireAt = null;
-            aimAngle = 0;
+            //aimAngle = 0;
             return false;
         }
     }

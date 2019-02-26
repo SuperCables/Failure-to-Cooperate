@@ -27,7 +27,7 @@ public class BaseWeapon : NetworkBehaviour
     [HideInInspector]
 
     [SyncVar]
-    float aimAngle;
+    Quaternion aimAngle;
 
     public virtual void Start()
     {
@@ -44,35 +44,40 @@ public class BaseWeapon : NetworkBehaviour
 
     public virtual void Update()
     {
-        transform.localRotation = Quaternion.Euler(0, aimAngle, 0);
+        transform.localRotation = aimAngle;
 
         if (isServer)
         {
+            bool noTarget = true;
             if (Mount?.Rack?.FireAt != null)
             {
-                AimAt(Mount.Rack.FireAt);
+                if (AimAt(Mount.Rack.FireAt)) { noTarget = false; }
+            }
+            if (noTarget)
+            {
+                //AimAt(); //aim at closest or somthing
             }
         } //end is server
     }
 
     bool AimAt(Entity target)
     {//this is only called by the server, so this will never run on the client
-        float mountAngle = Mount.Rack.transform.rotation.eulerAngles.y;
-        Vector2 pos = Game.V3toV2(Mount.transform.position);
-        Vector2 targetPos = Game.V3toV2(target.transform.position);
+        //Quaternion currentAngle = Mount.Rack.transform.rotation;
+        //Quaternion mountAngle = Mount.Rack.transform.localRotation;
+
+        Vector3 pos = Mount.transform.position;
+        Vector3 targetPos = target.transform.position;
 
         //Lead target here!
-        Vector2 leadPoint = targetPos;
+        Vector3 leadPoint = targetPos;
 
-        float targetAngle = 270 - Game.Vector2ToDegree(pos - leadPoint);
-        aimAngle = Mathf.DeltaAngle(mountAngle, targetAngle);
         if ((pos - leadPoint).sqrMagnitude < (range * range))
         {
-            transform.localRotation = Quaternion.Euler(0, aimAngle, 0);
+            aimAngle = Quaternion.Inverse(Mount.Rack.transform.rotation) * Quaternion.LookRotation(leadPoint - pos, Vector3.up);
             Fire(target);
             return true;
         }else{
-            aimAngle = 0;
+            //aimAngle = Quaternion.identity;
             return false;
         }
     }

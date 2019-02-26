@@ -23,11 +23,6 @@ public class WeaponManager : BaseSystemManager
     {
         weaponMounts = GetComponentsInChildren<WeaponMount>();
         weaponArray = GetComponentsInChildren<WeaponArray>();
-    }
-
-    public override void Update()
-    {
-        base.Update();
 
         float thisWattage = 0;
         foreach (WeaponMount v in weaponMounts)
@@ -38,6 +33,10 @@ public class WeaponManager : BaseSystemManager
             }
         }
         maxWattage = thisWattage;
+    }
 
+    public override void Update()
+    {
+        base.Update();
     }
 }
