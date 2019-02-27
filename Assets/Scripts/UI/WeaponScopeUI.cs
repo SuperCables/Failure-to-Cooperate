@@ -95,7 +95,7 @@ public class WeaponScopeUI : MonoBehaviour
             float aimY = ((absY < 1) ? absY : (absY / (absY + 1))*2 ) * 64 * Mathf.Sign(fracY);
 
             //print(fracX + "  " + aimX);
-            v.rootTransform.localPosition = new Vector3(aimX, aimY, 0);
+            v.rootTransform.localPosition = new Vector3(-aimX, -aimY, 0);
 
             //Update Blip Propertys
             int targetingIcon = 0; //start with no icon
