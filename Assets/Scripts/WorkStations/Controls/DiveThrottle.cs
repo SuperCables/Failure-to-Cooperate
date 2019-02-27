@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedThrottle : MonoBehaviour, IClickHoldable, IScrollable
+public class DiveThrottle : MonoBehaviour, IClickHoldable, IScrollable
 {
-
-    public float throttle = 0;
+    public float throttle = .5f;
 
     [Header("Assignment")]
     public Transform handle;
     public Transform arrow;
-
-    public ToggleButton reverseBtn;
 
     float handleTargetAngle = 0;
     float arrowTargetAngle = 0;
@@ -20,13 +17,12 @@ public class SpeedThrottle : MonoBehaviour, IClickHoldable, IScrollable
     float smoothDampSpeedHandle = 0;
     float smoothDampSpeedArrow = 0;
 
-    float direction = 1;
-
     ShipMovement moveing;
+    Rigidbody body;
 
     void Start()
     {
-        reverseBtn.Toggled += ReverseClicked;
+        
     }
 
     void Update()
@@ -39,36 +35,32 @@ public class SpeedThrottle : MonoBehaviour, IClickHoldable, IScrollable
     {
         if (Game.global.localConnection == null) { return; }
         moveing = Game.global?.localConnection?.playerEntity?.vessel?.movement;
+        body = Game.global?.localConnection?.playerEntity?.body;
         if (moveing == null) { return; } //if everything is set up, continue
 
         //Set Speed Arrow
-        float targetSpeed = Mathf.Abs(moveing.inputThrottle); //read target and current
-        float percentSpeed = moveing.speed / moveing.perfectMaxSpeed; //how fast it is going / how fast it could be going
-        if (!float.IsNaN(percentSpeed)) //if max speed > 0
+        if (Mathf.Abs(moveing.inputThrottle) > 0.001f)
         {
-            arrowTargetAngle = 45 + (90 * percentSpeed);
-            arrowAngle = Mathf.SmoothDamp(arrowAngle, arrowTargetAngle, ref smoothDampSpeedArrow, 0.07f);
+            Vector3 vector = body.velocity;
+            Vector2 hor = new Vector2(vector.x, vector.z);
+            float diveAngle = Mathf.Atan2(hor.magnitude, vector.y) * Mathf.Rad2Deg;
+
+            arrowTargetAngle = 45 + (90 * Game.Map(diveAngle, 180, 0, 0, 1));
         }
+        else
+        {
+            arrowTargetAngle = 90;
+        }
+
+        arrowAngle = Mathf.SmoothDamp(arrowAngle, arrowTargetAngle, ref smoothDampSpeedArrow, 0.07f);
 
         //Set Throttle Handle
         handleTargetAngle = 45 + (90 * throttle);
         handleAngle = Mathf.SmoothDamp(handleAngle, handleTargetAngle, ref smoothDampSpeedHandle, 0.07f);
-        
+
         handle.localRotation = Quaternion.Euler(handleAngle, 0, 0);
         arrow.localRotation = Quaternion.Euler(arrowAngle, 0, 0);
 
-        float ver = Input.GetAxis("Vertical");
-        if (Mathf.Abs(ver) > 0.1f)
-        {
-            throttle = Mathf.Clamp01(throttle + ver * Time.deltaTime / 2);
-            Game.global.localConnection.CmdSetShipThrust(throttle * direction); //tell the ship to change speed
-        }
-   }
-
-    void ReverseClicked(bool rev)
-    {
-        direction = (rev) ? -1 : 1;
-        Game.global.localConnection.CmdSetShipThrust(Mathf.Abs(moveing.inputThrottle) * direction);
     }
 
     void Click(Vector3 pos)
@@ -80,7 +72,7 @@ public class SpeedThrottle : MonoBehaviour, IClickHoldable, IScrollable
 
     void SendThrottle(float throttle)
     {
-        Game.global?.localConnection?.CmdSetShipThrust(throttle * direction);
+        Game.global?.localConnection?.CmdSetShipDive(Game.Map(throttle, 0, 1, 90, -90));
     }
 
     void IClickHoldable.LeftHold(Vector3 pos)
@@ -98,5 +90,4 @@ public class SpeedThrottle : MonoBehaviour, IClickHoldable, IScrollable
         throttle = Mathf.Clamp01(throttle + ammount / 6f);
         SendThrottle(throttle);
     }
-
 }

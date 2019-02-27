@@ -39,9 +39,9 @@ public class PlayerConnection : NetworkBehaviour
     }
 
     [Command]
-    public void CmdSetShipDepth(float Depth)
+    public void CmdSetShipDive(float angle)
     {
-        //playerEntity.vessel.movement.targetDepth = Depth;
+        playerEntity.vessel.movement.inputDive = angle;
     }
 
 }
