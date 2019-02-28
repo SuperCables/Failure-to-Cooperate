@@ -6,12 +6,12 @@ public class ScrollingStars : MonoBehaviour {
 	ParticleSystem.Particle[] stars;
 	ParticleSystem effect;
 
-	public int maxStars = 100;
-	public float radius = 3;
+	public int maxStars = 5000;
+	public float radius = 250;
 	public float size = 1;
 
     float sqrmag;
-    int lastMaxStars = 100;
+    int lastMaxStars = 1;
 
 	void Start () {
 		effect = GetComponent<ParticleSystem> ();
