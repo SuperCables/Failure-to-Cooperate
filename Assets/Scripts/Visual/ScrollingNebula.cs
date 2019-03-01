@@ -12,18 +12,21 @@ public class ScrollingNebula : MonoBehaviour
 
     float sqrmag;
 
-
     void Start()
     {
         effect = GetComponent<ParticleSystem>();
         StartCoroutine(clean());
     }
 
+    void Update()
+    {
+        
+    }
+
     IEnumerator clean()
     {
         while (true)
         {
-
             if (stars == null || stars.Length < effect.main.maxParticles)
             {
                 stars = new ParticleSystem.Particle[effect.main.maxParticles];
@@ -36,14 +39,14 @@ public class ScrollingNebula : MonoBehaviour
 
             for (int i = 0; i < count; i++)
             {
-                print(stars[i].remainingLifetime + "   " + stars[i].startLifetime);
-                if (stars[i].remainingLifetime > killTime) {
+                //print(stars[i].remainingLifetime + "   " + stars[i].startLifetime);
+                //if (stars[i].remainingLifetime > killTime)
+                if (stars[i].remainingLifetime > killTime)
+                {
                     float sqrdist = (pos - stars[i].position).sqrMagnitude;
                     if (sqrdist > sqrmag)
                     {
-                        
                         stars[i].remainingLifetime = killTime; //start fading out
-                        
                     }
                 }
             }

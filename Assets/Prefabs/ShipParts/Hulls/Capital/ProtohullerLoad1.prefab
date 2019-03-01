@@ -262,6 +262,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3142407337640068202, guid: 5a6141f331b05e04aaec40d9f09eb0c3,
+        type: 3}
+      propertyPath: m_AssetId
+      value: 0d6f59745326f0541bdfb95796ca098f
+      objectReference: {fileID: 0}
     - target: {fileID: 611836830498853530, guid: 5a6141f331b05e04aaec40d9f09eb0c3,
         type: 3}
       propertyPath: m_AssetId
@@ -271,6 +276,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Target1
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970544696102805551, guid: 5a6141f331b05e04aaec40d9f09eb0c3,
+        type: 3}
+      propertyPath: m_AssetId
+      value: 0d6f59745326f0541bdfb95796ca098f
       objectReference: {fileID: 0}
     - target: {fileID: 872881707917066947, guid: 5a6141f331b05e04aaec40d9f09eb0c3,
         type: 3}
@@ -287,10 +297,20 @@ PrefabInstance:
       propertyPath: m_AssetId
       value: 0d6f59745326f0541bdfb95796ca098f
       objectReference: {fileID: 0}
+    - target: {fileID: 5765352988528168606, guid: 5a6141f331b05e04aaec40d9f09eb0c3,
+        type: 3}
+      propertyPath: m_AssetId
+      value: 0d6f59745326f0541bdfb95796ca098f
+      objectReference: {fileID: 0}
     - target: {fileID: 5425790451065383351, guid: 5a6141f331b05e04aaec40d9f09eb0c3,
         type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 568423269600045787, guid: 5a6141f331b05e04aaec40d9f09eb0c3,
+        type: 3}
+      propertyPath: m_AssetId
+      value: 0d6f59745326f0541bdfb95796ca098f
       objectReference: {fileID: 0}
     - target: {fileID: 2973369714990849737, guid: 5a6141f331b05e04aaec40d9f09eb0c3,
         type: 3}
@@ -306,6 +326,11 @@ PrefabInstance:
         type: 3}
       propertyPath: coreCount
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5425790451065383350, guid: 5a6141f331b05e04aaec40d9f09eb0c3,
+        type: 3}
+      propertyPath: thrust
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a6141f331b05e04aaec40d9f09eb0c3, type: 3}
