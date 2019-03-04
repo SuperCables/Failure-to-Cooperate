@@ -2,22 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CoreBank))]
-public class Reactor : MonoBehaviour
+public class Reactor : BaseSystem
 {
     public float wattage = 2; //power produced per second
     public float powerOutput = 0;
 
-
-    CoreBank cores;
-
-    void Start()
+    public override void Start()
     {
-        cores = GetComponent<CoreBank>();
+        base.Start();
     }
 
-    void Update()
+    public override void Update()
     {
+        base.Update();
         powerOutput = wattage * cores.usability;
     }
+
 }

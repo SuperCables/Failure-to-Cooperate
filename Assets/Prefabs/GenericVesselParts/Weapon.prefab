@@ -87,6 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6179340110261085067}
   - component: {fileID: 6179340110261085068}
+  - component: {fileID: 7090149845627039718}
   - component: {fileID: 1987333069499891579}
   m_Layer: 0
   m_Name: Weapon
@@ -124,12 +125,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  cores: {fileID: 0}
+  usability: 1
   wattage: 1
   thermalLoad: 7
   range: 250
-  mountedVessel: {fileID: 0}
-  weaponManager: {fileID: 0}
-  mount: {fileID: 0}
+  MountedVessel: {fileID: 0}
+  WeaponManager: {fileID: 0}
+  Mount: {fileID: 0}
   ammo: 2000
   maxAmmo: 2000
   ammoMass: 2
@@ -142,6 +145,21 @@ MonoBehaviour:
   TemplateShell: {fileID: 0}
   fireEffectTemplate: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4,
     type: 3}
+--- !u!114 &7090149845627039718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6179340110261085069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2364dc3a7a32754481c4e2437c9c5b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.1
+  coreCount: 1
+  usability: 1
 --- !u!114 &1987333069499891579
 MonoBehaviour:
   m_ObjectHideFlags: 0

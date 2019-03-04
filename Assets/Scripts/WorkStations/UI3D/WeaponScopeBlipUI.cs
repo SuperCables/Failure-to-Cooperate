@@ -49,7 +49,6 @@ public class WeaponScopeBlipUI : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                radar.SelectBlip(this, Input.GetKey(KeyCode.LeftShift)); //select this unit
                 Game.global.SelectUnit(repEntity);
             }
         }

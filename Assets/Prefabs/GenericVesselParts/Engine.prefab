@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3005308996426130189}
   - component: {fileID: 3005308996426130188}
+  - component: {fileID: 4419524649185109326}
+  - component: {fileID: 7618793843192547002}
   m_Layer: 0
   m_Name: Engine
   m_TagString: Untagged
@@ -44,8 +46,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0134333f70c8743b2873a8d2755ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncInterval: 0.1
+  cores: {fileID: 0}
+  usability: 1
   thrust: 25
   wattage: 2
+--- !u!114 &4419524649185109326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3005308996426130186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2364dc3a7a32754481c4e2437c9c5b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncInterval: 0.1
+  coreCount: 2
+  usability: 1
+--- !u!114 &7618793843192547002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3005308996426130186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+  m_AssetId: 5e4ebc33835e4bd4f878a40ca9c5b633
 --- !u!1 &8344450851036113949
 GameObject:
   m_ObjectHideFlags: 0

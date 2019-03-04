@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponMount : BaseSystemMount
+public class WeaponMount : MonoBehaviour
 {
     public WeaponArray Rack;
     public BaseWeapon gun;
 
-    public override void Start()
+    void Start()
     {
-        base.Start();
         GetComponentInParent<Entity>().FullRebuild += Rebuild;
         Rebuild();
     }
@@ -20,16 +19,12 @@ public class WeaponMount : BaseSystemMount
         gun = GetComponentInChildren<BaseWeapon>();
     }
 
-    public override void Update()
-    {
-        base.Update();
-    }
-
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Vector3 direction = transform.TransformDirection(Vector3.forward) * 0.3f;
         Gizmos.DrawRay(transform.position, direction);
+        
     }
 
     void OnDrawGizmosSelected()

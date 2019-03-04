@@ -12,6 +12,7 @@ public class Global : MonoBehaviour
     public List<Entity> allUnits = new List<Entity>();   
     [Header("Player")]
     public Entity selectedUnit;
+    public Entity hoveredUnit;
     public PlayerConnection localConnection;
     [Header("Refrences to ship parts")]
     public Entity entity;
@@ -19,11 +20,11 @@ public class Global : MonoBehaviour
     public ShipMovement moveing;
     public VesselHull hull;
     public WeaponManager weaponManager;
+    
     [Header("UI")]
     public GameObject connectionHolder;
     public Canvas canvas;
     public Transform tempStuff;
-    public Camera playerCamera;
 
 	void Start () {
         RefreshCurrentVesselLinks();

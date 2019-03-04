@@ -5,7 +5,7 @@ using UnityEngine;
 public class EngineMananger : BaseSystemManager
 {
     
-    public EngineMount[] engines;
+    public Engine[] engines;
 
     [Space(10)]
     public float thrust; //sum of all engine thrust * average of all cores usability
@@ -20,15 +20,15 @@ public class EngineMananger : BaseSystemManager
 
     void Rebuild()
     {
-        engines = GetComponentsInChildren<EngineMount>();
+        engines = GetComponentsInChildren<Engine>();
         float thisWattage = 0;
         float thisMaxThrust = 0;
-        foreach (EngineMount v in engines)
+        foreach (Engine v in engines)
         {
-            if (v.engine != null)
+            if (v != null)
             {
-                thisWattage += v.engine.wattage;
-                thisMaxThrust += v.engine.thrust;
+                thisWattage += v.wattage;
+                thisMaxThrust += v.thrust;
             }
         }
         maxWattage = thisWattage;
@@ -40,11 +40,11 @@ public class EngineMananger : BaseSystemManager
         base.Update();
         float thisThrust = 0;
 
-        foreach (EngineMount v in engines)
+        foreach (Engine v in engines)
         {
-            if (v.engine != null)
+            if (v != null)
             {
-                thisThrust += v.engine.thrust * v.usability;
+                thisThrust += v.thrust * v.usability;
             }
         }
         thrust = thisThrust;

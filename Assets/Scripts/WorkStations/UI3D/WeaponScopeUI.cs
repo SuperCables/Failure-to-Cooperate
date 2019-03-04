@@ -9,7 +9,6 @@ public class WeaponScopeUI : MonoBehaviour
     public WeaponManager weaponManager; //for highlighting priority targets, not for fireing arcs
 
     public List<WeaponScopeBlipUI> blips = new List<WeaponScopeBlipUI>();
-    public List<Entity> selected = new List<Entity>();
 
     public Vector2 mousePos;
     GlobalStation globalStation;
@@ -26,6 +25,7 @@ public class WeaponScopeUI : MonoBehaviour
         globalStation = GetComponentInParent<GlobalStation>();
         Game.global.UnitAdded += AddBlip;
         Game.global.UnitRemoved += RemoveBlip;
+        Game.global.UnitSelected += SelectUnit;
         scale = 1;
         Refresh();
     }
@@ -136,7 +136,6 @@ public class WeaponScopeUI : MonoBehaviour
     {
         player = Game.global?.entity;
         blips.Clear();
-        selected.Clear();
         foreach (Transform v in trUnits)
         {
             Destroy(v.gameObject);
@@ -151,23 +150,20 @@ public class WeaponScopeUI : MonoBehaviour
         }
     }
 
-    public void SelectBlip(WeaponScopeBlipUI blip, bool append)
+    public void SelectUnit(Entity unit)
     {
-        if (!append)
+        foreach (WeaponScopeBlipUI v in blips)
         {
-            foreach (WeaponScopeBlipUI v in blips)
+            if (v.repEntity == unit)
+            {
+                v.selected = true;
+            }
+            else
             {
                 v.selected = false;
             }
-            selected.Clear();
-        }
-        if (!selected.Contains(blip.repEntity))
-        {
-            selected.Add(blip.repEntity);
-            blip.selected = true;
         }
     }
-
 
     public void SetVisible(GameObject thing, bool visible)
     {

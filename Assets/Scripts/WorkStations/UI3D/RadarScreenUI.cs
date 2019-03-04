@@ -12,7 +12,6 @@ public class RadarScreenUI : MonoBehaviour
     public float ringWidth = 2;
     public bool clickToDrive;
     public List<RadarBlipUI> blips = new List<RadarBlipUI>();
-    public List<Entity> selected = new List<Entity>();
 
     [HideInInspector]
     public float scale = 0; //scale factor
@@ -42,6 +41,7 @@ public class RadarScreenUI : MonoBehaviour
         globalStation = GetComponentInParent<GlobalStation>();
         Game.global.UnitAdded += AddBlip;
         Game.global.UnitRemoved += RemoveBlip;
+        Game.global.UnitSelected += SelectUnit;
         if (scaleKnob != null) { scaleKnob.Changed += ScaleKnobRotated; }
         
 
@@ -183,7 +183,6 @@ public class RadarScreenUI : MonoBehaviour
     void Refresh()
     {
         blips.Clear();
-        selected.Clear();
         foreach (Transform v in trUnits)
         {
             Destroy(v.gameObject);
@@ -195,18 +194,18 @@ public class RadarScreenUI : MonoBehaviour
         }
     }
 
-    public void SelectBlip(RadarBlipUI blip, bool append)
+    public void SelectUnit(Entity unit)
     {
-        if (!append) {
-            foreach (RadarBlipUI v in blips)
+        foreach (RadarBlipUI v in blips)
+        {
+            if (v.repEntity == unit)
+            {
+                v.selected = true;
+            }
+            else
             {
                 v.selected = false;
             }
-            selected.Clear();
-        }
-        if (!selected.Contains(blip.repEntity)) {
-            selected.Add(blip.repEntity);
-            blip.selected = true;
         }
     }
 

@@ -19,6 +19,7 @@ ModelImporter:
     3300004: Cylinder
     4300000: Cube
     4300002: Cylinder
+    4300004: RadarRing
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}

@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2394145052179804665}
   - component: {fileID: 3776603706033714281}
-  - component: {fileID: 6422374412691680820}
-  - component: {fileID: 6746800747255252303}
   m_Layer: 0
   m_Name: WeaponMount
   m_TagString: Untagged
@@ -45,39 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d039bc15db4694da675e7178f8c229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 10
-  heat: 0
-  cores: {fileID: 0}
   Rack: {fileID: 0}
   gun: {fileID: 0}
---- !u!114 &6422374412691680820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665077086107655430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2364dc3a7a32754481c4e2437c9c5b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncInterval: 0.1
-  coreCount: 1
-  usability: 1
---- !u!114 &6746800747255252303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1665077086107655430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
-  m_AssetId: a94e3d0beb181314cb322a1beeba5701

@@ -45,13 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6142e59c6e947ca4ba18125137d09609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncInterval: 0.1
   hull: 100
   maxHull: 100
   armorSegments: 8
-  armor: []
   maxArmor: 25
   shieldsSegments: 16
-  shields: []
   maxShields: 50
   maxBoundsSize: 5
   mass: 3
@@ -86,6 +85,36 @@ Transform:
   m_Father: {fileID: 548986638317194145}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1116357543476531202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6033516152125711521}
+  m_Layer: 0
+  m_Name: TorpedoTubes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6033516152125711521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116357543476531202}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4959866278529401718}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1846674289307141657
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +143,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4959866278529401718}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2552588527340963467
 GameObject:
@@ -163,6 +192,7 @@ MonoBehaviour:
   energy: 0
   maxEnergy: 5
   demand: 0
+  demandSecond: 0
   maxWattage: 0
   heat: 0
   engines: []
@@ -241,7 +271,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4959866278529401718}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5538943887277203718
 GameObject:
@@ -289,58 +319,6 @@ MonoBehaviour:
   reactors: []
   production: 0
   maxproduction: 0
---- !u!1 &5781117993134675993
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4785431024158836138}
-  - component: {fileID: 7738880104568335497}
-  m_Layer: 0
-  m_Name: BallastPumps
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4785431024158836138
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5781117993134675993}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4959866278529401718}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7738880104568335497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5781117993134675993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 978b663f74ffb5b47bbfceba30d6990a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allocation: 1
-  energy: 0
-  maxEnergy: 5
-  demand: 0
-  maxWattage: 0
-  heat: 0
-  pumps: []
-  flow: 0
-  maxFlow: 0
 --- !u!1 &6503350301262394628
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,9 +396,11 @@ MonoBehaviour:
   energy: 0
   maxEnergy: 5
   demand: 0
+  demandSecond: 0
   maxWattage: 0
   heat: 0
   weaponMounts: []
+  weaponArray: []
   Target1: {fileID: 0}
   Target2: {fileID: 0}
 --- !u!1 &8514625812708931472
@@ -456,9 +436,9 @@ Transform:
   - {fileID: 1207393673424316784}
   - {fileID: 4356678291616317386}
   - {fileID: 2117266089023855639}
+  - {fileID: 6033516152125711521}
   - {fileID: 6049510597300903740}
   - {fileID: 2285015276723482584}
-  - {fileID: 4785431024158836138}
   m_Father: {fileID: 548986638317194145}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -476,7 +456,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   systems:
   - {fileID: 2552588527340963468}
-  - {fileID: 7738880104568335497}
+  - {fileID: 0}
   - {fileID: 327885417456128443}
   batteryPower: 0
   maxBatteryPower: 0

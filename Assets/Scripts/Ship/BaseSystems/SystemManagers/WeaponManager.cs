@@ -6,7 +6,7 @@ public enum TargetPrioritys {Closest, Weakest }
 
 public class WeaponManager : BaseSystemManager
 {
-    public WeaponMount[] weaponMounts;
+    public BaseWeapon[] weaponMounts;
     public WeaponArray[] weaponArray;
     [Space(10)]
     public Entity Target1;
@@ -21,15 +21,15 @@ public class WeaponManager : BaseSystemManager
 
     void Rebuild()
     {
-        weaponMounts = GetComponentsInChildren<WeaponMount>();
+        weaponMounts = GetComponentsInChildren<BaseWeapon>();
         weaponArray = GetComponentsInChildren<WeaponArray>();
 
         float thisWattage = 0;
-        foreach (WeaponMount v in weaponMounts)
+        foreach (BaseWeapon v in weaponMounts)
         {
-            if (v.gun != null)
+            if (v != null)
             {
-                thisWattage += v.gun.wattage;// * v.usability;
+                thisWattage += v.wattage;// * v.usability;
             }
         }
         maxWattage = thisWattage;

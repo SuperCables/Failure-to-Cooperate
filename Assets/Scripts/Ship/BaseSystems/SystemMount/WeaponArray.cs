@@ -10,8 +10,7 @@ public class WeaponArray : NetworkBehaviour
 
     public Entity FireAt;
 
-
-    public WeaponMount[] Mounts; 
+    public BaseWeapon[] guns;
     WeaponManager WeaponManager;
 
     void Start()
@@ -23,7 +22,7 @@ public class WeaponArray : NetworkBehaviour
     void Rebuild()
     {
         WeaponManager = GetComponentInParent<WeaponManager>();
-        Mounts = GetComponentsInChildren<WeaponMount>();
+        guns = GetComponentsInChildren<BaseWeapon>();
     }
 
     void Update()
@@ -50,11 +49,11 @@ public class WeaponArray : NetworkBehaviour
         } //end is server
 
         maxRange = 0;
-        foreach (WeaponMount v in Mounts)
+        foreach (BaseWeapon v in guns)
         {
-            if (v?.gun?.range > maxRange)
+            if (v.range > maxRange)
             {
-                maxRange = v.gun.range;
+                maxRange = v.range;
             }
         }
 
@@ -72,7 +71,7 @@ public class WeaponArray : NetworkBehaviour
         Quaternion aimAngle = Quaternion.Inverse(transform.rotation) * Quaternion.LookRotation(leadPoint - pos, Vector3.up);
         //print(aimAngle.eulerAngles);
         
-        if (Quaternion.Angle(Quaternion.identity, aimAngle) < aimArc) //if in arc
+        if (Quaternion.Angle(Quaternion.identity, aimAngle) < aimArc/2) //if in arc
         {
             //transform.localRotation = Quaternion.Euler(0, aimAngle, 0);
             FireAt = target;
@@ -88,14 +87,18 @@ public class WeaponArray : NetworkBehaviour
 
     void OnDrawGizmos()
     {
+        Gizmos.matrix = transform.localToWorldMatrix;
         Gizmos.color = Color.red;
-        Vector3 direction = transform.TransformDirection(Vector3.forward) * 1;
-        Gizmos.DrawRay(transform.position, direction);
+        //Vector3 direction = transform.TransformDirection(Vector3.forward) * 1;
+        //Gizmos.DrawRay(transform.position, direction);
+        Gizmos.DrawFrustum(Vector3.zero, aimArc, 1, 0.05f, 1);
     }
 
     void OnDrawGizmosSelected()
     {
+        Gizmos.matrix = transform.localToWorldMatrix;
+
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube (transform.position, new Vector3(0.1f, 0.1f, 1));
+        Gizmos.DrawWireCube (Vector3.zero, new Vector3(1f, 0.1f, 0.1f));
     }
 }

@@ -49,8 +49,6 @@ public class ShipMovement : NetworkBehaviour
     public Vessel vessel;
     [HideInInspector]
     public EngineMananger engineManager;
-    [HideInInspector]
-    public BallastPumpsMananger ballastPumpsMananger;
 
     void Start () {
         GetComponentInParent<Entity>().FullRebuild += Rebuild;
@@ -63,7 +61,6 @@ public class ShipMovement : NetworkBehaviour
         body = GetComponent<Rigidbody>();
         vessel = GetComponent<Vessel>();
         engineManager = GetComponentInChildren<EngineMananger>();
-        ballastPumpsMananger = GetComponentInChildren<BallastPumpsMananger>();
     }
 	
 	void Update () {

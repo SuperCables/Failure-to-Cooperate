@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 [RequireComponent(typeof(CoreBank))]
-public class BaseSystemMount : MonoBehaviour
+public class BaseSystem : NetworkBehaviour
 {
-    public float mass = 10;
-    public float heat;
     //[HideInInspector]
     public CoreBank cores;
+    public float usability = 1;
 
     public virtual void Start()
     {
@@ -17,6 +17,6 @@ public class BaseSystemMount : MonoBehaviour
 
     public virtual void Update()
     {
-
+        usability = cores.usability;
     }
 }

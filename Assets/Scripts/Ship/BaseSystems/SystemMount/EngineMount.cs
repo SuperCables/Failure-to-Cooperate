@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CoreBank))]
-public class EngineMount : BaseSystemMount
+public class EngineMount : MonoBehaviour
 {
-
-    public float usability = 1; //average of all cores usability
-
     public Engine engine;
 
-    public override void Start()
+    void Start()
     {
-        base.Start();
         GetComponentInParent<Entity>().FullRebuild += Rebuild;
         Rebuild();
     }
@@ -22,10 +17,9 @@ public class EngineMount : BaseSystemMount
         engine = GetComponentInChildren<Engine>();
     }
 
-    public override void Update()
+    void Update()
     {
-        base.Update();
-        usability = cores.usability;
+
     }
 
     void OnDrawGizmos()

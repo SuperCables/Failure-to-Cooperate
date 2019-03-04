@@ -73,7 +73,6 @@ public class RadarBlipUI : MonoBehaviour { //an object on the radar
         {
             if (Input.GetMouseButtonDown(0))
             {
-                radar.SelectBlip(this, Input.GetKey(KeyCode.LeftShift)); //select this unit
                 Game.global.SelectUnit(repEntity);
             }
         }

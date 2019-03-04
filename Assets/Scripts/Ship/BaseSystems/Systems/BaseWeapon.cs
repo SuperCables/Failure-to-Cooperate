@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class BaseWeapon : NetworkBehaviour
+public class BaseWeapon : BaseSystem
 {
     [Header("Load")]
     public float wattage = 5;
@@ -29,8 +29,9 @@ public class BaseWeapon : NetworkBehaviour
     [SyncVar]
     Quaternion aimAngle;
 
-    public virtual void Start()
+    public override void Start()
     {
+        base.Start();
         GetComponentInParent<Entity>().FullRebuild += Rebuild;
         Rebuild();
     }
@@ -42,8 +43,9 @@ public class BaseWeapon : NetworkBehaviour
         Mount = GetComponentInParent<WeaponMount>();
     }
 
-    public virtual void Update()
+    public override void Update()
     {
+        base.Update();
         transform.localRotation = aimAngle;
 
         if (isServer)
