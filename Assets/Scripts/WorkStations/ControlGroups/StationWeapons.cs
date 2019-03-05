@@ -36,6 +36,7 @@ public class StationWeapons : MonoBehaviour
 
     void SetTarget1()
     {
+        //TODO: Use a command to tell the server to change target, not just the client!
         weaponManager = Game.global.weaponManager;
         weaponManager.Target1 = selfTargetPlayer();
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TorpedoType { none, asdf, qwerty, zxcv }
+public enum TorpedoType { none, type1, type2, type3, type4, type5 }
 
 public class TorpedoTube : MonoBehaviour
 {
@@ -58,6 +58,8 @@ public class TorpedoTube : MonoBehaviour
             clip[0] = TorpedoType.none;
             loadTimeRemaining = loadTime;
         }
+
+        //TODO: if not reloading, advance clip
     }
 
     void Fire()

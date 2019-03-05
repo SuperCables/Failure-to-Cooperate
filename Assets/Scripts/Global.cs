@@ -20,13 +20,17 @@ public class Global : MonoBehaviour
     public ShipMovement moveing;
     public VesselHull hull;
     public WeaponManager weaponManager;
+    public TorpedoMananger torpedoMananger;
     
     [Header("UI")]
     public GameObject connectionHolder;
     public Canvas canvas;
     public Transform tempStuff;
 
-	void Start () {
+    [Header("ImageLinks")]
+    public Sprite[] TorpedosSprites;
+
+    void Start () {
         RefreshCurrentVesselLinks();
 
     }
@@ -42,6 +46,7 @@ public class Global : MonoBehaviour
         moveing = vessel?.movement;
         hull = entity?.hull;
         weaponManager = vessel?.weaponManager;
+        torpedoMananger = vessel?.torpedoMananger;
     }
 
 	public void AddUnit(Entity unit) {

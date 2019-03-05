@@ -51,8 +51,7 @@ MonoBehaviour:
   matOff: {fileID: 2100000, guid: 24a26f68ddd5e354387f7422d88fee61, type: 2}
   handle: {fileID: 6066847466852920539}
   lever: {fileID: 6066847466850496059}
-  index: 0
-  changedState: 0
+  state: 0
 --- !u!1 &6120817061812148769
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,6 +265,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f56dc24599cd40046ac099e8689a06bd, type: 2}
+    - target: {fileID: 2300000, guid: 3658336a52bdf534d90c94687f89701a, type: 3}
+      propertyPath: m_StitchLightmapSeams
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 9500000, guid: 3658336a52bdf534d90c94687f89701a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3658336a52bdf534d90c94687f89701a, type: 3}

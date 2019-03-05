@@ -85,7 +85,7 @@ public class SnapAnchorsEditor : Editor
 
 	public static float RoundBy (float input)
 	{
-		return Mathf.RoundToInt (input * 10000) / 10000f;
+		return Mathf.RoundToInt (input * 100) / 100f;
 	}
 
 	public static Vector3 RoundV3By (Vector3 input)
@@ -95,8 +95,9 @@ public class SnapAnchorsEditor : Editor
 
 	public static void StaticSweepingRoundTransforms(GameObject o)
 	{
+        Debug.Log("Rounding: " + o.name);
 
-		o.transform.position = RoundV3By (o.transform.position);
+        o.transform.position = RoundV3By (o.transform.position);
 
 		o.transform.localScale = RoundV3By (o.transform.localScale);
 
@@ -121,7 +122,6 @@ public class SnapAnchorsEditor : Editor
 	static void RoundTransforms()
 	{
 		Debug.Log("Rounding Transforms of ''" + Selection.activeTransform.gameObject.name + "'' and its children.");
-
 		StaticSweepingRoundTransforms(Selection.activeGameObject);
 	}
 

@@ -17,6 +17,8 @@ public class Vessel : MonoBehaviour
     //[HideInInspector]
     public WeaponManager weaponManager;
     //[HideInInspector]
+    public TorpedoMananger torpedoMananger;
+    //[HideInInspector]
     public Distributer distributer;
     //[HideInInspector]
     public Entity entity;
@@ -35,6 +37,7 @@ public class Vessel : MonoBehaviour
         movement = GetComponent<ShipMovement>();
         engineManager = GetComponentInChildren<EngineMananger>();
         weaponManager = GetComponentInChildren<WeaponManager>();
+        torpedoMananger = GetComponentInChildren<TorpedoMananger>();
         distributer = GetComponentInChildren<Distributer>();
     }
 
