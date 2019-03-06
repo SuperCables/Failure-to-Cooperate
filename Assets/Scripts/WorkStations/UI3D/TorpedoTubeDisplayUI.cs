@@ -37,8 +37,11 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
     [Header("Self Assign")]
     public int index = -1;
     TorpedoControlUI torpedoControlUI;
-    public TorpedoMananger torpedoMananger;
     public TorpedoClipSlotUI[] clipSlots;
+    public TorpedoMananger torpedoMananger;
+    public TorpedoArray torpedoArray;
+
+
 
     void Start()
     {
@@ -51,6 +54,7 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
     {
         torpedoMananger = Game.global?.torpedoMananger; //set new refs
         repEntity = torpedoTube;
+        torpedoArray = torpedoTube.torpedoArray;
 
         int clipSize = torpedoTube.clip.Length; //init
         clipSlots = new TorpedoClipSlotUI[clipSize];
@@ -121,9 +125,16 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
             if (torpedoTube.locked)
             {
                 SetVisible(ReloadingText.gameObject, (Time.time % 2 > 0.8f));
-                SetVisible(ReloadingBarBack, true);
 
-                //TODO: find out if currently reloading, and do progress bar
+                if (torpedoArray.currentlyReloading == torpedoTube)
+                {
+                    SetVisible(ReloadingBarBack, true);
+                    ReloadingBar.fillAmount = 1-(torpedoArray.reloadTimeRemaining / torpedoArray.reloadTime);
+                }
+                else
+                {
+                    SetVisible(ReloadingBarBack, false);
+                }
             }
             else
             {

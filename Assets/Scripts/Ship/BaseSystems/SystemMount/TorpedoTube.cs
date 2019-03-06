@@ -22,6 +22,11 @@ public class TorpedoTube : NetworkBehaviour
     public bool locked; //storage -> clip (we cant do anything while reloading)
     public float loadTimeRemaining; //clip -> tube (how long till the torpedo is in the tube)
 
+    [Header("Assignment")]
+
+    [Header("Self Assign")]
+    public TorpedoArray torpedoArray;
+
     void Start()
     {
         GetComponentInParent<Entity>().FullRebuild += Rebuild;
@@ -33,7 +38,7 @@ public class TorpedoTube : NetworkBehaviour
 
     void Rebuild()
     {
-
+        torpedoArray = GetComponentInParent<TorpedoArray>();
     }
 
     void Update()
@@ -50,7 +55,7 @@ public class TorpedoTube : NetworkBehaviour
         }
     }
 
-    void Load()
+    void Load() //don't call, use the command
     {
         //if not loading, not reloading, and has a shot ready to load, and not loaded
         if ((loadTimeRemaining < 0) && (locked == false) && (clip[0] != TorpedoType.none) && (loaded == TorpedoType.none))
@@ -68,12 +73,23 @@ public class TorpedoTube : NetworkBehaviour
         }
     }
 
-    void Reload()
+    void Reload(TorpedoType[] ls) //don't call, use the command
     {
-        print("Add to array que");
+        if (!torpedoArray.reloadAgenda.Contains(this))
+        {
+            print("Add to array que");
+            torpedoArray.reloadAgenda.Add(this);
+            locked = true;
+        }
+        else
+        {
+            print("Already Reloading");
+        }
+        
+        
     }
 
-    void Fire()
+    void Fire() //don't call, use the command
     {
         if (loaded != TorpedoType.none)
         {
@@ -98,9 +114,9 @@ public class TorpedoTube : NetworkBehaviour
     }
 
     [Command]
-    public void CmdReload()
+    public void CmdReload(TorpedoType[] ls)
     {
-        Reload();
+        Reload(ls);
     }
 
     [Command]

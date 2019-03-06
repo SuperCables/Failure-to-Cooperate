@@ -9622,7 +9622,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae328dc791b3f1c409559827386b9938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  torpedoMananger: {fileID: 1986183298}
   loadOut: 
+  screenTubeTemplate: {fileID: 4107071887111616035, guid: d7cf1e4b57aaa8143a066713556f603b,
+    type: 3}
+  ReloadBtn: {fileID: 1590521267}
+  Screen: {fileID: 1008823695}
   ControlRows:
   - {fileID: 1186385939}
   - {fileID: 1949525285}
@@ -31991,6 +31996,18 @@ Transform:
   m_Father: {fileID: 660664024}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+--- !u!114 &1590521267 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5004148272796667749, guid: 64f7984b97ac135448276b43508d0fda,
+    type: 3}
+  m_PrefabInstance: {fileID: 240923162}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94abc74474538294294662c4df6aa21a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1605216207
 GameObject:
   m_ObjectHideFlags: 0
@@ -39398,6 +39415,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 58675774}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1986183298 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7668468955758029206, guid: 0d6f59745326f0541bdfb95796ca098f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8686990514956538865}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27768a730b548244ab75c979aa815fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1988088934
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48504,6 +48533,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TorpedoTube (0)
       objectReference: {fileID: 0}
+    - target: {fileID: 4107071887111616035, guid: d7cf1e4b57aaa8143a066713556f603b,
+        type: 3}
+      propertyPath: torpedoTube
+      value: 
+      objectReference: {fileID: 989661347}
     - target: {fileID: 7626486460832034840, guid: d7cf1e4b57aaa8143a066713556f603b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -48774,11 +48808,6 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4107071887111616035, guid: d7cf1e4b57aaa8143a066713556f603b,
-        type: 3}
-      propertyPath: torpedoTube
-      value: 
-      objectReference: {fileID: 989661347}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7cf1e4b57aaa8143a066713556f603b, type: 3}
 --- !u!1001 &8686990514956538865
