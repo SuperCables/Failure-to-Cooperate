@@ -52,16 +52,14 @@ public class TorpedoTube : NetworkBehaviour
 
     void Load()
     {
-        //if not loading, not reloading, and has a shot ready to load
-        if ((loadTimeRemaining < 0) && (locked == false) && (clip[0] != TorpedoType.none))
+        //if not loading, not reloading, and has a shot ready to load, and not loaded
+        if ((loadTimeRemaining < 0) && (locked == false) && (clip[0] != TorpedoType.none) && (loaded == TorpedoType.none))
         {
             loading = clip[0]; //begin loading
             clip[0] = TorpedoType.none;
             loadTimeRemaining = loadTime;
-        }
 
-        if (!locked)
-        {
+            //slide all ammo in the clip down a notch
             for (int i = 1; i < queueLength; i++)
             {
                 clip[i - 1] = clip[i];
@@ -77,7 +75,11 @@ public class TorpedoTube : NetworkBehaviour
 
     void Fire()
     {
-        print("BLAM!");
+        if (loaded != TorpedoType.none)
+        {
+            loaded = TorpedoType.none;
+            print("BLAM!");
+        }
     }
 
     void OnDrawGizmos()

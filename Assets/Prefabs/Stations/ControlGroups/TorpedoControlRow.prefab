@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2856437886074277116}
   - component: {fileID: 9063774500755258279}
   m_Layer: 8
-  m_Name: Row
+  m_Name: TorpedoControlRow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,12 +48,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dfed6dd714ede947a027b354a344c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selected: 0
   torpedoTube: {fileID: 0}
   SelectBtn: {fileID: 2778336964694108752}
   LoadBtn: {fileID: 7121973630799254161}
   FireBtn: {fileID: 7121973632129509414}
   AutoLoadSwitch: {fileID: 3284085331217491776}
   LinkedFireSwitch: {fileID: 3284085330016637731}
+  index: -1
+  display: {fileID: 0}
+  torpedoControlUI: {fileID: 0}
 --- !u!1001 &2856437886061455171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -140,16 +144,16 @@ PrefabInstance:
         type: 3}
       propertyPath: matOn
       value: 
-      objectReference: {fileID: 2100000, guid: 48d351b03f5b72a40b7d16332f84ae88, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5004148272796667749, guid: 64f7984b97ac135448276b43508d0fda,
         type: 3}
       propertyPath: matOff
       value: 
-      objectReference: {fileID: 2100000, guid: 24a26f68ddd5e354387f7422d88fee61, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5004148272796667749, guid: 64f7984b97ac135448276b43508d0fda,
         type: 3}
       propertyPath: holdTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64f7984b97ac135448276b43508d0fda, type: 3}
@@ -599,16 +603,16 @@ PrefabInstance:
         type: 3}
       propertyPath: matOn
       value: 
-      objectReference: {fileID: 2100000, guid: 48d351b03f5b72a40b7d16332f84ae88, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5004148272796667749, guid: 64f7984b97ac135448276b43508d0fda,
         type: 3}
       propertyPath: matOff
       value: 
-      objectReference: {fileID: 2100000, guid: 24a26f68ddd5e354387f7422d88fee61, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5004148272796667749, guid: 64f7984b97ac135448276b43508d0fda,
         type: 3}
       propertyPath: holdTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64f7984b97ac135448276b43508d0fda, type: 3}

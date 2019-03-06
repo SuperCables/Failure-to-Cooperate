@@ -341,7 +341,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 25, y: 25}
+  m_SizeDelta: {x: 35, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8577160868597830531
 CanvasRenderer:
@@ -371,7 +371,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: e49dd7f8c967fda46b2732047b780814, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6dde05b5e6800c4598af3c9afedfa68, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -605,11 +605,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7626486459305271554}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.01, y: -9.91}
+  m_AnchoredPosition: {x: 13.4, y: -10.29}
   m_SizeDelta: {x: 8, y: 8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7626486458815018574
@@ -669,8 +669,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -764,8 +764,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7210023839672316471}
-  - {fileID: 7626486458815018568}
   - {fileID: 7626486459761617910}
+  - {fileID: 7626486458815018568}
   m_Father: {fileID: 7626486460832034840}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -878,12 +878,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7626486459305271554}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 38, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7626486459761617908
 CanvasRenderer:
@@ -1133,6 +1133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torpedoTube: {fileID: 0}
+  selected: 0
+  clipSelectedColor: {r: 0.6792453, g: 0.63646054, b: 0, a: 1}
+  clipReloadColor: {r: 0.5, g: 0.11875027, b: 0, a: 1}
   ClipSlotTemplate: {fileID: 8276110323119497365, guid: 41d7108186c13ad4a9e65afc6f412af6,
     type: 3}
   ArrayIcon: {fileID: 7626486459761617910}
@@ -1140,9 +1143,11 @@ MonoBehaviour:
   LoadedIcon: {fileID: 7626486458791024323}
   LoadingProgress: {fileID: 3767176650138248538}
   ClipSlotParent: {fileID: 7626486460127513708}
-  ReloadingRoot: {fileID: 0}
+  ClipBack: {fileID: 8921386361266336135}
   ReloadingText: {fileID: 8138831584100721379}
+  ReloadingBarBack: {fileID: 6941428702071362568}
   ReloadingBar: {fileID: 3682293160071589977}
+  index: -1
   torpedoMananger: {fileID: 0}
   clipSlots: []
 --- !u!1 &8355820221431629024

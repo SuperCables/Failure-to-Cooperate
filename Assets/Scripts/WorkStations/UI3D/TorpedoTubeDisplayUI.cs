@@ -11,6 +11,14 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
 
     TorpedoTube repEntity;
 
+    public bool selected;
+
+    public Color clipSelectedColor;
+    public Color clipReloadColor;
+
+    Color clipDefColor;
+
+
     [Header("Template")]
     public TorpedoClipSlotUI ClipSlotTemplate;
     [Header("Assignment")]
@@ -21,17 +29,22 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
     public Image LoadingProgress;
     [Space(10)]
     public RectTransform ClipSlotParent;
+    public Image ClipBack;
     [Space(10)]
-    public GameObject ReloadingRoot;
     public TextMeshProUGUI ReloadingText;
+    public GameObject ReloadingBarBack;
     public Image ReloadingBar;
     [Header("Self Assign")]
+    public int index = -1;
+    TorpedoControlUI torpedoControlUI;
     public TorpedoMananger torpedoMananger;
     public TorpedoClipSlotUI[] clipSlots;
 
     void Start()
     {
-        
+        torpedoControlUI = GetComponentInParent<TorpedoControlUI>();
+        torpedoMananger = Game.global?.torpedoMananger; //set new refs
+        clipDefColor = ClipBack.color;
     }
 
     void NewTube()
@@ -57,8 +70,6 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
             clipSlots[i] = go;
         }
     }
-    
-    
 
     void Update()
     {
@@ -67,42 +78,70 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
             NewTube();
         }
 
-        foreach (TorpedoClipSlotUI v in clipSlots)
+        if (torpedoTube != null)
         {
-            TorpedoType type = torpedoTube.clip[v.index];
-            v.Icon.sprite = Game.global.GetTorpedoIcon(type);
-        }
+            if (selected)
+            {
+                ClipBack.color = clipSelectedColor;
+                foreach (TorpedoClipSlotUI v in clipSlots)
+                {
+                    if (torpedoControlUI.loadOut.Count > v.index)
+                    {
+                        SetIcon(v.Icon, torpedoControlUI.loadOut[v.index]);
+                    }
+                    else
+                    {
+                        SetIcon(v.Icon, TorpedoType.none);
+                    }
+                }
+            }
+            else
+            {
+                ClipBack.color = clipDefColor;
+                foreach (TorpedoClipSlotUI v in clipSlots)
+                {
+                    SetIcon(v.Icon, torpedoTube.clip[v.index]);
+                }
+            }
+            
 
-        if (torpedoTube.loadTimeRemaining > 0)
-        {
-            float fill = 1-(torpedoTube.loadTimeRemaining / torpedoTube.loadTime);
-            TorpedoType type = torpedoTube.loading;
-            LoadedIcon.sprite = Game.global.GetTorpedoIcon(type);
-            LoadingProgress.fillAmount = fill;
+            if (torpedoTube.loadTimeRemaining > 0)
+            {
+                float fill = 1 - (torpedoTube.loadTimeRemaining / torpedoTube.loadTime);
+                SetIcon(LoadedIcon, torpedoTube.loading);
+                LoadingProgress.fillAmount = fill;
 
-        }
-        else
-        {
-            TorpedoType type = torpedoTube.loaded;
-            LoadedIcon.sprite = Game.global.GetTorpedoIcon(type);
-            LoadingProgress.fillAmount = 1;
-        }
+            }
+            else
+            {
+                SetIcon(LoadedIcon, torpedoTube.loaded);
+                LoadingProgress.fillAmount = 1;
+            }
 
-        if (torpedoTube.locked)
-        {
-            SetVisible(ReloadingRoot, true);
-            SetVisible(ReloadingText.gameObject, (Time.time % 2 > 0.8f));
-            //TODO: find out if rurrently reloading, and do progress bar
-        }
-        else
-        {
-            SetVisible(ReloadingRoot, false);
-        }
+            if (torpedoTube.locked)
+            {
+                SetVisible(ReloadingText.gameObject, (Time.time % 2 > 0.8f));
+                SetVisible(ReloadingBarBack, true);
 
+                //TODO: find out if currently reloading, and do progress bar
+            }
+            else
+            {
+                SetVisible(ReloadingText.gameObject, false);
+                SetVisible(ReloadingBarBack, false);
+            }
+        }
 
     }
 
-    public void SetVisible(GameObject thing, bool visible)
+    void SetIcon(Image LoadedIcon, TorpedoType tp)
+    {
+        Sprite icon = Game.global.GetTorpedoIcon(tp);
+        LoadedIcon.sprite = icon;
+        SetVisible(LoadedIcon.gameObject, (icon != null));
+    }
+
+    void SetVisible(GameObject thing, bool visible)
     {
         if (thing.activeInHierarchy != visible)
         {
