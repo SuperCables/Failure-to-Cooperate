@@ -1140,7 +1140,9 @@ MonoBehaviour:
   LoadedIcon: {fileID: 7626486458791024323}
   LoadingProgress: {fileID: 3767176650138248538}
   ClipSlotParent: {fileID: 7626486460127513708}
+  ReloadingRoot: {fileID: 0}
   ReloadingText: {fileID: 8138831584100721379}
+  ReloadingBar: {fileID: 3682293160071589977}
   torpedoMananger: {fileID: 0}
   clipSlots: []
 --- !u!1 &8355820221431629024
@@ -1316,6 +1318,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: TorpedoClipSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 7988632473104745556, guid: 41d7108186c13ad4a9e65afc6f412af6,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988632472827668431, guid: 41d7108186c13ad4a9e65afc6f412af6,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7988632473515538265, guid: 41d7108186c13ad4a9e65afc6f412af6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1421,16 +1433,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7988632472827668431, guid: 41d7108186c13ad4a9e65afc6f412af6,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7988632473104745556, guid: 41d7108186c13ad4a9e65afc6f412af6,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41d7108186c13ad4a9e65afc6f412af6, type: 3}
 --- !u!224 &8377634520002006562 stripped
@@ -1450,6 +1452,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TorpedoClipSlot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988632473104745556, guid: 41d7108186c13ad4a9e65afc6f412af6,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988632472827668431, guid: 41d7108186c13ad4a9e65afc6f412af6,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7988632473515538265, guid: 41d7108186c13ad4a9e65afc6f412af6,
         type: 3}
@@ -1556,16 +1568,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7988632472827668431, guid: 41d7108186c13ad4a9e65afc6f412af6,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7988632473104745556, guid: 41d7108186c13ad4a9e65afc6f412af6,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41d7108186c13ad4a9e65afc6f412af6, type: 3}
 --- !u!224 &5544978434787292663 stripped
@@ -1585,6 +1587,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TorpedoClipSlot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988632473104745556, guid: 41d7108186c13ad4a9e65afc6f412af6,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988632472827668431, guid: 41d7108186c13ad4a9e65afc6f412af6,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7988632473515538265, guid: 41d7108186c13ad4a9e65afc6f412af6,
         type: 3}
@@ -1690,16 +1702,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7988632472827668431, guid: 41d7108186c13ad4a9e65afc6f412af6,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7988632473104745556, guid: 41d7108186c13ad4a9e65afc6f412af6,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41d7108186c13ad4a9e65afc6f412af6, type: 3}

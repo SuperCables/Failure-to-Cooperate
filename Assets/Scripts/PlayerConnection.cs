@@ -5,7 +5,6 @@ using Mirror;
 
 public class PlayerConnection : NetworkBehaviour
 {
-    //[SyncVar]
     public Entity playerEntity; //what ship is this player abord?
 
     void Start()

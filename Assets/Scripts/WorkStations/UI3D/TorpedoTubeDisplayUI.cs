@@ -69,22 +69,22 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
 
         foreach (TorpedoClipSlotUI v in clipSlots)
         {
-            TorpedoType torpedoType = torpedoTube.clip[v.index];
-            v.Icon.sprite = Game.global.TorpedosSprites[(int)torpedoType];
+            TorpedoType type = torpedoTube.clip[v.index];
+            v.Icon.sprite = Game.global.GetTorpedoIcon(type);
         }
 
         if (torpedoTube.loadTimeRemaining > 0)
         {
             float fill = 1-(torpedoTube.loadTimeRemaining / torpedoTube.loadTime);
             TorpedoType type = torpedoTube.loading;
-            LoadedIcon.sprite = Game.global.TorpedosSprites[(int)type];
+            LoadedIcon.sprite = Game.global.GetTorpedoIcon(type);
             LoadingProgress.fillAmount = fill;
 
         }
         else
         {
             TorpedoType type = torpedoTube.loaded;
-            LoadedIcon.sprite = Game.global.TorpedosSprites[(int)type];
+            LoadedIcon.sprite = Game.global.GetTorpedoIcon(type);
             LoadingProgress.fillAmount = 1;
         }
 

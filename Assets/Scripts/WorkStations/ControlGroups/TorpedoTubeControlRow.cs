@@ -27,12 +27,12 @@ public class TorpedoTubeControlRow : MonoBehaviour
 
     void Load()
     {
-
+        torpedoTube.CmdLoad();
     }
 
     void Fire()
     {
-
+        torpedoTube.CmdFire();
     }
 
 }

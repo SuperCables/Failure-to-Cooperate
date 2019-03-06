@@ -67,4 +67,17 @@ public class Global : MonoBehaviour
         UnitSelected?.Invoke(unit);
     }
 
+    public Sprite GetTorpedoIcon(TorpedoType tp)
+    {
+        int index = (int)tp;
+        if (index > 0)
+        {
+            return TorpedosSprites[index-1];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
 }

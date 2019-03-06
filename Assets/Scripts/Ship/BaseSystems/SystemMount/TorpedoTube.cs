@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 public enum TorpedoType { none, type1, type2, type3, type4, type5 }
 
-public class TorpedoTube : MonoBehaviour
+public class TorpedoTube : NetworkBehaviour
 {
     public float loadTime = 4;
     public int queueLength;
@@ -53,18 +54,30 @@ public class TorpedoTube : MonoBehaviour
     {
         //if not loading, not reloading, and has a shot ready to load
         if ((loadTimeRemaining < 0) && (locked == false) && (clip[0] != TorpedoType.none))
-        { 
+        {
             loading = clip[0]; //begin loading
             clip[0] = TorpedoType.none;
             loadTimeRemaining = loadTime;
         }
 
-        //TODO: if not reloading, advance clip
+        if (!locked)
+        {
+            for (int i = 1; i < queueLength; i++)
+            {
+                clip[i - 1] = clip[i];
+            }
+            clip[queueLength - 1] = TorpedoType.none;
+        }
+    }
+
+    void Reload()
+    {
+        print("Add to array que");
     }
 
     void Fire()
     {
-
+        print("BLAM!");
     }
 
     void OnDrawGizmos()
@@ -80,5 +93,23 @@ public class TorpedoTube : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(Vector3.zero, new Vector3(.02f, .02f, .1f));
         //Gizmos.DrawSphere(transform.position, .1f);
+    }
+
+    [Command]
+    public void CmdReload()
+    {
+        Reload();
+    }
+
+    [Command]
+    public void CmdLoad()
+    {
+        Load();
+    }
+
+    [Command]
+    public void CmdFire()
+    {
+        Fire();
     }
 }
