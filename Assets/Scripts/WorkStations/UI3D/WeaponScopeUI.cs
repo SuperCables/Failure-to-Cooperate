@@ -85,8 +85,9 @@ public class WeaponScopeUI : MonoBehaviour
             Quaternion aimAngle = Quaternion.Inverse(weaponArray.transform.rotation) * Quaternion.LookRotation(leadPoint - pos, Vector3.up);
             Vector3 aimEuler = aimAngle.eulerAngles;
 
-            float fracX = Mathf.DeltaAngle(0, aimEuler.y) / weaponArray.aimArc*2; //yes the X and Y are swaped
-            float fracY = Mathf.DeltaAngle(0, aimEuler.x) / weaponArray.aimArc*2; //don't change it
+            //this is wrong!
+            float fracX = Mathf.DeltaAngle(0, aimEuler.y) / weaponArray.aimArc *2; //yes the X and Y are swaped
+            float fracY = Mathf.DeltaAngle(0, aimEuler.x) / weaponArray.aimArc *2; //don't change it
 
             float absX = Mathf.Abs(fracX);
             float absY = Mathf.Abs(fracY);

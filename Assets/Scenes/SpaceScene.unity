@@ -38288,7 +38288,7 @@ Light:
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -48533,11 +48533,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TorpedoTube (0)
       objectReference: {fileID: 0}
-    - target: {fileID: 4107071887111616035, guid: d7cf1e4b57aaa8143a066713556f603b,
-        type: 3}
-      propertyPath: torpedoTube
-      value: 
-      objectReference: {fileID: 989661347}
     - target: {fileID: 7626486460832034840, guid: d7cf1e4b57aaa8143a066713556f603b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -48651,12 +48646,12 @@ PrefabInstance:
     - target: {fileID: 7626486458815018569, guid: d7cf1e4b57aaa8143a066713556f603b,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7626486458815018569, guid: d7cf1e4b57aaa8143a066713556f603b,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7626486459761617911, guid: d7cf1e4b57aaa8143a066713556f603b,
         type: 3}
@@ -48766,12 +48761,12 @@ PrefabInstance:
     - target: {fileID: 8138831584100721379, guid: d7cf1e4b57aaa8143a066713556f603b,
         type: 3}
       propertyPath: m_havePropertiesChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8138831584100721379, guid: d7cf1e4b57aaa8143a066713556f603b,
         type: 3}
       propertyPath: m_isInputParsingRequired
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8138831584100721379, guid: d7cf1e4b57aaa8143a066713556f603b,
         type: 3}

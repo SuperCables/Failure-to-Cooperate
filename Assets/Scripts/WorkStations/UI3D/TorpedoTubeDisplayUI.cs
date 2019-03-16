@@ -18,6 +18,8 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
 
     Color clipDefColor;
 
+    bool lastActiveReload;
+
 
     [Header("Template")]
     public TorpedoClipSlotUI ClipSlotTemplate;
@@ -48,6 +50,7 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
         torpedoControlUI = GetComponentInParent<TorpedoControlUI>();
         torpedoMananger = Game.global?.torpedoMananger; //set new refs
         clipDefColor = ClipBack.color;
+        lastActiveReload = true; //so it flips to false on first run
     }
 
     void NewTube()
@@ -126,14 +129,25 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
             {
                 SetVisible(ReloadingText.gameObject, (Time.time % 2 > 0.8f));
 
-                if (torpedoArray.currentlyReloading == torpedoTube)
+                bool activeReload = (torpedoArray.currentlyReloading == torpedoTube);
+
+                if (activeReload)
                 {
-                    SetVisible(ReloadingBarBack, true);
-                    ReloadingBar.fillAmount = 1-(torpedoArray.reloadTimeRemaining / torpedoArray.reloadTime);
+                    ReloadingBar.fillAmount = 1 - (torpedoArray.reloadTimeRemaining / torpedoArray.reloadTime);
                 }
-                else
-                {
-                    SetVisible(ReloadingBarBack, false);
+
+                if (lastActiveReload != activeReload) {
+                    lastActiveReload = activeReload;
+                    if (activeReload)
+                    {
+                        SetVisible(ReloadingBarBack, true);
+                        ReloadingText.text = "Reloading";
+                    }
+                    else
+                    {
+                        SetVisible(ReloadingBarBack, false);
+                        ReloadingText.text = "Queued";
+                    }
                 }
             }
             else

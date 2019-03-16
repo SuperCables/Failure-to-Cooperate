@@ -15,10 +15,13 @@ public class CoreBank : NetworkBehaviour
 
     void Start()
     {
-        for (int i = 0; i < coreCount; i++)
+        if (isServer)
         {
-            coresUsability.Add(1);
-            coresIntegrity.Add(100);
+            for (int i = 0; i < coreCount; i++)
+            {
+                coresUsability.Add(1);
+                coresIntegrity.Add(100);
+            }
         }
     }
 
