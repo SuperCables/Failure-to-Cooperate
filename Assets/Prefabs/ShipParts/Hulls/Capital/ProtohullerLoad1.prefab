@@ -271,10 +271,20 @@ PrefabInstance:
       propertyPath: shieldsSegments
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 1193085906311195910, guid: 5a6141f331b05e04aaec40d9f09eb0c3,
+        type: 3}
+      propertyPath: reloadPer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5785892211288340347, guid: 5a6141f331b05e04aaec40d9f09eb0c3,
         type: 3}
       propertyPath: m_AssetId
       value: 0d6f59745326f0541bdfb95796ca098f
+      objectReference: {fileID: 0}
+    - target: {fileID: 2183985433116402623, guid: 5a6141f331b05e04aaec40d9f09eb0c3,
+        type: 3}
+      propertyPath: reloadPer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3858540966265077631, guid: 5a6141f331b05e04aaec40d9f09eb0c3,
         type: 3}

@@ -18,8 +18,6 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
 
     Color clipDefColor;
 
-    bool lastActiveReload;
-
 
     [Header("Template")]
     public TorpedoClipSlotUI ClipSlotTemplate;
@@ -33,9 +31,8 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
     public RectTransform ClipSlotParent;
     public Image ClipBack;
     [Space(10)]
-    public TextMeshProUGUI ReloadingText;
-    public GameObject ReloadingBarBack;
-    public Image ReloadingBar;
+    public GameObject ReloadingBox;
+    public TextMeshProUGUI ReloadingCount;
     [Header("Self Assign")]
     public int index = -1;
     TorpedoControlUI torpedoControlUI;
@@ -50,7 +47,6 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
         torpedoControlUI = GetComponentInParent<TorpedoControlUI>();
         torpedoMananger = Game.global?.torpedoMananger; //set new refs
         clipDefColor = ClipBack.color;
-        lastActiveReload = true; //so it flips to false on first run
     }
 
     void NewTube()
@@ -125,35 +121,15 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
                 LoadingProgress.fillAmount = 1;
             }
 
-            if (torpedoTube.locked)
+            if (torpedoTube.reloadTimeRemaining > 0)
             {
-                SetVisible(ReloadingText.gameObject, (Time.time % 2 > 0.8f));
+                SetVisible(ReloadingBox.gameObject, (torpedoTube.reloadTimeRemaining % 1 > 0.4f));    //);
 
-                bool activeReload = (torpedoArray.currentlyReloading == torpedoTube);
-
-                if (activeReload)
-                {
-                    ReloadingBar.fillAmount = 1 - (torpedoArray.reloadTimeRemaining / torpedoArray.reloadTime);
-                }
-
-                if (lastActiveReload != activeReload) {
-                    lastActiveReload = activeReload;
-                    if (activeReload)
-                    {
-                        SetVisible(ReloadingBarBack, true);
-                        ReloadingText.text = "Reloading";
-                    }
-                    else
-                    {
-                        SetVisible(ReloadingBarBack, false);
-                        ReloadingText.text = "Queued";
-                    }
-                }
+                ReloadingCount.text = ((int)torpedoTube.reloadTimeRemaining).ToString();
             }
             else
             {
-                SetVisible(ReloadingText.gameObject, false);
-                SetVisible(ReloadingBarBack, false);
+                SetVisible(ReloadingBox, false);
             }
         }
 

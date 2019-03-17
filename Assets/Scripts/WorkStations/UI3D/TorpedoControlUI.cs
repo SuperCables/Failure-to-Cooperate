@@ -75,14 +75,14 @@ public class TorpedoControlUI : MonoBehaviour
 
                 TorpedoTube tube = displayRows[i].torpedoTube;
                 int clipSize = tube.clip.Length;
-                tube.targetClip = new TorpedoType[clipSize];
+                TorpedoType[] targetClip = new TorpedoType[clipSize];
 
                 int min = Mathf.Min(clipSize, loadOut.Count);
                 for (int j = 0; j < min; j++)
                 {
-                    tube.targetClip[j] = loadOut[j];
+                    targetClip[j] = loadOut[j];
                 }
-                tube.CmdReload(tube.targetClip);
+                tube.CmdReload(targetClip);
             }
         }
         loadOut.Clear();

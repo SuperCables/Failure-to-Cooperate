@@ -8,6 +8,10 @@ public enum TorpedoType { none, type1, type2, type3, type4, type5 }
 public class TorpedoTube : NetworkBehaviour
 {
     public float loadTime = 4;
+    [Space(10)]
+    public float reloadBase = 12; //base
+    public float reloadPer = 6; //per torpedo
+    [Space(10)]
     public int queueLength;
 
     //NOTE:
@@ -19,8 +23,9 @@ public class TorpedoTube : NetworkBehaviour
     public TorpedoType loading = TorpedoType.none; //what torpedo is being inserted in to tube
     public TorpedoType loaded = TorpedoType.none; //what is ready to fire
 
-    public bool locked; //storage -> clip (we cant do anything while reloading)
     public float loadTimeRemaining; //clip -> tube (how long till the torpedo is in the tube)
+
+    public float reloadTimeRemaining;
 
     [Header("Assignment")]
 
@@ -34,6 +39,7 @@ public class TorpedoTube : NetworkBehaviour
 
         //clip = new TorpedoType[queueLength];
         loadTimeRemaining = -1;
+        reloadTimeRemaining = -1;
     }
 
     void Rebuild()
@@ -53,12 +59,24 @@ public class TorpedoTube : NetworkBehaviour
                 loadTimeRemaining = -1;
             }
         }
+
+        if (reloadTimeRemaining > 0)
+        {
+            reloadTimeRemaining -= Time.deltaTime;
+            if (reloadTimeRemaining <= 0)
+            {
+                //because we verified and removed these torpedos from storage when we began reloading
+                //we don't need to verify we have them here
+                clip = targetClip; //set the desired clip
+                reloadTimeRemaining = -1;
+            }
+        }
     }
 
     void Load() //don't call, use the command
     {
         //if not loading, not reloading, and has a shot ready to load, and not loaded
-        if ((loadTimeRemaining < 0) && (locked == false) && (clip[0] != TorpedoType.none) && (loaded == TorpedoType.none))
+        if ((loadTimeRemaining < 0) && (reloadTimeRemaining < 0) && (clip[0] != TorpedoType.none) && (loaded == TorpedoType.none))
         {
             loading = clip[0]; //begin loading
             clip[0] = TorpedoType.none;
@@ -75,11 +93,16 @@ public class TorpedoTube : NetworkBehaviour
 
     void Reload(TorpedoType[] ls) //don't call, use the command
     {
-        if (!torpedoArray.reloadAgenda.Contains(this))
+        if (reloadTimeRemaining < 0)
         {
-            print("Add to array que");
-            torpedoArray.reloadAgenda.Add(this);
-            locked = true;
+            //TODO: verify we have the required torpedos and load them
+            //possibly change targetClip to match what we can load if low ammo
+
+            
+            targetClip = ls;
+
+            //TODO: find torpeds loaded, as some of these will be null;
+            reloadTimeRemaining = reloadBase + (reloadPer * ls.Length);
         }
         else
         {
@@ -93,8 +116,9 @@ public class TorpedoTube : NetworkBehaviour
     {
         if (loaded != TorpedoType.none)
         {
+            print("BLAM! " + loaded.ToString());
             loaded = TorpedoType.none;
-            print("BLAM!");
+            
         }
     }
 
