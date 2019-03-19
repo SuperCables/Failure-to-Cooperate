@@ -11,12 +11,15 @@ public class RadarScreenUI : MonoBehaviour
     public WeaponManager weaponManager; //for highlighting priority targets, not for fireing arcs
     public float ringWidth = 2;
     public bool clickToDrive;
+    public bool dragable;
     public List<RadarBlipUI> blips = new List<RadarBlipUI>();
 
     [HideInInspector]
     public float scale = 0; //scale factor
     [HideInInspector]
     public Vector2 mousePos;
+    //[HideInInspector]
+    public Vector2 offsetDrag;
 
     GlobalStation globalStation;
     float tarScale = 0; //smooth damp to target
@@ -116,7 +119,7 @@ public class RadarScreenUI : MonoBehaviour
     {
         
         //Vector2 basePos = Game.V3toV2(Game.global.localConnection.ship.transform.position);
-        Vector2 basePos = Game.V3toV2(player.transform.position);
+        Vector2 basePos = Game.V3toV2(player.transform.position) + offsetDrag;
         //float baseAngle = Player.transform.rotation.eulerAngles.y;
         
         weaponManager = Game.global?.weaponManager;
@@ -147,9 +150,10 @@ public class RadarScreenUI : MonoBehaviour
         for (int i = 0; i < ringsRad.Length; i++) //for each ring
         {
             float ringScale = scale * ringsRad[i] * 2; //calculate real size
-            if (ringScale > 64 && ringScale < 1080) //line in view
+            if (ringScale > 64 && ringScale - (offsetDrag.magnitude * scale * 2) < 1080) //line in view
             {
                 rings[i].gameObject.SetActive(true); //show it
+                rings[i].rectTransform.localPosition = -offsetDrag * scale;
                 rings[i].rectTransform.sizeDelta = Vector2.one * ringScale; //size it
                 rings[i].Thickness = ringWidth; //why is this here?
             }

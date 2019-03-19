@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class CamScript : MonoBehaviour {
 
-	public Transform follow;
+	
     public float snapInc = 90;
+    [Range(-89.9f, 89.9f)]
+    public float pitch;
 
-    [Space(10)]
+    [Header("Assignment")]
+    public Camera mainCam;
+    public Transform follow;
     public Transform mount;
     public Transform pivot;
-    [Space(10)]
-    public Camera mainCam;
+    public Transform offset;
+
+    float pitchAngle;
+    float heightOffset;
+    float angle;
 
     float camTurnSpeedDamp;
+    float camPitchSpeedDamp;
+    float camHeightSpeedDamp;
 
     // Use this for initialization
     void Start () {
@@ -25,8 +34,6 @@ public class CamScript : MonoBehaviour {
 		mount.position = follow.position;
 		mount.rotation = follow.rotation;
 
-		Vector3 localRotation = pivot.localRotation.eulerAngles;
-		float angle = localRotation.y;
 		if (Input.GetMouseButton (1)) {
 			angle += Input.GetAxisRaw ("Mouse X") * 2.8f;
 		} else {
@@ -35,7 +42,15 @@ public class CamScript : MonoBehaviour {
 			angle = Mathf.SmoothDampAngle(angle, roundAngle, ref camTurnSpeedDamp, 0.3f);
 
 		}
-        pivot.localRotation = Quaternion.Euler (localRotation.x, angle, localRotation.z);
+
+        //float targetHeight = Mathf.Clamp(Game.Map(Mathf.Abs(pitch), 0, 30, 3, 0), 0, 3);
+        float targetHeight = (pitch < 0) ? -3 : 3;
+
+        pitchAngle = Mathf.SmoothDampAngle(pitchAngle, pitch, ref camPitchSpeedDamp, 0.4f);
+        heightOffset = Mathf.SmoothDampAngle(heightOffset, targetHeight, ref camHeightSpeedDamp, 0.8f);
+
+        pivot.localRotation = Quaternion.Euler (pitchAngle, angle, 0);
+        offset.localPosition = new Vector3(0, heightOffset, 0);
 
     }
 }

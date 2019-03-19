@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaponMount : MonoBehaviour
 {
+
+    [Header("Self Assign")]
     public WeaponArray Rack;
     public BaseWeapon gun;
 

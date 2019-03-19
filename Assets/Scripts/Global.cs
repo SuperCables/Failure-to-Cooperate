@@ -32,7 +32,8 @@ public class Global : MonoBehaviour
 
     void Start () {
         RefreshCurrentVesselLinks();
-
+        RenderSettings.ambientLight = Color.Lerp(Color.black, Color.white, 0.3f);
+        RenderSettings.ambientIntensity = 1;
     }
 	
 	void Update () {

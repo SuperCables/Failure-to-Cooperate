@@ -91,7 +91,8 @@ public class WeaponArray : NetworkBehaviour
         Gizmos.color = Color.red;
         //Vector3 direction = transform.TransformDirection(Vector3.forward) * 1;
         //Gizmos.DrawRay(transform.position, direction);
-        Gizmos.DrawFrustum(Vector3.zero, aimArc, 1, 0.05f, 1);
+        Gizmos.DrawFrustum(Vector3.zero, aimArc, 10, 0.05f, 1);
+        
     }
 
     void OnDrawGizmosSelected()
