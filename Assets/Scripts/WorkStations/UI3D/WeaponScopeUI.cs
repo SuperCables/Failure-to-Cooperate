@@ -85,15 +85,19 @@ public class WeaponScopeUI : MonoBehaviour
             Quaternion aimAngle = Quaternion.Inverse(weaponArray.transform.rotation) * Quaternion.LookRotation(leadPoint - pos, Vector3.up);
             Vector3 aimEuler = aimAngle.eulerAngles;
 
-            //this is wrong!
-            float fracX = Mathf.DeltaAngle(0, aimEuler.y) / weaponArray.aimArc *2; //yes the X and Y are swaped
-            float fracY = Mathf.DeltaAngle(0, aimEuler.x) / weaponArray.aimArc *2; //don't change it
+            
+            float fracX = Mathf.DeltaAngle(0, aimEuler.y) / (weaponArray.aimArc / 2); //yes the X and Y are swaped
+            float fracY = Mathf.DeltaAngle(0, aimEuler.x) / (weaponArray.aimArc / 2); //don't change it
 
             float absX = Mathf.Abs(fracX);
             float absY = Mathf.Abs(fracY);
 
-            float aimX = ((absX < 1) ? absX : (absX / (absX + 1))*2 ) * 64 * Mathf.Sign(fracX);
-            float aimY = ((absY < 1) ? absY : (absY / (absY + 1))*2 ) * 64 * Mathf.Sign(fracY);
+            //this is wrong!
+            //float aimX = ((absX < 1) ? absX : (absX / (absX + 1))*2 ) * 64 * Mathf.Sign(fracX);
+            //float aimY = ((absY < 1) ? absY : (absY / (absY + 1))*2 ) * 64 * Mathf.Sign(fracY);
+
+            float aimX = fracX * 64;
+            float aimY = fracY * 64;
 
             //print(fracX + "  " + aimX);
             v.rootTransform.localPosition = new Vector3(-aimX, -aimY, 0);

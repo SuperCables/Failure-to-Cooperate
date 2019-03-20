@@ -6,6 +6,8 @@ public enum TargetPrioritys {Closest, Weakest }
 
 public class WeaponManager : BaseSystemManager
 {
+
+    [Header("Self Assign")]
     public BaseWeapon[] weaponMounts;
     public WeaponArray[] weaponArray;
     [Space(10)]

@@ -46,8 +46,8 @@ public class CamScript : MonoBehaviour {
         //float targetHeight = Mathf.Clamp(Game.Map(Mathf.Abs(pitch), 0, 30, 3, 0), 0, 3);
         float targetHeight = (pitch < 0) ? -3 : 3;
 
-        pitchAngle = Mathf.SmoothDampAngle(pitchAngle, pitch, ref camPitchSpeedDamp, 0.4f);
-        heightOffset = Mathf.SmoothDampAngle(heightOffset, targetHeight, ref camHeightSpeedDamp, 0.8f);
+        pitchAngle = Mathf.SmoothDampAngle(pitchAngle, pitch, ref camPitchSpeedDamp, 0.7f);
+        heightOffset = Mathf.SmoothDampAngle(heightOffset, targetHeight, ref camHeightSpeedDamp, 2.4f);
 
         pivot.localRotation = Quaternion.Euler (pitchAngle, angle, 0);
         offset.localPosition = new Vector3(0, heightOffset, 0);

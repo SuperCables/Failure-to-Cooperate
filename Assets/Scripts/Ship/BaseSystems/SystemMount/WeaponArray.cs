@@ -69,7 +69,7 @@ public class WeaponArray : NetworkBehaviour
         Vector3 leadPoint = targetPos;
 
         Quaternion aimAngle = Quaternion.Inverse(transform.rotation) * Quaternion.LookRotation(leadPoint - pos, Vector3.up);
-        //print(aimAngle.eulerAngles);
+        print(aimAngle.eulerAngles);
         
         if (Quaternion.Angle(Quaternion.identity, aimAngle) < aimArc/2) //if in arc
         {

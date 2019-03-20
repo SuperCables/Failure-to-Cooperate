@@ -17,6 +17,11 @@ public class MechCount : MonoBehaviour
         
     }
 
+    void OnEnable()
+    {
+        display = count;
+    }
+
     void Update()
     {
         if (count < 0) { count = 0; }
