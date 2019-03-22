@@ -9,7 +9,9 @@ public class Global : MonoBehaviour
     public event Action<Entity> UnitRemoved;
     public event Action<Entity> UnitSelected; //from radar, or anything else
 
-    public List<Entity> allUnits = new List<Entity>();   
+    public List<Entity> allUnits = new List<Entity>();
+    [Header("Global")]
+    public CamScript cameraMananger; 
     [Header("Player")]
     public Entity selectedUnit;
     public Entity hoveredUnit;
@@ -31,6 +33,8 @@ public class Global : MonoBehaviour
     public Sprite[] TorpedosSprites;
 
     void Start () {
+        cameraMananger = GetComponentInChildren<CamScript>();
+
         RefreshCurrentVesselLinks();
         RenderSettings.ambientLight = Color.Lerp(Color.black, Color.white, 0.3f);
         RenderSettings.ambientIntensity = 1;

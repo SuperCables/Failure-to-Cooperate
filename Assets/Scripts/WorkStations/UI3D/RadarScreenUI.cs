@@ -26,10 +26,9 @@ public class RadarScreenUI : MonoBehaviour
     float scrollPos = 0; //mouse pos
     float curScaleSpeed; //damping var
     int[] ringsRad = { 10, 20, 30, 40, 50, 100, 200, 300, 400, 500, 1000, 2000, 3000, 4000, 5000 };
+    float radarZoomRadus;
 
     UICircle[] rings;
-
-
 
     [Header("Assignment")]
     
@@ -71,6 +70,9 @@ public class RadarScreenUI : MonoBehaviour
         player = Game.global?.entity;
         if (player != null)
         {
+            radarZoomRadus = (8 * 67.2f) / scale;
+            Game.global.cameraMananger.radarDepthCam.orthographicSize = radarZoomRadus;
+
             UpdateInput();
 
             UpdateBlips();
@@ -98,7 +100,7 @@ public class RadarScreenUI : MonoBehaviour
             if (mouseOver) //if we moused over the radar
             {
                 scrollPos -= Input.mouseScrollDelta.y;
-                scrollPos = Mathf.Clamp(scrollPos, 0, 100);
+                scrollPos = Mathf.Clamp(scrollPos, -10, 100);
                 tarScale = (1 / Mathf.Pow(2f, scrollPos / 10)) * 8;
 
                 

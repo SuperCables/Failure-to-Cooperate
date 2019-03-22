@@ -13,7 +13,8 @@ public class DepthMeter : MonoBehaviour
 
     void Update()
     {
-        float depth = (float)Game.global?.entity.transform.position.y;
-        counter.count = Mathf.Abs(depth);
+        Transform trans = Game.global?.entity?.transform;
+        if (trans != null) { counter.count = Mathf.Abs(trans.position.y); } 
+        
     }
 }

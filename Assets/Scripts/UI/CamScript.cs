@@ -13,10 +13,15 @@ public class CamScript : MonoBehaviour {
 
     [Header("Assignment")]
     public Camera mainCam;
+    public Camera radarDepthCam;
+    public Transform depthMount;
+
     public Transform follow;
     public Transform mount;
     public Transform pivot;
     public Transform offset;
+
+    public RenderTexture radarDepthTexture;
 
     float heightOffset;
 
@@ -33,8 +38,6 @@ public class CamScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //move = follow.GetComponent<ShipMovement>();
-
     }
 	
 	// Update is called once per frame
@@ -42,6 +45,8 @@ public class CamScript : MonoBehaviour {
         
 		mount.position = follow.position;
 		mount.rotation = follow.rotation;
+
+        depthMount.transform.position = follow.position;
         //pitch = move.inputDive;
 
         if (Input.GetMouseButton (1)) {
