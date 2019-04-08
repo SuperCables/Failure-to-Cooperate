@@ -71,7 +71,7 @@ public class RadarScreenUI : MonoBehaviour
         if (player != null)
         {
             radarZoomRadus = (8 * 67.2f) / scale;
-            Game.global.cameraMananger.radarDepthCam.orthographicSize = radarZoomRadus;
+            Game.global.cameraMananger.RadarCam.orthographicSize = radarZoomRadus;
 
             UpdateInput();
 

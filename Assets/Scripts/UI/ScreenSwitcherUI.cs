@@ -6,19 +6,20 @@ using UnityEngine.UI;
 public class ScreenSwitcherUI : MonoBehaviour
 {
     public GameObject[] Stations;
-    public Camera ShipCam;
     Dropdown dropDown;
 
     void Start()
     {
+
         dropDown = GetComponent<Dropdown>();
 
         foreach (GameObject v in Stations)
         {
             v.SetActive(false);
         }
-        
-        ShipCam.enabled = true;
+
+        Game.global.cameraMananger.MainCam.enabled = true;
+        Game.global.cameraMananger.RadarCam.enabled = false;
     }
 
     void Update()
@@ -36,11 +37,13 @@ public class ScreenSwitcherUI : MonoBehaviour
         int choice = dropDown.value;
         if (choice == 0)
         {
-            ShipCam.enabled = true;
+            Game.global.cameraMananger.MainCam.enabled = true;
+            Game.global.cameraMananger.RadarCam.enabled = false;
         }
         else
         {
-            ShipCam.enabled = false;
+            Game.global.cameraMananger.MainCam.enabled = false;
+            Game.global.cameraMananger.RadarCam.enabled = true;
             SetVisible(Stations[choice - 1], true); 
         }
     }

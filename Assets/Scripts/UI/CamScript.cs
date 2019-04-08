@@ -11,8 +11,9 @@ public class CamScript : MonoBehaviour {
     public float vertInc = 30;
 
     [Header("Assignment")]
-    public Camera mainCam;
-    public Camera radarDepthCam;
+    public Camera MainCam;
+    public Camera RadarCam;
+    public Camera FogCam;
     public Transform depthMount;
 
     public Transform follow;
@@ -41,11 +42,9 @@ public class CamScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
-        
-		mount.position = follow.position;
+        transform.position = follow.position;
 		mount.rotation = follow.rotation;
 
-        depthMount.transform.position = follow.position;
         //pitch = move.inputDive;
 
         if (Input.GetMouseButton (1)) {
