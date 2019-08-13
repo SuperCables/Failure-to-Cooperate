@@ -5,13 +5,13 @@ using System;
 
 public class Global : MonoBehaviour
 {
-    public event Action<Entity> UnitAdded;
-    public event Action<Entity> UnitRemoved;
+    public event Action<Entity> UnitAdded; //everyone add a blip to the radar
+    public event Action<Entity> UnitRemoved; //remove this blip
     public event Action<Entity> UnitSelected; //from radar, or anything else
 
-    public List<Entity> allUnits = new List<Entity>();
+    public List<Entity> allUnits = new List<Entity>(); //everything selectable
     [Header("Global")]
-    public CamScript cameraMananger; 
+    public CamScript cameraMananger;
     [Header("Player")]
     public Entity selectedUnit;
     public Entity hoveredUnit;
@@ -44,6 +44,8 @@ public class Global : MonoBehaviour
         RefreshCurrentVesselLinks();
     }
 
+    //This updates refrences to player ship components so they can be easily acsessed by the station controls.
+    //will be null if no player ship or ship doesn't have that component
     void RefreshCurrentVesselLinks()
     {
         entity = localConnection?.playerEntity;
@@ -56,13 +58,11 @@ public class Global : MonoBehaviour
 
 	public void AddUnit(Entity unit) {
 		allUnits.Add (unit);
-
         UnitAdded?.Invoke(unit);
     }
 
 	public void RemoveUnit(Entity unit) {
 		allUnits.Remove (unit);
-
 		UnitRemoved?.Invoke(unit);
 	}
 
@@ -72,6 +72,7 @@ public class Global : MonoBehaviour
         UnitSelected?.Invoke(unit);
     }
 
+    //FIXME Should be moved to different class?
     public Sprite GetTorpedoIcon(TorpedoType tp)
     {
         int index = (int)tp;

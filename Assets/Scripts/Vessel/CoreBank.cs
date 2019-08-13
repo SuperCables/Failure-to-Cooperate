@@ -27,11 +27,14 @@ public class CoreBank : NetworkBehaviour
 
     void Update()
     {
-        usability = 0;
-        foreach (float v in coresUsability)
-        {
-            usability += v;
-        }
-        usability /= coreCount;
+        //if (isServer)
+        //{
+            usability = 0;
+            foreach (float v in coresUsability)
+            {
+                usability += v;
+            }
+            usability /= coreCount;
+        //}
     }
 }

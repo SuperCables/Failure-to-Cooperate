@@ -11,16 +11,18 @@ public class CamScript : MonoBehaviour {
     public float vertInc = 30;
 
     [Header("Assignment")]
+    //FIXME should always follow player, or current radar center so so depth map is correct.
+    public Transform follow;
+    [Space(10)]
     public Camera MainCam;
     public Camera RadarCam;
     public Camera FogCam;
+    [Space(10)]
     public Transform depthMount;
-
-    public Transform follow;
     public Transform mount;
     public Transform pivot;
     public Transform offset;
-
+    [Space(10)]
     public RenderTexture radarDepthTexture;
 
     float heightOffset;

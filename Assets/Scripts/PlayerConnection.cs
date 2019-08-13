@@ -25,6 +25,7 @@ public class PlayerConnection : NetworkBehaviour
 
     }
 
+    //tell our ship to change somthing.
     [Command]
     public void CmdSetShipHeading(float direction)
     {

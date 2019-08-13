@@ -18,6 +18,7 @@ public class WeaponScopeUI : MonoBehaviour
     public WeaponScopeBlipUI blipTemplate;
     public Transform trUnits;
 
+    //TODO: find these automaticly!
     public WeaponArray weaponArray;
 
     void Start()
@@ -59,7 +60,7 @@ public class WeaponScopeUI : MonoBehaviour
             Vector3 mouseHitPoint = ray.GetPoint(rayDistance); //find mouse pos
             mousePos = (Vector2)trUnits.InverseTransformPoint(mouseHitPoint); //and localize it
             float mDir = 90 - Game.Vector2ToDegree(mousePos);
-            float mDis = mousePos.magnitude / 540; //constand needs variable
+            float mDis = mousePos.magnitude / 540; //constant needs variable
             bool mouseOver = (mDis < 1);
             //print(mDis);
 
@@ -71,15 +72,15 @@ public class WeaponScopeUI : MonoBehaviour
     {
         weaponManager = Game.global?.weaponManager;
 
-        bool dirty = false;
+        bool dirty = false; //if set to true, we need to refresh
         foreach (WeaponScopeBlipUI v in blips)
         {
-            if (v.repEntity == player) { dirty = true; }
+            if (v.repEntity == player) { dirty = true; } //because this scope is in first person, we dont want to see our selves on the projection. (so flag for refresh)
 
             Vector3 pos = weaponArray.transform.position;
             Vector3 targetPos = v.repEntity.transform.position;
 
-            //Lead target here!
+            //TODO: Lead target here!
             Vector3 leadPoint = targetPos;
 
             Quaternion aimAngle = Quaternion.Inverse(weaponArray.transform.rotation) * Quaternion.LookRotation(leadPoint - pos, Vector3.up);
@@ -140,15 +141,15 @@ public class WeaponScopeUI : MonoBehaviour
     void Refresh()
     {
         player = Game.global?.entity;
-        blips.Clear();
-        foreach (Transform v in trUnits)
+        blips.Clear(); //clean blips list
+        foreach (Transform v in trUnits) //clean actual blips
         {
             Destroy(v.gameObject);
         }
 
-        foreach (Entity v in Game.global.allUnits)
+        foreach (Entity v in Game.global.allUnits) //for each item to add
         {
-            if (v != player)
+            if (v != player) //because this scope is in first person, we dont want to see our selves on the projection.
             {
                 AddBlip(v);
             }

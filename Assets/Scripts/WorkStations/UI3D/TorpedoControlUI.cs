@@ -34,6 +34,7 @@ public class TorpedoControlUI : MonoBehaviour
             Destroy(child.gameObject);
         }
 
+        if (torpedoMananger == null) return;
         TorpedoTube[] tubes = torpedoMananger.GetComponentsInChildren<TorpedoTube>(); //get all the tubes
         displayRows = new TorpedoTubeDisplayUI[tubes.Length];
 

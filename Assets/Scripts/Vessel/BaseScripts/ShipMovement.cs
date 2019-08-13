@@ -9,9 +9,9 @@ public class ShipMovement : NetworkBehaviour
 	[Header("Movement")]
 	public float maxSpin = 30;
 	public float spinAccel =  20;
-	public float MaxRCSSpeed = 2;
+	public float MaxRCSSpeed = 2; //max rcs speed, also max speed where rcs works; therfore Only used if speed < MaxRCSSpeed
 
-    
+
     [Header("Input")]
     [SyncVar]
     public float inputThrottle;
@@ -89,15 +89,15 @@ public class ShipMovement : NetworkBehaviour
     }
 
     void UpdateImpulse() {
-        float impulseAccel = engineThrust / 5; //engine.acceleration;
+        float impulseAccel = engineThrust / 5; //FIXME change to engine.acceleration or somthing;
         maxSpeed = engineThrust; //  thrust / mass or somthing
-        perfectMaxSpeed = maxEngineThrust;
-        if (isServer) { //if we arn't the server we feed of the sync var
+        perfectMaxSpeed = maxEngineThrust; //max speed assuming no damage
+        if (isServer) { //if we arn't the server we feed off the sync var
             speed = body.velocity.magnitude;
         }
 
 		Vector3 velocity = (Quaternion.Euler (0, -angle, 0) * body.velocity); //ship relitive speed. (right, up, forward)
-		Vector3 targetRCS = Mathf.Max(MaxRCSSpeed - speed, 0) * inputRCS;
+		Vector3 targetRCS = Mathf.Max(MaxRCSSpeed - speed, 0) * inputRCS; //add any strafing
 		Vector3 targetVelocity = (Quaternion.Euler(inputDive, 0, 0) * Vector3.forward * inputThrottle * perfectMaxSpeed) + targetRCS; //what velocity does the ship want to go?
 		Vector3 diffVelocity = targetVelocity - velocity; //how off we are
 		float frameMaxAccel = impulseAccel * Time.fixedDeltaTime; //delta for this frame
@@ -105,7 +105,7 @@ public class ShipMovement : NetworkBehaviour
         float frameImpulse = Mathf.Min (diffVelocity.magnitude, frameMaxAccel, engineManager.energy / (engineWattage * Time.fixedDeltaTime));
 		frameImpulse = Mathf.Max(frameImpulse, 0); //dont go backwards!
 
-        if (frameMaxAccel > 0) //if we can't move, don't devide by 0
+        if (frameMaxAccel > 0) //if we can't move, bail out so we don't devide by 0
         {
             Vector3 frameThrust = diffVelocity.normalized * frameImpulse; //force to correct for this frame;
             velocity += frameThrust;

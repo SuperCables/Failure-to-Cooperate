@@ -40,10 +40,10 @@ public class TurretArcUI : MonoBehaviour
         Vector2 right = Game.DegreeToVector2(halfAngle, length);
 
         Vector2[] armPoints = {left + correctionOffset, Vector2.zero + correctionOffset, Vector2.zero + correctionOffset, right + correctionOffset };
-        int pointCount = (int)(8+(angle / 10));
+        int pointCount = (int)(8+(angle / 10)); //more points for larger arc
         Vector2[] arcPoints = new Vector2[pointCount];
 
-        for (int i = 0; i < pointCount; i++)
+        for (int i = 0; i < pointCount; i++) //makes a smooth arc of points for the curve
         {
             arcPoints[i] = Game.DegreeToVector2(Mathf.Lerp(-halfAngle, halfAngle, i/ (pointCount - 1f)), length * curvePos) + correctionOffset;
         }

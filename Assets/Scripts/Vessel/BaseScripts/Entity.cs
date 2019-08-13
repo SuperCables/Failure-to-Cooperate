@@ -39,6 +39,7 @@ public class Entity : NetworkBehaviour
     void Start () {
         FullRebuild += Rebuild;
 
+        //must be called twice so two way links are created
         FullRebuild?.Invoke();
         FullRebuild?.Invoke();
 
