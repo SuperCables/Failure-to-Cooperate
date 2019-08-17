@@ -88,18 +88,19 @@ public class WeaponArray : NetworkBehaviour
     void OnDrawGizmos()
     {
         Gizmos.matrix = transform.localToWorldMatrix;
-        Gizmos.color = Color.red;
-        //Vector3 direction = transform.TransformDirection(Vector3.forward) * 1;
-        //Gizmos.DrawRay(transform.position, direction);
-        Gizmos.DrawFrustum(Vector3.zero, aimArc, 10, 0.05f, 1);
-        
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(Vector3.zero, new Vector3(1f, 0.1f, 0.1f));
+
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.matrix = transform.localToWorldMatrix;
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube (Vector3.zero, new Vector3(1f, 0.1f, 0.1f));
+        Gizmos.color = Color.red;
+        //Vector3 direction = transform.TransformDirection(Vector3.forward) * 1;
+        //Gizmos.DrawRay(transform.position, direction);
+        Gizmos.DrawFrustum(Vector3.zero, aimArc, 10, 0.05f, 1);
+        
     }
 }

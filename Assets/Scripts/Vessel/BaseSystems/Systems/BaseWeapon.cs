@@ -19,7 +19,7 @@ public class BaseWeapon : BaseSystem
     public float range = 250;
 
     [HideInInspector]
-    public Entity MountedVessel;
+    public Vessel MountedVessel;
     [HideInInspector]
     public WeaponManager WeaponManager;
     [HideInInspector]
@@ -38,7 +38,7 @@ public class BaseWeapon : BaseSystem
 
     void Rebuild()
     {
-        MountedVessel = GetComponentInParent<Entity>();
+        MountedVessel = GetComponentInParent<Vessel>();
         WeaponManager = GetComponentInParent<WeaponManager>();
         Mount = GetComponentInParent<WeaponMount>();
     }
