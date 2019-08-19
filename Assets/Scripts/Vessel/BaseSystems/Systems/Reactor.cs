@@ -15,7 +15,7 @@ public class Reactor : BaseSystem
     public override void Update()
     {
         base.Update();
-        powerOutput = wattage * cores.usability;
+        powerOutput = wattage * Cores.usability;
     }
 
 }

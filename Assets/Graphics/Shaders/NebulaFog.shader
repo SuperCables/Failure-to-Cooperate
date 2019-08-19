@@ -71,9 +71,9 @@
 
 				float rawDepth = DecodeFloatRG(tex2D(_CameraDepthTexture, i.uv_depth));
 				float linearDepth = Linear01Depth(rawDepth);
-				float4 wsDir = linearDepth * i.interpolatedRay;
-				float3 wsPos = _WorldSpaceCameraPos + wsDir;
-				half4 scannerCol = half4(0, 0, 0, 0);
+				float4 wsDir = linearDepth * i.interpolatedRay; //ray from camera world position
+				float3 wsPos = _WorldSpaceCameraPos + wsDir; //world position
+				//half4 scannerCol = half4(0, 0, 0, 0);
 
 				float dist = distance(wsPos, _PlayerPos);
 

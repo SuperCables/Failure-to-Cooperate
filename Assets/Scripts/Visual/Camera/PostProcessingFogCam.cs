@@ -5,13 +5,18 @@ using UnityEngine;
 public class PostProcessingFogCam : MonoBehaviour
 {
     //material that's applied when doing postprocessing
-    public Transform FogCenter;
+    
+    [Header("Assignment")]
     public Material EffectMaterial;
-    Camera camera;
+    Camera cam;
+
+    [Header("Self Assign")]
+    public Transform FogCenter;
+
 
     void Start()
     {
-        camera = GetComponent<Camera>();
+        cam = GetComponent<Camera>();
     }
 
     void Update()
@@ -31,33 +36,33 @@ public class PostProcessingFogCam : MonoBehaviour
         RaycastCornerBlit(source, destination, EffectMaterial);
     }
 
-    void RaycastCornerBlit(RenderTexture source, RenderTexture dest, Material mat)
+    void RaycastCornerBlit(RenderTexture source, RenderTexture dest, Material mat) //IDK what this does and i forgot where it came from, but it works.
     {
         // Compute Frustum Corners
-        float camFar = camera.farClipPlane;
-        float camFov = camera.fieldOfView;
-        float camAspect = camera.aspect;
+        float camFar = cam.farClipPlane;
+        float camFov = cam.fieldOfView;
+        float camAspect = cam.aspect;
 
         float fovWHalf = camFov * 0.5f;
 
-        Vector3 toRight = camera.transform.right * Mathf.Tan(fovWHalf * Mathf.Deg2Rad) * camAspect;
-        Vector3 toTop = camera.transform.up * Mathf.Tan(fovWHalf * Mathf.Deg2Rad);
+        Vector3 toRight = cam.transform.right * Mathf.Tan(fovWHalf * Mathf.Deg2Rad) * camAspect;
+        Vector3 toTop = cam.transform.up * Mathf.Tan(fovWHalf * Mathf.Deg2Rad);
 
-        Vector3 topLeft = (camera.transform.forward - toRight + toTop);
+        Vector3 topLeft = (cam.transform.forward - toRight + toTop);
         float camScale = topLeft.magnitude * camFar;
 
         topLeft.Normalize();
         topLeft *= camScale;
 
-        Vector3 topRight = (camera.transform.forward + toRight + toTop);
+        Vector3 topRight = (cam.transform.forward + toRight + toTop);
         topRight.Normalize();
         topRight *= camScale;
 
-        Vector3 bottomRight = (camera.transform.forward + toRight - toTop);
+        Vector3 bottomRight = (cam.transform.forward + toRight - toTop);
         bottomRight.Normalize();
         bottomRight *= camScale;
 
-        Vector3 bottomLeft = (camera.transform.forward - toRight - toTop);
+        Vector3 bottomLeft = (cam.transform.forward - toRight - toTop);
         bottomLeft.Normalize();
         bottomLeft *= camScale;
 

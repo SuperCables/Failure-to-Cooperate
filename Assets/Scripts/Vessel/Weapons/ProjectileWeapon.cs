@@ -5,7 +5,6 @@ using Mirror;
 
 public class ProjectileWeapon : BaseWeapon
 {
-
     [Header("Ammo")]
     public int ammo = 2000;
     public int maxAmmo = 2000;
@@ -13,12 +12,11 @@ public class ProjectileWeapon : BaseWeapon
 
     [Header("Fireing")]
     public float reloadTime = 1f/3; //inverse of fire rate
-    public float shellSpeed = 100;
-
+    public float shellSpeed = 100; //meters / second
 
     [Header("Breach")]
     public float hullBreachMin = 3; //min armor for guarentee to penitrate
-    public float hullBreachMax = 10; //min armor for chance to penitrate
+    public float hullBreachMax = 10; //max armor for chance to penitrate
     public float systemHitChance = 0.8f; //chance for penitrate to strike the desired system
 
     [Header("Assignment")]

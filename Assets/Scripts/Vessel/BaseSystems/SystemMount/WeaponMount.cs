@@ -6,8 +6,8 @@ public class WeaponMount : MonoBehaviour
 {
 
     [Header("Self Assign")]
-    public WeaponArray Rack;
-    public BaseWeapon gun;
+    public WeaponBank Rack;
+    //public BaseWeapon Gun;
 
     void Start()
     {
@@ -17,8 +17,8 @@ public class WeaponMount : MonoBehaviour
 
     void Rebuild()
     {
-        Rack = GetComponentInParent<WeaponArray>();
-        gun = GetComponentInChildren<BaseWeapon>();
+        Rack = GetComponentInParent<WeaponBank>();
+        //Gun = GetComponentInChildren<BaseWeapon>();
     }
 
     void OnDrawGizmos()

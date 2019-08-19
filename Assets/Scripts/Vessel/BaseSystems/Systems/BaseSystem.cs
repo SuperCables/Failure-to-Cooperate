@@ -7,16 +7,16 @@ using Mirror;
 public class BaseSystem : NetworkBehaviour
 {
     //[HideInInspector]
-    public CoreBank cores;
+    public CoreBank Cores;
     public float usability = 1;
 
     public virtual void Start()
     {
-        cores = GetComponent<CoreBank>();
+        Cores = GetComponent<CoreBank>();
     }
 
     public virtual void Update()
     {
-        usability = cores.usability;
+        usability = Cores.usability;
     }
 }

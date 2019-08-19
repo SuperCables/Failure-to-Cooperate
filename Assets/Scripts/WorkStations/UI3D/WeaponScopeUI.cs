@@ -19,7 +19,7 @@ public class WeaponScopeUI : MonoBehaviour
     public Transform trUnits;
 
     //TODO: find these automaticly!
-    public WeaponArray weaponArray;
+    public WeaponBank weaponBank;
 
     void Start()
     {
@@ -77,18 +77,18 @@ public class WeaponScopeUI : MonoBehaviour
         {
             if (v.repEntity == player) { dirty = true; } //because this scope is in first person, we dont want to see our selves on the projection. (so flag for refresh)
 
-            Vector3 pos = weaponArray.transform.position;
+            Vector3 pos = weaponBank.transform.position;
             Vector3 targetPos = v.repEntity.transform.position;
 
             //TODO: Lead target here!
             Vector3 leadPoint = targetPos;
 
-            Quaternion aimAngle = Quaternion.Inverse(weaponArray.transform.rotation) * Quaternion.LookRotation(leadPoint - pos, Vector3.up);
+            Quaternion aimAngle = Quaternion.Inverse(weaponBank.transform.rotation) * Quaternion.LookRotation(leadPoint - pos, Vector3.up);
             Vector3 aimEuler = aimAngle.eulerAngles;
 
             
-            float fracX = Mathf.DeltaAngle(0, aimEuler.y) / (weaponArray.aimArc / 2); //yes the X and Y are swaped
-            float fracY = Mathf.DeltaAngle(0, aimEuler.x) / (weaponArray.aimArc / 2); //don't change it
+            float fracX = Mathf.DeltaAngle(0, aimEuler.y) / (weaponBank.aimArc / 2); //yes the X and Y are swaped
+            float fracY = Mathf.DeltaAngle(0, aimEuler.x) / (weaponBank.aimArc / 2); //don't change it
 
             float absX = Mathf.Abs(fracX);
             float absY = Mathf.Abs(fracY);

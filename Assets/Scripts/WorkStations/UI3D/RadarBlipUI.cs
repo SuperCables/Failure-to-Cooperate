@@ -41,7 +41,7 @@ public class RadarBlipUI : MonoBehaviour { //an object on the radar
     void Start () {
         title.text = repEntity.Title;
 
-        foreach (WeaponArray rack in repEntity?.vessel?.weaponManager?.weaponArray)
+        foreach (WeaponBank rack in repEntity?.vessel?.weaponManager?.weaponArray)
         {
             TurretArcUI go = Instantiate(arcTemplate);
             go.transform.SetParent(turretArcs, false);
@@ -49,7 +49,7 @@ public class RadarBlipUI : MonoBehaviour { //an object on the radar
             float y = rack.transform.localPosition.x;
             go.transform.localPosition = new Vector3(x, y, 0) * 8;
             go.transform.localRotation = Quaternion.Euler(0, 0, rack.transform.localRotation.eulerAngles.y);
-            go.repArray = rack;
+            go.repBank = rack;
             go.radar = radar;
             arcs.Add(go);
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class WeaponArray : NetworkBehaviour
+public class WeaponBank : NetworkBehaviour
 {
     public float aimArc = 60; //swivel range
     public float maxRange;

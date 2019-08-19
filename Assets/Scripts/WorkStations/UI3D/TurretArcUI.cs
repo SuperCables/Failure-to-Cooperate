@@ -7,7 +7,7 @@ public class TurretArcUI : MonoBehaviour
 {
     public RadarScreenUI radar;
     //public BaseWeapon repWeapon;
-    public WeaponArray repArray;
+    public WeaponBank repBank;
 
     public float length = 50;
     [Range(0, 360)]
@@ -27,8 +27,8 @@ public class TurretArcUI : MonoBehaviour
 
     void Update()
     {
-        length = repArray.maxRange * radar.scale;
-        angle = repArray.aimArc;
+        length = repBank.maxRange * radar.scale;
+        angle = repBank.aimArc;
         Refresh();
     }
 

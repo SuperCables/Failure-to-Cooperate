@@ -41,3 +41,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: UI (TMPRO)
+    uniqueID: 429854763
+    locked: 0
