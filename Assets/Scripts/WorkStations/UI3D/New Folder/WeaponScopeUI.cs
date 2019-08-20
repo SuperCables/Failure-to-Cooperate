@@ -12,7 +12,6 @@ public class WeaponScopeUI : MonoBehaviour
 
     public Vector2 mousePos;
     GlobalStation globalStation;
-    float scale = 0; //smooth damp to target
 
     [Header("Assignment")]
     public WeaponScopeBlipUI blipTemplate;
@@ -27,7 +26,6 @@ public class WeaponScopeUI : MonoBehaviour
         Game.global.UnitAdded += AddBlip;
         Game.global.UnitRemoved += RemoveBlip;
         Game.global.UnitSelected += SelectUnit;
-        scale = 1;
         Refresh();
     }
 
