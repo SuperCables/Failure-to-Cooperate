@@ -26,8 +26,11 @@ public class DirectProjectile : MonoBehaviour
             timeTillImpact -= Time.deltaTime; //wait
             if (timeTillImpact < 0) //if should impact
             {
-                flying = false; //impact!
-                Impact();
+                flying = false; //impact! (or miss)
+                if (isAHit)
+                {
+                    Impact();
+                }
             }
         }
 
@@ -35,8 +38,8 @@ public class DirectProjectile : MonoBehaviour
 
     void Impact()
     {
-        VesselHull hull = target.GetComponentInChildren<VesselHull>();
-        Entity entity = target.GetComponent<Entity>();
+        VesselHull hull = target?.GetComponentInChildren<VesselHull>();
+        Entity entity = target?.GetComponent<Entity>();
         if (hull != null && entity != null) //if no damagable part
         {
             Vector3 tarPos = target.transform.position;
@@ -45,7 +48,7 @@ public class DirectProjectile : MonoBehaviour
 
             Ray ray = new Ray(startPos, diff);
 
-            RaycastHit hit; //TODO offset incoming angle so explosions have random points on the hull
+            RaycastHit hit; //TODO: offset incoming angle so explosions have random points on the hull
 
             Vector3 impactPos = tarPos;
             float bestRange = diff.magnitude;

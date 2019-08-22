@@ -27,9 +27,12 @@ public class TurretArcUI : MonoBehaviour
 
     void Update()
     {
-        length = repBank.maxRange * radar.scale;
-        angle = repBank.aimArc;
-        Refresh();
+        if (radar)
+        {
+            length = repBank.maxRange * radar.scale;
+            angle = repBank.aimArc;
+            Refresh();
+        }
     }
 
     public void Refresh()

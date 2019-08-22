@@ -128,7 +128,8 @@ public class RadarScreenUI : MonoBehaviour
 
         foreach (RadarBlipUI v in blips)
         {
-            Transform t = v.repEntity.transform;
+            Transform t = v?.repEntity?.transform;
+            if (t == null) { return; }
             RectTransform r = v.rootTransform;
             float angle = t.rotation.eulerAngles.y;
             Vector2 pos = Game.V3toV2(v.repEntity.transform.position);

@@ -79,7 +79,7 @@ public class ProjectileWeapon : BaseWeapon
         go.transform.SetParent(Game.global.tempStuff, true);
 
         go.timeTillImpact = (diff.magnitude / shellSpeed);
-        go.isAHit = true;
+        go.isAHit = true; //TODO: Roll a die and decide if hit
         go.target = target;
 
         go.transform.position = pos;

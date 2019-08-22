@@ -76,7 +76,10 @@ public class VesselHull : NetworkBehaviour
         hull -= ammount;
         if (hull < 0)
         {
-            //Destroy(gameObject);
+            Distributer distributer;
+            distributer = entity?.vessel?.distributer;
+            
+            Destroy(entity.gameObject);
         }
 
     }

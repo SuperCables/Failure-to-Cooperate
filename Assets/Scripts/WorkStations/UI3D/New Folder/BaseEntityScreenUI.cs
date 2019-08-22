@@ -9,14 +9,13 @@ public class BaseEntityScreenUI : MonoBehaviour
 
     public List<BaseEntityBlipUI> blips = new List<BaseEntityBlipUI>();
 
-    public Vector2 mousePos;
     GlobalStation GlobalStation;
 
     [Header("Assignment")]
     public BaseEntityBlipUI EntryTemplate;
     public Transform EntrysTransform;
 
-    void Start()
+    public virtual void Start()
     {
         GlobalStation = GetComponentInParent<GlobalStation>();
         Game.global.UnitAdded += AddBlip;
@@ -30,7 +29,7 @@ public class BaseEntityScreenUI : MonoBehaviour
         Refresh(); //refresh to make sure we have all the correct blips
     }
 
-    void Update()
+    public virtual void Update()
     {
         Player = Game.global?.entity;
         if (Player != null)
@@ -39,7 +38,7 @@ public class BaseEntityScreenUI : MonoBehaviour
         }
     }
 
-    void UpdateBlips()
+    protected void UpdateBlips()
     {
         WeaponManager = Game.global?.weaponManager;
 
@@ -64,26 +63,26 @@ public class BaseEntityScreenUI : MonoBehaviour
 
     }
 
-    void AddBlip(Entity unit)
+    protected void AddBlip(Entity unit)
     {
         if (unit != Player)
         {
             BaseEntityBlipUI go = Instantiate(EntryTemplate);
             go.repEntity = unit;
             go.transform.SetParent(EntrysTransform, false);
-            go.screen = this;
+            //go.screen = this;
             blips.Add(go);
         }
     }
 
-    void RemoveBlip(Entity unit)
+    protected void RemoveBlip(Entity unit)
     {
         //find assocateed blip
         //remove it from list
         //destroy it
     }
 
-    void Refresh()
+    protected void Refresh()
     {
         Player = Game.global?.entity;
         blips.Clear(); //clean blips list

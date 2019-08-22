@@ -72,7 +72,7 @@ public class EntityListUI : MonoBehaviour
             EntityListEntryUI go = Instantiate(blipTemplate);
             go.repEntity = unit;
             go.transform.SetParent(trEntrys, false);
-            go.list = this;
+            go.screen = this;
             blips.Add(go);
         }
     }

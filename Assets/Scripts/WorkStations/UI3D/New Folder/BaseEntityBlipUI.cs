@@ -15,18 +15,17 @@ public class BaseEntityBlipUI : MonoBehaviour
     public Entity repEntity; //what does this entry represent
     public BaseEntityScreenUI screen;
 
-    public List<TurretArcUI> arcs = new List<TurretArcUI>();
-
     [Header("Assignment")]
-    public RectTransform rootTransform;
+    public RectTransform rootTransform; //icon or frame
     [Space(10)]
-    public Image unitIcon; //info abbout the object and selection stats
-    public GameObject selectedIcon;
+    public Image unitIcon; //hull / type icon
+    public TextMeshProUGUI title; //title text
+    [Space(10)]
+    public GameObject selectedIcon; //selected icons, become visible when selected / targeted.
     public GameObject targetedIcon1;
     public GameObject targetedIcon2;
-    public TextMeshProUGUI title;
     [Space(10)]
-    public GameObject statsBars; //curved bars on the side
+    public GameObject statsBars; //curved bars on the side if blip.
     public Image shieldBar;
     public Image hullBar;
     [Space(10)]
@@ -34,7 +33,6 @@ public class BaseEntityBlipUI : MonoBehaviour
     public Image statLeft;
     public Image statMid;
     public Image statRight;
-
 
     void Start()
     {
