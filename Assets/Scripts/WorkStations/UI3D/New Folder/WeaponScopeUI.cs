@@ -31,7 +31,6 @@ public class WeaponScopeUI : MonoBehaviour
 
     void OnEnable() //every time this station is enabled
     {
-        print("Scope Enabled, Updating");
         Refresh(); //refresh to make sure we have all the correct blips
     }
 
@@ -131,9 +130,14 @@ public class WeaponScopeUI : MonoBehaviour
 
     void RemoveBlip(Entity unit)
     {
-        //find assocateed blip
-        //remove it from list
-        //destroy it
+        foreach (WeaponScopeBlipUI v in blips)
+        {
+            if (v.repEntity == unit)
+            {
+                blips.Remove(v);
+                Destroy(v);
+            }
+        }
     }
 
     void Refresh()

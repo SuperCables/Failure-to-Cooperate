@@ -10884,7 +10884,7 @@ MonoBehaviour:
   serverOnly: 0
   localPlayerAuthority: 0
   m_AssetId: 
-  m_SceneId: 1925077460
+  m_SceneId: 2666864470
 --- !u!114 &427614474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15674,7 +15674,7 @@ MonoBehaviour:
   serverOnly: 0
   localPlayerAuthority: 0
   m_AssetId: 
-  m_SceneId: 4123944143
+  m_SceneId: 3653987217
 --- !u!114 &737435557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21333,7 +21333,7 @@ MonoBehaviour:
   serverOnly: 0
   localPlayerAuthority: 0
   m_AssetId: 
-  m_SceneId: 4251369811
+  m_SceneId: 3947175934
 --- !u!114 &809039230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26524,18 +26524,6 @@ Transform:
   m_Father: {fileID: 660664024}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -70, z: 0}
---- !u!114 &1081933105 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2730528387530690108, guid: 605034a2c46adb84a9e940e9827bdc59,
-    type: 3}
-  m_PrefabInstance: {fileID: 58675774}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f52a9103fd47d14b91033a7c477090b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1082679722
 GameObject:
   m_ObjectHideFlags: 0
@@ -28021,6 +28009,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1185332034}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1203291862 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2730528387530690108, guid: 605034a2c46adb84a9e940e9827bdc59,
+    type: 3}
+  m_PrefabInstance: {fileID: 58675774}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f52a9103fd47d14b91033a7c477090b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1208329307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6066847466852920539, guid: c5a2aa296fba7e549a280f751baca090,
@@ -28401,51 +28401,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6787362563987234687, guid: 23e3880a1c3c209428b06fdf25a5334a,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6787362563987234687, guid: 23e3880a1c3c209428b06fdf25a5334a,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6787362563987234687, guid: 23e3880a1c3c209428b06fdf25a5334a,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6787362561913127957, guid: 23e3880a1c3c209428b06fdf25a5334a,
-        type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 1771708895}
-    - target: {fileID: 6787362561913127957, guid: 23e3880a1c3c209428b06fdf25a5334a,
-        type: 3}
-      propertyPath: knob
-      value: 
-      objectReference: {fileID: 1081933105}
     - target: {fileID: 3495521230282788910, guid: 23e3880a1c3c209428b06fdf25a5334a,
         type: 3}
       propertyPath: scaleKnob
       value: 
-      objectReference: {fileID: 1081933105}
-    - target: {fileID: 3495521230282788910, guid: 23e3880a1c3c209428b06fdf25a5334a,
-        type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 1771708895}
-    - target: {fileID: 6787362563971968879, guid: 23e3880a1c3c209428b06fdf25a5334a,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6787362563761261021, guid: 23e3880a1c3c209428b06fdf25a5334a,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1203291862}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23e3880a1c3c209428b06fdf25a5334a, type: 3}
 --- !u!4 &1246864799 stripped
@@ -45536,7 +45496,7 @@ MonoBehaviour:
   serverOnly: 0
   localPlayerAuthority: 0
   m_AssetId: 
-  m_SceneId: 1968441244
+  m_SceneId: 4233803200
 --- !u!114 &1712755723
 MonoBehaviour:
   m_ObjectHideFlags: 0

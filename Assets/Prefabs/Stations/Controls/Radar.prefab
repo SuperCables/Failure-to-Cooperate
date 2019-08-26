@@ -54,7 +54,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4305049645032244895}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6787362562829773133}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6787362562829773133}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6787362563761261022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -355,6 +355,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &6787362563761261020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,7 +365,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6787362563761261022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1200242548, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
@@ -454,7 +455,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6787362563971968849}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -474,6 +475,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6787362563987234686
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +502,7 @@ Transform:
   m_GameObject: {fileID: 6787362563987234686}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6787362563938499072}
   - {fileID: 6787362562829773130}
@@ -521,19 +523,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   weaponManager: {fileID: 0}
+  blips: []
+  mousePos: {x: 0, y: 0}
+  EntrysTransform: {fileID: 6787362562187850239}
+  EntryTemplate: {fileID: 4062214164410329668, guid: a64f7a6c7d7afbb48a7b47bf192766a8,
+    type: 3}
   ringWidth: 2
   clickToDrive: 1
   dragable: 0
-  blips: []
   scale: 0
-  mousePos: {x: 0, y: 0}
   offsetDrag: {x: 0, y: 0}
   scaleKnob: {fileID: 0}
-  blipTemplate: {fileID: 4062214164410329668, guid: a64f7a6c7d7afbb48a7b47bf192766a8,
-    type: 3}
   ringTemplate: {fileID: 3263052372349948061, guid: 6ccd3311d95a4bb4eb3dd459af043a58,
     type: 3}
-  trUnits: {fileID: 6787362562187850239}
   trRings: {fileID: 6787362563674244011}
 --- !u!1001 &6787362563299052207
 PrefabInstance:

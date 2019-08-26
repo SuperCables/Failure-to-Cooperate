@@ -27,7 +27,6 @@ public class EntityListUI : MonoBehaviour
 
     void OnEnable() //every time this station is enabled
     {
-        print("Scope Enabled, Updating");
         Refresh(); //refresh to make sure we have all the correct blips
     }
 
@@ -79,9 +78,14 @@ public class EntityListUI : MonoBehaviour
 
     void RemoveBlip(Entity unit)
     {
-        //find assocateed blip
-        //remove it from list
-        //destroy it
+        foreach (EntityListEntryUI v in blips)
+        {
+            if (v.repEntity == unit)
+            {
+                blips.Remove(v);
+                Destroy(v);
+            }
+        }
     }
 
     void Refresh()

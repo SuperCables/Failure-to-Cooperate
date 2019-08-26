@@ -4,24 +4,17 @@ using UnityEngine;
 using UnityEngine.UI.Extensions;
 //using Mirror;
 
-public class RadarScreenUI : MonoBehaviour
+public class RadarScreenUI : BaseEntityScreenUI
 {
-
-    public Entity player;
-    public WeaponManager weaponManager; //for highlighting priority targets, not for fireing arcs
     public float ringWidth = 2;
     public bool clickToDrive;
     public bool dragable;
-    public List<RadarBlipUI> blips = new List<RadarBlipUI>();
 
     [HideInInspector]
     public float scale = 0; //scale factor
-    [HideInInspector]
-    public Vector2 mousePos;
     //[HideInInspector]
     public Vector2 offsetDrag;
 
-    GlobalStation globalStation;
     float tarScale = 0; //smooth damp to target
     float scrollPos = 0; //mouse pos
     float curScaleSpeed; //damping var
@@ -33,17 +26,12 @@ public class RadarScreenUI : MonoBehaviour
     [Header("Assignment")]
     
     public ControlKnob scaleKnob;
-    public RadarBlipUI blipTemplate;
     public UICircle ringTemplate;
-    public Transform trUnits;
     public Transform trRings;
 
-    void Start()
+    public override void Start()
     {
-        globalStation = GetComponentInParent<GlobalStation>();
-        Game.global.UnitAdded += AddBlip;
-        Game.global.UnitRemoved += RemoveBlip;
-        Game.global.UnitSelected += SelectUnit;
+        base.Start();
         if (scaleKnob != null) { scaleKnob.Changed += ScaleKnobRotated; }
         
 
@@ -59,21 +47,15 @@ public class RadarScreenUI : MonoBehaviour
         //NetworkIdentity.AssignClientAuthority();
     }
 
-    void OnEnable() //every time this station is enabled
+    public override void Update()
     {
-        print("Radar Enabled, Updating");
-        Refresh(); //refresh to make sure we have all the correct blips
-    }
-
-    void Update()
-    {
-        player = Game.global?.entity;
+        base.Update();
         if (player != null)
         {
             radarZoomRadus = (8 * 67.2f) / scale;
             Game.global.cameraMananger.RadarCam.orthographicSize = radarZoomRadus;
 
-            UpdateInput();
+            scale = Mathf.SmoothDamp(scale, tarScale, ref curScaleSpeed, 0.1f, 250, Time.deltaTime);
 
             UpdateBlips();
 
@@ -81,40 +63,18 @@ public class RadarScreenUI : MonoBehaviour
         }
     }
 
-    void UpdateInput()
+    protected override void MouseOver(Vector2 mousePos, float mDir, float mDis)
     {
+        scrollPos -= Input.mouseScrollDelta.y;
+        scrollPos = Mathf.Clamp(scrollPos, -10, 100);
+        tarScale = (1 / Mathf.Pow(2f, scrollPos / 10)) * 8;
 
-        Ray ray = globalStation.StationCam.ScreenPointToRay(Input.mousePosition);
-        Plane interfacePlane = new Plane(-trUnits.forward, trUnits.position); //test mouse pos
-        float rayDistance;
-
-        if (interfacePlane.Raycast(ray, out rayDistance)) //if we hit
+        if (Input.GetMouseButton(1) && clickToDrive)
         {
-            Vector3 mouseHitPoint = ray.GetPoint(rayDistance); //find mouse pos
-            mousePos = (Vector2)trUnits.InverseTransformPoint(mouseHitPoint); //and localize it
-            float mDir = 90 - Game.Vector2ToDegree(mousePos);
-            float mDis = mousePos.magnitude / 540; //constand needs variable
-            bool mouseOver = (mDis < 1);
-            //print(mDis);
-
-            if (mouseOver) //if we moused over the radar
-            {
-                scrollPos -= Input.mouseScrollDelta.y;
-                scrollPos = Mathf.Clamp(scrollPos, -10, 100);
-                tarScale = (1 / Mathf.Pow(2f, scrollPos / 10)) * 8;
-
-                
-
-                if (Input.GetMouseButton(1) && clickToDrive)
-                {
-                    //float dedMag = (Mathf.Clamp(mDis, 0.2f, 0.7f) - .2f) * 2;
-                    Game.global?.localConnection?.CmdSetShipHeading(mDir);
-                    //Game.global.localConnection.CmdSetShipThrust(dedMag);
-                }
-            }
+            //float dedMag = (Mathf.Clamp(mDis, 0.2f, 0.7f) - .2f) * 2;
+            Game.global?.localConnection?.CmdSetShipHeading(mDir);
+            //Game.global.localConnection.CmdSetShipThrust(dedMag);
         }
-
-        scale = Mathf.SmoothDamp(scale, tarScale, ref curScaleSpeed, 0.1f, 250, Time.deltaTime);
     }
 
     void UpdateBlips()
@@ -126,7 +86,7 @@ public class RadarScreenUI : MonoBehaviour
         
         weaponManager = Game.global?.weaponManager;
 
-        foreach (RadarBlipUI v in blips)
+        foreach (BaseEntityBlipUI v in blips)
         {
             Transform t = v?.repEntity?.transform;
             if (t == null) { return; }
@@ -173,55 +133,4 @@ public class RadarScreenUI : MonoBehaviour
         tarScale = (1 / Mathf.Pow(2f, scrollPos / 10)) * 8; //and appply
     }
 
-    void AddBlip(Entity unit) {
-		RadarBlipUI go = Instantiate (blipTemplate);
-		go.repEntity = unit;
-		go.transform.SetParent(trUnits, false);
-        go.radar = this;
-		blips.Add (go);
-	}
-
-	void RemoveBlip(Entity unit) {
-        //find assocateed blip
-        //remove it from list
-        //destroy it
-	}
-
-    void Refresh()
-    {
-        blips.Clear();
-        foreach (Transform v in trUnits)
-        {
-            Destroy(v.gameObject);
-        }
-
-        foreach (Entity v in Game.global.allUnits)
-        {
-            AddBlip(v);
-        }
-    }
-
-    public void SelectUnit(Entity unit)
-    {
-        foreach (RadarBlipUI v in blips)
-        {
-            if (v.repEntity == unit)
-            {
-                v.selected = true;
-            }
-            else
-            {
-                v.selected = false;
-            }
-        }
-    }
-
-
-    public void SetVisible(GameObject thing, bool visible)
-    {
-        if (thing.activeInHierarchy != visible)
-        {
-            thing.SetActive(visible);
-        }
-    }
 }

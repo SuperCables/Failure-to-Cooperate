@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class BaseEntityScreenUI : MonoBehaviour
 {
-    public Entity Player;
-    public WeaponManager WeaponManager; //for highlighting priority targets, not for fireing arcs
+    public Entity player;
+    public WeaponManager weaponManager; //for highlighting priority targets, not for fireing arcs
 
     public List<BaseEntityBlipUI> blips = new List<BaseEntityBlipUI>();
 
-    GlobalStation GlobalStation;
+    GlobalStation globalStation;
+
+    [HideInInspector]
+    public Vector2 mousePos;
 
     [Header("Assignment")]
-    public BaseEntityBlipUI EntryTemplate;
     public Transform EntrysTransform;
+    public BaseEntityBlipUI EntryTemplate;
 
     public virtual void Start()
     {
-        GlobalStation = GetComponentInParent<GlobalStation>();
+        globalStation = GetComponentInParent<GlobalStation>();
         Game.global.UnitAdded += AddBlip;
         Game.global.UnitRemoved += RemoveBlip;
         Game.global.UnitSelected += SelectUnit;
@@ -31,48 +34,64 @@ public class BaseEntityScreenUI : MonoBehaviour
 
     public virtual void Update()
     {
-        Player = Game.global?.entity;
-        if (Player != null)
+        player = Game.global?.entity;
+        if (player != null)
         {
-            UpdateBlips();
+            ReadInput();
+            UpdateIcon();
         }
     }
 
-    protected void UpdateBlips()
+    void ReadInput()
     {
-        WeaponManager = Game.global?.weaponManager;
+        Ray ray = globalStation.StationCam.ScreenPointToRay(Input.mousePosition);
+        Plane interfacePlane = new Plane(-EntrysTransform.forward, EntrysTransform.position); //test mouse pos
+        float rayDistance;
 
-        bool dirty = false; //if set to true, we need to refresh
+        if (interfacePlane.Raycast(ray, out rayDistance)) //if we hit
+        {
+            Vector3 mouseHitPoint = ray.GetPoint(rayDistance); //find mouse pos
+            mousePos = (Vector2)EntrysTransform.InverseTransformPoint(mouseHitPoint); //and localize it
+            float mDir = 90 - Game.Vector2ToDegree(mousePos);
+            float mDis = mousePos.magnitude / 540; //constand needs variable
+            if (mDis < 1)
+            {
+                MouseOver(mousePos, mDir, mDis);
+            }
+        }
+    }
+
+    protected virtual void MouseOver(Vector2 mousePos, float mDir, float mDis)
+    {
+        //This shouldn't be called
+    }
+
+    protected void UpdateIcon()
+    {
+        weaponManager = Game.global?.weaponManager;
+
         foreach (BaseEntityBlipUI v in blips)
         {
-            if (v.repEntity == Player) { dirty = true; } //No need to list us
-
             //Update Blip Propertys
             int targetingIcon = 0; //start with no icon
-            if (WeaponManager?.Target2 == v.repEntity) { targetingIcon = 2; }
-            if (WeaponManager?.Target1 == v.repEntity) { targetingIcon = 1; }
+            if (weaponManager?.Target2 == v.repEntity) { targetingIcon = 2; }
+            if (weaponManager?.Target1 == v.repEntity) { targetingIcon = 1; }
             SetVisible(v.targetedIcon1, targetingIcon == 1);
             SetVisible(v.targetedIcon2, targetingIcon == 2);
 
         }
-
-        if (dirty)
-        {
-            Refresh();
-        }
-
     }
 
     protected void AddBlip(Entity unit)
     {
-        if (unit != Player)
-        {
+        //if (unit != player)
+        //{
             BaseEntityBlipUI go = Instantiate(EntryTemplate);
             go.repEntity = unit;
             go.transform.SetParent(EntrysTransform, false);
-            //go.screen = this;
+            go.screen = this;
             blips.Add(go);
-        }
+        //}
     }
 
     protected void RemoveBlip(Entity unit)
@@ -84,7 +103,7 @@ public class BaseEntityScreenUI : MonoBehaviour
 
     protected void Refresh()
     {
-        Player = Game.global?.entity;
+        player = Game.global?.entity;
         blips.Clear(); //clean blips list
         foreach (Transform v in EntrysTransform) //clean actual blips
         {
@@ -93,10 +112,7 @@ public class BaseEntityScreenUI : MonoBehaviour
 
         foreach (Entity v in Game.global.allUnits) //for each item to add
         {
-            if (v != Player) //Don't show us
-            {
-                AddBlip(v);
-            }
+            AddBlip(v);
         }
     }
 

@@ -106,7 +106,7 @@ public class TargetInfoUI : MonoBehaviour
 
         if (hull != null)
         {
-            print("Refresh Target Info");
+            //print("Refresh Target Info");
             shieldsBars = new QuadrentBarUI[hull.shieldsSegments];
             armorBars = new QuadrentBarUI[hull.armorSegments];
 

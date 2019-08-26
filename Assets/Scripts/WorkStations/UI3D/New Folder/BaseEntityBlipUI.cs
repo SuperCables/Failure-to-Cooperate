@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class BaseEntityBlipUI : MonoBehaviour
-{ //an object on the radar
-
+public class BaseEntityBlipUI : MonoBehaviour{
 
     public bool selected;
     [Range(0, 2)]
