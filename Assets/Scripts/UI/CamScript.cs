@@ -44,6 +44,7 @@ public class CamScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
+        if (follow == null) { return; }
         transform.position = follow.position;
 		mount.rotation = follow.rotation;
 

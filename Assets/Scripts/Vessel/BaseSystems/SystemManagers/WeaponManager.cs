@@ -9,7 +9,7 @@ public class WeaponManager : BaseSystemManager
 
     [Header("Self Assign")]
     public BaseWeapon[] weaponMounts;
-    public WeaponBank[] weaponArray;
+    public WeaponBank[] weaponBanks;
     [Space(10)]
     public Entity Target1;
     public Entity Target2;
@@ -24,7 +24,7 @@ public class WeaponManager : BaseSystemManager
     void Rebuild()
     {
         weaponMounts = GetComponentsInChildren<BaseWeapon>();
-        weaponArray = GetComponentsInChildren<WeaponBank>();
+        weaponBanks = GetComponentsInChildren<WeaponBank>();
 
         float thisWattage = 0;
         foreach (BaseWeapon v in weaponMounts)

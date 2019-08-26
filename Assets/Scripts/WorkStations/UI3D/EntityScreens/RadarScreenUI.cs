@@ -58,7 +58,6 @@ public class RadarScreenUI : BaseEntityScreenUI
             scale = Mathf.SmoothDamp(scale, tarScale, ref curScaleSpeed, 0.1f, 250, Time.deltaTime);
 
             UpdateBlips();
-
             UpdateRings();
         }
     }

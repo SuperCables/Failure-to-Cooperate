@@ -17,6 +17,7 @@ public class Global : MonoBehaviour
     public Entity hoveredUnit;
     public PlayerConnection localConnection;
     [Header("Refrences to ship parts")]
+    public Transform trans;
     public Entity entity;
     public Vessel vessel;
     public ShipMovement moveing;
@@ -49,6 +50,7 @@ public class Global : MonoBehaviour
     void RefreshCurrentVesselLinks()
     {
         entity = localConnection?.playerEntity;
+        trans = entity?.transform;
         vessel = entity?.vessel;
         moveing = vessel?.movement;
         hull = entity?.hull;

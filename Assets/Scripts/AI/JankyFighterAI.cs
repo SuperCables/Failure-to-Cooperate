@@ -24,7 +24,8 @@ public class JankyFighterAI : MonoBehaviour
 
     void Update()
     {
-        if (body == null) return; //if we arn't controling anyone, bail.
+        if (body == null) { return; } //if we arn't controling anyone, bail.
+        if (target == null) { return; } //if we arn't doing anything, bail.
         if (move == null) {
             if (body.movement == null) { return; }
             move = body.movement;

@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6787362562187850239}
   m_Layer: 8
-  m_Name: Blips
+  m_Name: Entrys
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -521,12 +521,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4ddbe11ab61e943a240d5a6fefa0b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showSelf: 1
   player: {fileID: 0}
   weaponManager: {fileID: 0}
   blips: []
+  globalStation: {fileID: 0}
   mousePos: {x: 0, y: 0}
-  EntrysTransform: {fileID: 6787362562187850239}
-  EntryTemplate: {fileID: 4062214164410329668, guid: a64f7a6c7d7afbb48a7b47bf192766a8,
+  entrysTransform: {fileID: 6787362562187850239}
+  entryTemplate: {fileID: 4062214164410329668, guid: a64f7a6c7d7afbb48a7b47bf192766a8,
     type: 3}
   ringWidth: 2
   clickToDrive: 1

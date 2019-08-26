@@ -48,12 +48,15 @@ MonoBehaviour:
   player: {fileID: 0}
   weaponManager: {fileID: 0}
   blips: []
-  selected: []
+  globalStation: {fileID: 0}
   mousePos: {x: 0, y: 0}
+  entrysTransform: {fileID: 5221702967776445232}
+  entryTemplate: {fileID: 4404813783348840372, guid: 147dc896411bc9c40b387414829587a1,
+    type: 3}
   blipTemplate: {fileID: 4404813783348840372, guid: 147dc896411bc9c40b387414829587a1,
     type: 3}
   trUnits: {fileID: 5221702967776445232}
-  weaponArray: {fileID: 0}
+  weaponBank: {fileID: 0}
 --- !u!1 &3406889813506218745
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +157,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3406889813755751432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
@@ -176,7 +179,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3406889813755751432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -240,7 +243,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3406889814077001654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -260,6 +263,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3406889814547179396
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +351,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3406889814678261575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -367,6 +371,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!114 &3406889814678261689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,7 +381,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3406889814678261575}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1200242548, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
@@ -434,7 +439,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5221702967500048943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -454,6 +459,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5221702967776445235
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,7 +470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5221702967776445232}
   m_Layer: 8
-  m_Name: Blips
+  m_Name: Entrys
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

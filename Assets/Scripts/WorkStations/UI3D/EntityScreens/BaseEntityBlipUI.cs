@@ -19,31 +19,26 @@ public class BaseEntityBlipUI : MonoBehaviour{
     public Image unitIcon; //hull / type icon
     public TextMeshProUGUI title; //title text
     [Space(10)]
-    public GameObject selectedIcon; //selected icons, become visible when selected / targeted.
-    public GameObject targetedIcon1;
-    public GameObject targetedIcon2;
+    public GameObject selectedIcon; //selected icons, become visible when selected.
+    public GameObject targetedIcon1; //primary target
+    public GameObject targetedIcon2; //secondary target
     [Space(10)]
-    public GameObject statsBars; //curved bars on the side if blip.
+    public GameObject statsBars; //curved bars on the side if blip. bars if list entry. Works same either way
     public Image shieldBar;
     public Image hullBar;
     [Space(10)]
-    public GameObject statsIcons; //
+    public GameObject statsIcons; //not sure how to implement these yet...
     public Image statLeft;
     public Image statMid;
     public Image statRight;
 
-    void Start()
+    public virtual void Start()
     {
-        
+        //set the basic text.
+        //title.text = repEntity.Title;
     }
 
-
-    void Update()
-    {
-
-    }
-
-    void UpdateInput()
+    public virtual void Update()
     {
 
     }
