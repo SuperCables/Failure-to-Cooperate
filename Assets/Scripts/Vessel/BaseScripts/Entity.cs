@@ -46,7 +46,6 @@ public class Entity : NetworkBehaviour
         Title = "Ship " + UnityEngine.Random.Range(10, 99);
         Game.global.AddUnit(this);
 
-        
     }
 
     void Rebuild()
@@ -60,4 +59,10 @@ public class Entity : NetworkBehaviour
 	void FixedUpdate () {
 
 	}
+
+    void OnDestroy()
+    {
+        Game.global.RemoveUnit(this);
+    }
+
 }

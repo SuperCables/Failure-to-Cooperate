@@ -87,8 +87,7 @@ public class RadarScreenUI : BaseEntityScreenUI
 
         foreach (BaseEntityBlipUI v in blips)
         {
-            Transform t = v?.repEntity?.transform;
-            if (t == null) { return; }
+            Transform t = v.repEntity.transform;
             RectTransform r = v.rootTransform;
             float angle = t.rotation.eulerAngles.y;
             Vector2 pos = Game.V3toV2(v.repEntity.transform.position);
@@ -99,11 +98,6 @@ public class RadarScreenUI : BaseEntityScreenUI
             r.localPosition = pos * scale;
             v.unitIcon.transform.localRotation = Quaternion.Euler(0, 0, -angle + 90);
 
-            int targetingIcon = 0; //start with no icon
-            if (weaponManager?.Target2 == v.repEntity) { targetingIcon = 2; }
-            if (weaponManager?.Target1 == v.repEntity) { targetingIcon = 1; }
-            SetVisible(v.targetedIcon1, targetingIcon == 1);
-            SetVisible(v.targetedIcon2, targetingIcon == 2);
         }
     }
 

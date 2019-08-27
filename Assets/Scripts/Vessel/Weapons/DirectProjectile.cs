@@ -38,42 +38,43 @@ public class DirectProjectile : MonoBehaviour
 
     void Impact()
     {
-        VesselHull hull = target?.GetComponentInChildren<VesselHull>();
+        if (target == null) { Destroy(gameObject); return; }
         Entity entity = target?.GetComponent<Entity>();
-        if (hull != null && entity != null) //if no damagable part
+        if (entity == null) { Destroy(gameObject); return; }
+        VesselHull hull = entity.hull;
+        if (hull == null) { Destroy(gameObject); return; }
+        //object is damagable
+
+        Vector3 tarPos = target.transform.position;
+        Vector3 diff = (tarPos - startPos);
+        float distance = diff.magnitude;
+
+        Ray ray = new Ray(startPos, diff);
+
+        RaycastHit hit; //TODO: add scatter
+
+        Vector3 impactPos = tarPos;
+        float bestRange = diff.magnitude;
+
+        foreach (Collider v in entity.colliders) //loop through all colliders
         {
-            Vector3 tarPos = target.transform.position;
-            Vector3 diff = (tarPos - startPos);
-            float distance = diff.magnitude;
-
-            Ray ray = new Ray(startPos, diff);
-
-            RaycastHit hit; //TODO: offset incoming angle so explosions have random points on the hull
-
-            Vector3 impactPos = tarPos;
-            float bestRange = diff.magnitude;
-
-            foreach (Collider v in entity.colliders) //loop through all colliders
+            v.Raycast(ray, out hit, distance); //raycast each one
+            if (hit.distance < bestRange) //if new closest point
             {
-                v.Raycast(ray, out hit, distance); //raycast each one
-                if (hit.distance < bestRange) //if new closest point
-                {
-                    bestRange = hit.distance;
-                    impactPos = hit.point; //this is our new best impact point
-                }
+                bestRange = hit.distance;
+                impactPos = hit.point; //this is our new best impact point
             }
-
-            
-            //print("Impact: " + angle);
-            hull.TakeDamage(10, impactPos, 1, 1);
-
-            GameObject effect = Instantiate(impactEffectTemplate); //create an impact effect
-            effect.transform.SetParent(target.transform, true);
-            effect.transform.position = impactPos;
-            effect.transform.localScale = Vector3.one * 0.3f;
-            transform.position = impactPos;
-
-            Destroy(gameObject); //destroy projectile
         }
+
+
+        //print("Impact: " + angle);
+        hull.TakeDamage(10, impactPos, 1, 1);
+
+        GameObject effect = Instantiate(impactEffectTemplate); //create an impact effect
+        effect.transform.SetParent(target.transform, true);
+        effect.transform.position = impactPos;
+        effect.transform.localScale = Vector3.one * 0.3f;
+        transform.position = impactPos;
+        Destroy(gameObject); //destroy projectile
     }
 }

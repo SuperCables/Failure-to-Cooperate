@@ -104,12 +104,20 @@ public class BaseEntityScreenUI : MonoBehaviour
 
     protected void RemoveBlip(Entity unit)
     {
-        foreach (BaseEntityBlipUI v in blips) //find assocateed blip
+        int i = 0;
+        while (i < blips.Count)
         {
+            BaseEntityBlipUI v = blips[i];
             if (v.repEntity == unit)
             {
-                blips.Remove(v); //remove it from list
-                Destroy(v.repEntity); //destroy it
+                blips.RemoveAt(i); //remove it from list
+
+                if (v.gameObject != null) //stoping the program causes it to throw NFE, likly because the ships were deleted before the blips.
+                {
+                    Destroy(v.gameObject); //destroy BLIP
+                }
+            }else{
+                i++;
             }
         }
     }

@@ -50,10 +50,11 @@ public class Global : MonoBehaviour
     void RefreshCurrentVesselLinks()
     {
         entity = localConnection?.playerEntity;
+        if (entity == null) { return; }
         trans = entity?.transform;
+        hull = entity?.hull;
         vessel = entity?.vessel;
         moveing = vessel?.movement;
-        hull = entity?.hull;
         weaponManager = vessel?.weaponManager;
         torpedoMananger = vessel?.torpedoMananger;
     }
