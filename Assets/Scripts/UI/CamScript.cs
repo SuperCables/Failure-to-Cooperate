@@ -36,7 +36,7 @@ public class CamScript : MonoBehaviour {
     float camPitchSpeedDamp;
     float camHeightSpeedDamp;
 
-    ShipMovement move;
+    //ShipMovement move;
 
     // Use this for initialization
     void Start () {
