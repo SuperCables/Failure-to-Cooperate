@@ -34,7 +34,6 @@ public class WeaponScopeBlipUI : BaseEntityBlipUI
         }
 
         SetVisible(statsBars, mouseOver || selected || targetedStat>0);
-        SetVisible(selectedIcon, selected);
 
     }
 

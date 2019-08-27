@@ -54,7 +54,6 @@ public class RadarBlipUI : BaseEntityBlipUI{ //an object on the radar
         }
 
         SetVisible(statsBars, mouseOver || selected || targetedStat > 0);
-        SetVisible(selectedIcon, selected);
 
     }
 

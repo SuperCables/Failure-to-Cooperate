@@ -16,4 +16,9 @@ public class EntityListEntryUI : BaseEntityBlipUI
     {
         base.Update();
     }
+
+    public void Clicked()
+    {
+        Game.global.SelectUnit(repEntity);
+    }
 }

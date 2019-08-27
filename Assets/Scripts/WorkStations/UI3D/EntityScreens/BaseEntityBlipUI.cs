@@ -34,13 +34,15 @@ public class BaseEntityBlipUI : MonoBehaviour{
 
     public virtual void Start()
     {
+        
         //set the basic text.
-        //title.text = repEntity.Title;
+        if (title != null) { title.text = repEntity.Title; }
+
     }
 
     public virtual void Update()
     {
-
+        SetVisible(selectedIcon, selected);
     }
 
     public void SetVisible(GameObject thing, bool visible)
