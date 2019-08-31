@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2656985531808800322}
   - component: {fileID: 7995224906949743895}
+  - component: {fileID: 4492959593630154159}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -48,3 +49,19 @@ MonoBehaviour:
   target: {fileID: 0}
   impactEffectTemplate: {fileID: 1000013462590818, guid: ecdd96beb7f93494880c052dfccf9dc1,
     type: 3}
+--- !u!114 &4492959593630154159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2656985531808800190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serverOnly: 0
+  localPlayerAuthority: 0
+  m_AssetId: 07f7117f3de9f8040a0ca790a3a3cb45
+  m_SceneId: 0

@@ -22,10 +22,12 @@ public class Entity : NetworkBehaviour
     public event Action FullRebuild; //for get component and such
     public event Action FullRecalc; //for calculating constants like engine wattage
 
+    [SyncVar]
     public string Title = "Namelessss123";
+    [SyncVar]
     public EntityType entityType;
-
-	public bool alive = true;
+    [SyncVar]
+    public bool alive = true;
 
     //[HideInInspector]
     public Rigidbody body;

@@ -63,6 +63,7 @@ public class DirectProjectile : MonoBehaviour
             {
                 bestRange = hit.distance;
                 impactPos = hit.point; //this is our new best impact point
+                
             }
         }
 
@@ -71,10 +72,10 @@ public class DirectProjectile : MonoBehaviour
         hull.TakeDamage(10, impactPos, 1, 1);
 
         GameObject effect = Instantiate(impactEffectTemplate); //create an impact effect
-        effect.transform.SetParent(target.transform, true);
+        effect.transform.SetParent(target.transform, true); //FIXME y is always NAN on client
         effect.transform.position = impactPos;
-        effect.transform.localScale = Vector3.one * 0.3f;
-        transform.position = impactPos;
+        effect.transform.localScale = Vector3.one * 0.3f; 
+        transform.position = impactPos; //FIXME y is always NAN on client
         Destroy(gameObject); //destroy projectile
     }
 }

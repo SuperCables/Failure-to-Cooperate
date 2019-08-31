@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 [RequireComponent(typeof(CoreBank))]
-public class Battery : MonoBehaviour
+public class Battery : NetworkBehaviour
 {
+    [SyncVar]
     public float perfectMaxPower = 50;
     [HideInInspector]
     public float maxPower = 0;

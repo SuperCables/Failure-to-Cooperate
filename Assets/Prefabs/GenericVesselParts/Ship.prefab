@@ -87,6 +87,7 @@ MonoBehaviour:
   movement: {fileID: 0}
   engineManager: {fileID: 0}
   weaponManager: {fileID: 0}
+  torpedoMananger: {fileID: 0}
   distributer: {fileID: 0}
   entity: {fileID: 0}
 --- !u!114 &4566538377089799371
@@ -104,22 +105,19 @@ MonoBehaviour:
   syncInterval: 0.1
   maxSpin: 15
   spinAccel: 4
-  rcsSpeed: 2
+  MaxRCSSpeed: 2
   inputThrottle: 0
   inputAngle: 0
-  targetDepth: 0
-  rcsInput: {x: 0, y: 0}
+  inputDive: 0
+  inputRCS: {x: 0, y: 0, z: 0}
   perfectMaxSpeed: 0
-  perfectMaxDive: 0
   speed: 0
-  direction: {x: 0, y: 0}
+  direction: {x: 0, y: 0, z: 0}
   angle: 0
   maxSpeed: 0
-  ballastTank: 0
   body: {fileID: 0}
   vessel: {fileID: 0}
   engineManager: {fileID: 0}
-  ballastPumpsMananger: {fileID: 0}
 --- !u!114 &4566538377089799366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,10 +130,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SceneId: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  serverOnly: 0
+  localPlayerAuthority: 0
   m_AssetId: 366ab0e9f6d5a0c4e92accff65585cb1
+  m_SceneId: 0
 --- !u!114 &3103954013660055929
 MonoBehaviour:
   m_ObjectHideFlags: 0

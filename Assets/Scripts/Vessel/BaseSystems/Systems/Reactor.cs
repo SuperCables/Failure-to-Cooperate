@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 public class Reactor : BaseSystem
 {
+    [SyncVar]
     public float wattage = 2; //power produced per second
     public float powerOutput = 0;
 

@@ -44,4 +44,10 @@ public class PlayerConnection : NetworkBehaviour
         playerEntity.vessel.movement.inputDive = angle;
     }
 
+    [Command]
+    public void CmdSummonEvil()
+    {
+        Game.global.SpawnEvil();
+    }
+
 }

@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 3418586560147305142}
   - component: {fileID: 3418586560147305143}
   m_Layer: 8
-  m_Name: List
+  m_Name: Entitiy List
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1062,7 +1062,7 @@ PrefabInstance:
     - target: {fileID: 3675096663259825430, guid: e7da227bcaa59d64c9d87ce2fe012f20,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3675096663259825430, guid: e7da227bcaa59d64c9d87ce2fe012f20,
         type: 3}
@@ -1072,7 +1072,7 @@ PrefabInstance:
     - target: {fileID: 3675096663259825430, guid: e7da227bcaa59d64c9d87ce2fe012f20,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3675096663259825430, guid: e7da227bcaa59d64c9d87ce2fe012f20,
         type: 3}

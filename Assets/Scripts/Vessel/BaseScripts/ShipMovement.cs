@@ -7,9 +7,9 @@ public class ShipMovement : NetworkBehaviour
     //Moving config
 
 	[Header("Movement")]
-	public float maxSpin = 30;
+	public float maxSpin = 30; //TODO: calculate these from engine
 	public float spinAccel =  20;
-	public float MaxRCSSpeed = 2; //max rcs speed, also max speed where rcs works; therfore Only used if speed < MaxRCSSpeed
+	public float MaxRCSSpeed = 5; //max rcs speed, also max speed where rcs works; therfore Only used if speed < MaxRCSSpeed
 
 
     [Header("Input")]

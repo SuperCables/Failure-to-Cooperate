@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class Distributer : MonoBehaviour
+public class Distributer : NetworkBehaviour
 {
     ReactorManager reactorManager;
     BatteryMananger batteryMananger;
 
     public BaseSystemManager[] systems;
 
+    [SyncVar]
     public float batteryPower = 1000;
+    [SyncVar]
     public float maxBatteryPower = 1000;
 
     void Start()

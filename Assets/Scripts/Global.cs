@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+using Mirror;
+
 public class Global : MonoBehaviour
 {
     public event Action<Entity> UnitAdded; //everyone add a blip to the radar
@@ -32,6 +34,7 @@ public class Global : MonoBehaviour
 
     [Header("ImageLinks")]
     public Sprite[] TorpedosSprites;
+    public GameObject evil;
 
     void Start () {
         cameraMananger = GetComponentInChildren<CamScript>();
@@ -87,6 +90,14 @@ public class Global : MonoBehaviour
         {
             return null;
         }
+    }
+
+    //Temperary debogging
+    public void SpawnEvil()
+    {
+        GameObject entity = Instantiate(evil);
+        entity.transform.position = UnityEngine.Random.insideUnitSphere * 20;
+        //NetworkServer.Spawn(entity); FIXME
     }
 
 }

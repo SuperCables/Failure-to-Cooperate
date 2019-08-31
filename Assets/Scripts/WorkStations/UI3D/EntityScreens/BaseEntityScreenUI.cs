@@ -112,9 +112,12 @@ public class BaseEntityScreenUI : MonoBehaviour
             {
                 blips.RemoveAt(i); //remove it from list
 
-                if (v.gameObject != null) //stoping the program causes it to throw NFE, likly because the ships were deleted before the blips.
+                if (v != null) //umm, ya, 'v' can in fact be null when closing the program... somehow?
                 {
-                    Destroy(v.gameObject); //destroy BLIP
+                    if (v.gameObject != null) //stoping the program causes it to throw NFE, likly because the ships were deleted before the blips.
+                    {
+                        Destroy(v.gameObject); //destroy BLIP
+                    }
                 }
             }else{
                 i++;

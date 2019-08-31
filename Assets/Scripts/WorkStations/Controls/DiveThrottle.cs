@@ -39,7 +39,7 @@ public class DiveThrottle : MonoBehaviour, IClickHoldable, IScrollable
         if (moveing == null) { return; } //if everything is set up, continue
 
         //Set Speed Arrow
-        if (Mathf.Abs(moveing.inputThrottle) > 0.001f)
+        if (Mathf.Abs(moveing.inputThrottle) > 0.001f) //FIXME: feedback Arrow is stuck at "Rise" on client, need solution to read ship velocity on client
         {
             Vector3 vector = body.velocity;
             Vector2 hor = new Vector2(vector.x, vector.z);

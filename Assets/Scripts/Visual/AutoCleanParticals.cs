@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AutoCleanParticals : MonoBehaviour
 {
-
+    //deletes the gameobject when the particals are done.
     ParticleSystem ps;
     void Start()
     {
