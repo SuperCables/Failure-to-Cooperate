@@ -21,7 +21,7 @@ public class PostProcessingFogCam : MonoBehaviour
 
     void Update()
     {
-        FogCenter = Game.global?.trans;
+        FogCenter = InGame.global?.trans;
     }
 
     //method which is automatically called by unity after the camera is done rendering

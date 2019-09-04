@@ -22,7 +22,7 @@ public class BatteryMananger : MonoBehaviour //this systemManager doesn't inhere
 
     void Update()
     {
-        maxPower = 0;
+        maxPower = 50;
         foreach (Battery v in batterys)
         {
             maxPower += v.maxPower;

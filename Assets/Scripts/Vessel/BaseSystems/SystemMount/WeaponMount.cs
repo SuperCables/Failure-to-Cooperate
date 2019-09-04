@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponMount : MonoBehaviour
+public class WeaponMount : BaseMount
 {
 
     [Header("Self Assign")]

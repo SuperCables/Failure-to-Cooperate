@@ -53,7 +53,7 @@ public class RadarScreenUI : BaseEntityScreenUI
         if (player != null)
         {
             radarZoomRadus = (8 * 67.2f) / scale;
-            Game.global.cameraMananger.RadarCam.orthographicSize = radarZoomRadus;
+            InGame.global.cameraMananger.RadarCam.orthographicSize = radarZoomRadus;
 
             scale = Mathf.SmoothDamp(scale, tarScale, ref curScaleSpeed, 0.1f, 250, Time.deltaTime);
 
@@ -71,7 +71,7 @@ public class RadarScreenUI : BaseEntityScreenUI
         if (Input.GetMouseButton(1) && clickToDrive)
         {
             //float dedMag = (Mathf.Clamp(mDis, 0.2f, 0.7f) - .2f) * 2;
-            Game.global?.localConnection?.CmdSetShipHeading(mDir);
+            InGame.global?.localConnection?.CmdSetShipHeading(mDir);
             //Game.global.localConnection.CmdSetShipThrust(dedMag);
         }
     }
@@ -80,17 +80,17 @@ public class RadarScreenUI : BaseEntityScreenUI
     {
         
         //Vector2 basePos = Game.V3toV2(Game.global.localConnection.ship.transform.position);
-        Vector2 basePos = Game.V3toV2(player.transform.position) + offsetDrag;
+        Vector2 basePos = InGame.V3toV2(player.transform.position) + offsetDrag;
         //float baseAngle = Player.transform.rotation.eulerAngles.y;
         
-        weaponManager = Game.global?.weaponManager;
+        weaponManager = InGame.global?.weaponManager;
 
         foreach (BaseEntityBlipUI v in blips)
         {
             Transform t = v.repEntity.transform;
             RectTransform r = v.rootTransform;
             float angle = t.rotation.eulerAngles.y;
-            Vector2 pos = Game.V3toV2(v.repEntity.transform.position);
+            Vector2 pos = InGame.V3toV2(v.repEntity.transform.position);
 
             pos = pos - basePos;
             //self.body.velocity = (Quaternion.Euler (0, angle, 0) * Game.V2toV3(velocity));

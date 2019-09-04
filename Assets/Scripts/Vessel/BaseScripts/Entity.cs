@@ -46,7 +46,7 @@ public class Entity : NetworkBehaviour
         //Rebuild();
         body.isKinematic = !isServer; //all cliants are kinimatic
         Title = "Ship " + UnityEngine.Random.Range(10, 99);
-        Game.global.AddUnit(this);
+        InGame.global.AddUnit(this);
 
     }
 
@@ -64,7 +64,7 @@ public class Entity : NetworkBehaviour
 
     void OnDestroy()
     {
-        Game.global.RemoveUnit(this);
+        InGame.global.RemoveUnit(this);
     }
 
 }

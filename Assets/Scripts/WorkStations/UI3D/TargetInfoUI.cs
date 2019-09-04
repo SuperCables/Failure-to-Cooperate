@@ -66,17 +66,17 @@ public class TargetInfoUI : MonoBehaviour
     {
         if (viewSetting == TargetViewSetting.CurrentShip)
         {
-            display = Game.global?.localConnection?.playerEntity;
+            display = InGame.global?.localConnection?.playerEntity;
         }
 
         if (viewSetting == TargetViewSetting.Target1)
         {
-            display = Game.global?.localConnection?.playerEntity?.vessel?.weaponManager?.Target1;
+            display = InGame.global?.localConnection?.playerEntity?.vessel?.weaponManager?.Target1;
         }
 
         if (viewSetting == TargetViewSetting.Target2)
         {
-            display = Game.global?.localConnection?.playerEntity?.vessel?.weaponManager?.Target2;
+            display = InGame.global?.localConnection?.playerEntity?.vessel?.weaponManager?.Target2;
         }
 
         if (display != null)

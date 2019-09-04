@@ -17,6 +17,6 @@ public class TestSpawnEvil : MonoBehaviour
 
     public void Summon()
     {
-        Game.global?.localConnection?.CmdSummonEvil();
+        InGame.global?.localConnection?.CmdSummonEvil();
     }
 }

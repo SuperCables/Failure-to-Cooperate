@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EngineMount : MonoBehaviour
+public class EngineMount : BaseMount
 {
     public Engine engine;
 

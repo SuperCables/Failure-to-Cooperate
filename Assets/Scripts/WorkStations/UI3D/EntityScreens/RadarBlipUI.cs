@@ -49,7 +49,7 @@ public class RadarBlipUI : BaseEntityBlipUI{ //an object on the radar
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Game.global.SelectUnit(repEntity);
+                InGame.global.SelectUnit(repEntity);
             }
         }
 

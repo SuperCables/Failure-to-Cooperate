@@ -60,7 +60,7 @@ public class VesselHull : NetworkBehaviour
     public void TakeDamage (float ammount, Vector3 from, float shieldMul, float armorMul)
     {
         Vector3 localImpactPos = entity.transform.InverseTransformPoint(from); //change impact point to local space
-        float angle = 90 - Game.Vector2ToDegree(Game.V3toV2(localImpactPos));
+        float angle = 90 - InGame.Vector2ToDegree(InGame.V3toV2(localImpactPos));
         int shieldIndex = (Mathf.RoundToInt(angle * shieldsSegments / 360) + shieldsSegments) % shieldsSegments;
         int armorIndex = (Mathf.RoundToInt(angle * armorSegments / 360) + armorSegments) % armorSegments;
         //print(shieldIndex);

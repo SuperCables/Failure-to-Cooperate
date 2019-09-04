@@ -18,8 +18,8 @@ public class ScreenSwitcherUI : MonoBehaviour
             v.SetActive(false);
         }
 
-        Game.global.cameraMananger.MainCam.enabled = true;
-        Game.global.cameraMananger.RadarCam.enabled = false;
+        InGame.global.cameraMananger.MainCam.enabled = true;
+        InGame.global.cameraMananger.RadarCam.enabled = false;
     }
 
     void Update()
@@ -37,13 +37,13 @@ public class ScreenSwitcherUI : MonoBehaviour
         int choice = dropDown.value;
         if (choice == 0)
         {
-            Game.global.cameraMananger.MainCam.enabled = true;
-            Game.global.cameraMananger.RadarCam.enabled = false;
+            InGame.global.cameraMananger.MainCam.enabled = true;
+            InGame.global.cameraMananger.RadarCam.enabled = false;
         }
         else
         {
-            Game.global.cameraMananger.MainCam.enabled = false;
-            Game.global.cameraMananger.RadarCam.enabled = true;
+            InGame.global.cameraMananger.MainCam.enabled = false;
+            InGame.global.cameraMananger.RadarCam.enabled = true;
             SetVisible(Stations[choice - 1], true); 
         }
     }

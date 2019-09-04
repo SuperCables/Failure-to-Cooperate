@@ -23,11 +23,11 @@ public class BaseEntityScreenUI : MonoBehaviour
 
     public virtual void Start()
     {
-        player = Game.global?.entity;
+        player = InGame.global?.entity;
         globalStation = GetComponentInParent<GlobalStation>();
-        Game.global.UnitAdded += AddBlip;
-        Game.global.UnitRemoved += RemoveBlip;
-        Game.global.UnitSelected += SelectUnit;
+        InGame.global.UnitAdded += AddBlip;
+        InGame.global.UnitRemoved += RemoveBlip;
+        InGame.global.UnitSelected += SelectUnit;
         Refresh();
     }
 
@@ -38,7 +38,7 @@ public class BaseEntityScreenUI : MonoBehaviour
 
     public virtual void Update()
     {
-        player = Game.global?.entity;
+        player = InGame.global?.entity;
         if (player != null)
         {
             ReadInput();
@@ -56,7 +56,7 @@ public class BaseEntityScreenUI : MonoBehaviour
         {
             Vector3 mouseHitPoint = ray.GetPoint(rayDistance); //find mouse pos
             mousePos = (Vector2)entrysTransform.InverseTransformPoint(mouseHitPoint); //and localize it
-            float mDir = 90 - Game.Vector2ToDegree(mousePos);
+            float mDir = 90 - InGame.Vector2ToDegree(mousePos);
             float mDis = mousePos.magnitude / 540; //constand needs variable
             if (mDis < 1)
             {
@@ -74,7 +74,7 @@ public class BaseEntityScreenUI : MonoBehaviour
     {
         bool dirty = false;
 
-        weaponManager = Game.global?.weaponManager; //easy acsess to targeting info
+        weaponManager = InGame.global?.weaponManager; //easy acsess to targeting info
 
         foreach (BaseEntityBlipUI v in blips)
         {
@@ -127,14 +127,14 @@ public class BaseEntityScreenUI : MonoBehaviour
 
     protected void Refresh()
     {
-        player = Game.global?.entity;
+        player = InGame.global?.entity;
         blips.Clear(); //clean blips list
         foreach (Transform v in entrysTransform) //clean actual blips
         {
             Destroy(v.gameObject);
         }
 
-        foreach (Entity v in Game.global.allUnits) //for each item to add
+        foreach (Entity v in InGame.global.allUnits) //for each item to add
         {
             AddBlip(v);
         }

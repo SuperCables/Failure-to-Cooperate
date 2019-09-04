@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
 
-public class WeaponBank : NetworkBehaviour
+public class WeaponBank : MonoBehaviour
 {
     public float aimArc = 60; //swivel range
     public float maxRange;
@@ -27,7 +26,7 @@ public class WeaponBank : NetworkBehaviour
 
     void Update()
     {
-        if (isServer)
+        if (InGame.netGlobal.server)
         {
             FireAt = null;
             bool noTarget = true;

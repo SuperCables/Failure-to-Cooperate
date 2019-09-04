@@ -45,13 +45,13 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
     void Start()
     {
         torpedoControlUI = GetComponentInParent<TorpedoControlUI>();
-        torpedoMananger = Game.global?.torpedoMananger; //set new refs
+        torpedoMananger = InGame.global?.torpedoMananger; //set new refs
         clipDefColor = ClipBack.color;
     }
 
     void NewTube()
     {
-        torpedoMananger = Game.global?.torpedoMananger; //set new refs
+        torpedoMananger = InGame.global?.torpedoMananger; //set new refs
         repEntity = torpedoTube;
         torpedoArray = torpedoTube.torpedoArray;
 
@@ -137,7 +137,7 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
 
     void SetIcon(Image LoadedIcon, TorpedoType tp)
     {
-        Sprite icon = Game.global.GetTorpedoIcon(tp);
+        Sprite icon = InGame.global.GetTorpedoIcon(tp);
         LoadedIcon.sprite = icon;
         SetVisible(LoadedIcon.gameObject, (icon != null));
     }

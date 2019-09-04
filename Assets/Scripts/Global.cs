@@ -92,12 +92,4 @@ public class Global : MonoBehaviour
         }
     }
 
-    //Temperary debogging
-    public void SpawnEvil()
-    {
-        GameObject entity = Instantiate(evil);
-        entity.transform.position = UnityEngine.Random.insideUnitSphere * 20;
-        //NetworkServer.Spawn(entity); FIXME
-    }
-
 }

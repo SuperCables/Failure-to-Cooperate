@@ -31,7 +31,7 @@ public class Distributer : NetworkBehaviour
     {
         batteryPower += reactorManager.production * Time.deltaTime;
 
-        maxBatteryPower = batteryMananger.maxPower + 50;
+        maxBatteryPower = batteryMananger.maxPower;
         if (batteryPower > maxBatteryPower)
         {
             batteryPower = maxBatteryPower;
@@ -64,9 +64,9 @@ public class Distributer : NetworkBehaviour
                     v.demand = 0; //we cant give back power
                 }
 
-                if (v.energy > v.maxEnergy) //if overpowered
+                if (v.energy > v.maxEnergy + 1) //if overpowered
                 {
-                    v.energy = v.maxEnergy; //lose the extra power
+                    v.energy = v.maxEnergy + 1; //lose the extra power
                 }
             }
 

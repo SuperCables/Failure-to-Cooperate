@@ -1,23 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class Game : MonoBehaviour
+public class InGame : MonoBehaviour
 {
 	
 	//public static Player player;
 	public static Global global;
-	//public static Interface ui;
+    public static NetGlobal netGlobal;
+    public static WorldMananger worldMananger;
+    //public static Interface ui;
 
-	void Awake() {
+    void Awake() {
 		GameObject g;
 
 		g = safeFind("Global"); // (some persistent gema object)
 		global = (Global)safeComponent( g, "Global" );
+        g = safeFind("NetGlobal"); // (some persistent gema object)
+        netGlobal = (NetGlobal)safeComponent(g, "NetGlobal");
+        g = safeFind("WorldMananger"); // (some persistent gema object)
+        worldMananger = (WorldMananger)safeComponent(g, "WorldMananger");
 
-		//g = safeFind("Canvas"); // (some persistent gema object)
-		//ui = (Interface)safeComponent( g, "Interface" );
+        //g = safeFind("Canvas"); // (some persistent gema object)
+        //ui = (Interface)safeComponent( g, "Interface" );
 
-	}
+    }
 
 	public static void SayHello()
 	{

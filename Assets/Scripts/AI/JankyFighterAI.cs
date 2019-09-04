@@ -31,9 +31,9 @@ public class JankyFighterAI : MonoBehaviour
             move = body.movement;
         }
 
-            Vector2 delta = Game.V3toV2(body.transform.position - target.transform.position);
+            Vector2 delta = InGame.V3toV2(body.transform.position - target.transform.position);
         
-        float angle = -Game.Vector2ToDegree(delta) - 90;
+        float angle = -InGame.Vector2ToDegree(delta) - 90;
 
         float dist = delta.SqrMagnitude();
         if (dist > turnMax * turnMax) { turnAway = false; }

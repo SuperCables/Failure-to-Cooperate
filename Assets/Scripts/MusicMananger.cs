@@ -28,7 +28,7 @@ public class MusicMananger : MonoBehaviour
         musicCoolDown -= Time.deltaTime;
         if (musicCoolDown < 0) {
             if (player == null || evil == null) return;
-            Vector2 delta = Game.V3toV2(player.position - evil.position);
+            Vector2 delta = InGame.V3toV2(player.position - evil.position);
             float dist = delta.SqrMagnitude();
 
             if (mode == 1 && dist > 500 * 500) {

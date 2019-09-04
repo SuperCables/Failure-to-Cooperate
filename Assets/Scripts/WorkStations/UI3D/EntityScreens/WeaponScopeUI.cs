@@ -16,7 +16,7 @@ public class WeaponScopeUI : BaseEntityScreenUI
     public override void Update()
     {
         base.Update();
-        player = Game.global?.entity;
+        player = InGame.global?.entity;
         if (player != null)
         {
             UpdateInput();
@@ -40,7 +40,7 @@ public class WeaponScopeUI : BaseEntityScreenUI
         {
             Vector3 mouseHitPoint = ray.GetPoint(rayDistance); //find mouse pos
             mousePos = (Vector2)entrysTransform.InverseTransformPoint(mouseHitPoint); //and localize it
-            float mDir = 90 - Game.Vector2ToDegree(mousePos);
+            float mDir = 90 - InGame.Vector2ToDegree(mousePos);
             float mDis = mousePos.magnitude / 540; //constant needs variable
             bool mouseOver = (mDis < 1);
             //print(mDis);
@@ -49,7 +49,7 @@ public class WeaponScopeUI : BaseEntityScreenUI
     
     void UpdateBlips()
     {
-        weaponManager = Game.global?.weaponManager;
+        weaponManager = InGame.global?.weaponManager;
 
         foreach (WeaponScopeBlipUI v in blips)
         {

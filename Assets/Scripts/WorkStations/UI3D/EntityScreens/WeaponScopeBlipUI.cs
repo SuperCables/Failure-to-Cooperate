@@ -29,7 +29,7 @@ public class WeaponScopeBlipUI : BaseEntityBlipUI
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Game.global.SelectUnit(repEntity);
+                InGame.global.SelectUnit(repEntity);
             }
         }
 
