@@ -15,7 +15,7 @@ public class CoreBank : NetworkBehaviour
 
     void Start()
     {
-        if (isServer)
+        if (NetworkServer.active)
         {
             for (int i = 0; i < coreCount; i++)
             {

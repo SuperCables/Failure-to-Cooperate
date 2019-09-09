@@ -21,8 +21,9 @@ public class WeaponManager : BaseSystemManager
         Rebuild();
     }
 
-    void Rebuild()
+    public override void Rebuild()
     {
+        base.Rebuild();
         weaponMounts = GetComponentsInChildren<BaseWeapon>();
         weaponBanks = GetComponentsInChildren<WeaponBank>();
 

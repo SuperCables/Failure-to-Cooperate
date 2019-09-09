@@ -5,6 +5,9 @@ using UnityEngine;
 public class Definitions : MonoBehaviour
 {
 
+    public EngineData[] engine;
+
+    public WeaponData[] ProjectileWeapons;
 
     void Start()
     {

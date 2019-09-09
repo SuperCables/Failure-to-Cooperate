@@ -5,6 +5,7 @@ using UnityEngine;
 public class EngineMananger : BaseSystemManager
 {
     
+    [Header("Self Assign")]
     public Engine[] engines;
 
     [Space(10)]
@@ -18,8 +19,9 @@ public class EngineMananger : BaseSystemManager
         Rebuild();
     }
 
-    void Rebuild()
+    public override void Rebuild()
     {
+        base.Rebuild();
         engines = GetComponentsInChildren<Engine>();
         float thisWattage = 0;
         float thisMaxThrust = 0;

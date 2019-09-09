@@ -6,7 +6,13 @@ using Mirror;
 [RequireComponent(typeof(CoreBank))]
 public class BaseSystem : NetworkBehaviour
 {
-    //[HideInInspector]
+    [Header("Basic Info")]
+    public string title = "System";
+    public int cost = 1;
+    public float wattage = 1;
+    public float thermalLoad = 1;
+
+    [Header("Cores (Self Assign)")]
     public CoreBank Cores;
     public float usability = 1;
 
@@ -19,4 +25,5 @@ public class BaseSystem : NetworkBehaviour
     {
         usability = Cores.usability;
     }
+
 }

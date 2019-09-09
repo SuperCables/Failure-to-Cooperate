@@ -49,11 +49,13 @@ public class WeaponScopeUI : BaseEntityScreenUI
     
     void UpdateBlips()
     {
+        if (weaponBank == null) { return; }
         weaponManager = InGame.global?.weaponManager;
+        Vector3 pos = weaponBank.transform.position;
 
         foreach (WeaponScopeBlipUI v in blips)
         {
-            Vector3 pos = weaponBank.transform.position;
+            
             Vector3 targetPos = v.repEntity.transform.position;
 
             //TODO: Lead target here!

@@ -23,8 +23,8 @@ public class ReactorManager : MonoBehaviour //this systemManager doesn't inheret
 
     void Update()
     {
-        production = 0;
-        maxproduction = 0;
+        production = 5;
+        maxproduction = 5;
         foreach (Reactor v in reactors)
         {
             production += v.powerOutput;

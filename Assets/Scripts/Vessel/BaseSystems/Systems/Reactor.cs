@@ -5,8 +5,6 @@ using Mirror;
 
 public class Reactor : BaseSystem
 {
-    [SyncVar]
-    public float wattage = 2; //power produced per second
     public float powerOutput = 0;
 
     public override void Start()

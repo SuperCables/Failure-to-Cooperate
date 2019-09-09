@@ -21,11 +21,10 @@ public class BaseSystemManager : MonoBehaviour //more of a consumer mananger, do
 
     public virtual void Start()
     {
-        GetComponentInParent<Entity>().FullRebuild += Rebuild;
-        Rebuild();
+        
     }
 
-    void Rebuild()
+    public virtual void Rebuild()
     {
         maxEnergy = maxWattage * 10; //seconds of power
         //maxEnergy = 50;

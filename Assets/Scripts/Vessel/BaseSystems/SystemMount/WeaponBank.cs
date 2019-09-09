@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeaponBank : MonoBehaviour
 {
     public float aimArc = 60; //swivel range
-    public float maxRange;
+    public float maxRange; //range of longest weapon
 
     public Entity FireAt;
 
@@ -22,6 +22,15 @@ public class WeaponBank : MonoBehaviour
     {
         WeaponManager = GetComponentInParent<WeaponManager>();
         guns = GetComponentsInChildren<BaseWeapon>();
+
+        maxRange = 0;
+        foreach (BaseWeapon v in guns)
+        {
+            if (v.range > maxRange)
+            {
+                maxRange = v.range;
+            }
+        }
     }
 
     void Update()
@@ -46,16 +55,6 @@ public class WeaponBank : MonoBehaviour
                 //AimAt(); //aim at closest or somthing
             }
         } //end is server
-
-        maxRange = 0;
-        foreach (BaseWeapon v in guns)
-        {
-            if (v.range > maxRange)
-            {
-                maxRange = v.range;
-            }
-        }
-
     }
 
     bool AimAt(Entity target)
@@ -64,7 +63,7 @@ public class WeaponBank : MonoBehaviour
         Vector3 pos = transform.position;
         Vector3 targetPos = target.transform.position;
 
-        //Lead target here!
+        //TODO: Lead target here!
         Vector3 leadPoint = targetPos;
 
         Quaternion aimAngle = Quaternion.Inverse(transform.rotation) * Quaternion.LookRotation(leadPoint - pos, Vector3.up);
@@ -72,14 +71,12 @@ public class WeaponBank : MonoBehaviour
         
         if (Quaternion.Angle(Quaternion.identity, aimAngle) < aimArc/2) //if in arc
         {
-            //transform.localRotation = Quaternion.Euler(0, aimAngle, 0);
             FireAt = target;
             return true;
         }
         else
         {
             FireAt = null;
-            //aimAngle = 0;
             return false;
         }
     }

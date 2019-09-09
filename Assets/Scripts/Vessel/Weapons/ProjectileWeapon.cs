@@ -5,19 +5,14 @@ using Mirror;
 
 public class ProjectileWeapon : BaseWeapon
 {
+
     [Header("Ammo")]
     public int ammo = 2000;
-    public int maxAmmo = 2000;
-    public float ammoMass = 2; //max ammo mass
+    public int clipSize;
 
     [Header("Fireing")]
-    public float reloadTime = 1f/3; //inverse of fire rate
-    public float shellSpeed = 100; //meters / second
-
-    [Header("Breach")]
-    public float hullBreachMin = 3; //min armor for guarentee to penitrate
-    public float hullBreachMax = 10; //max armor for chance to penitrate
-    public float systemHitChance = 0.8f; //chance for penitrate to strike the desired system
+    public float cycleTime;
+    public float shellSpeed;
 
     [Header("Assignment")]
     public Transform muzzle;
@@ -30,7 +25,7 @@ public class ProjectileWeapon : BaseWeapon
     public override void Start()
     {
         base.Start();
-        powerPerShot = (wattage * reloadTime);
+        powerPerShot = (wattage * cycleTime);
     }
 
     public override void Update()
@@ -44,12 +39,12 @@ public class ProjectileWeapon : BaseWeapon
         }
     }
 
-    public override void Fire(Entity target) //
+    public override void HoldTrigger(Entity target) //attempts to shoot a target as if trigger held
     {//this is only called by the server, so this will never run on the client
         //is reloaded and has ammo and RPM < Inf and has power?
-        while ((nextShot <= 0) && (ammo > 0) && (reloadTime > 0) && (WeaponManager.energy > powerPerShot)) 
+        while ((nextShot <= 0) && (ammo > 0) && (cycleTime > 0) && (WeaponManager.energy > powerPerShot)) 
         {
-            nextShot += reloadTime;
+            nextShot += cycleTime;
             ammo -= 1;
             WeaponManager.energy -= powerPerShot;
 
@@ -103,5 +98,25 @@ public class ProjectileWeapon : BaseWeapon
         
     }
 
+    [ClientRpc]
+    public void RpcClientMorph(WeaponData data) //should only be called after being created
+    {
+        if (!isServer) //if we arn't the server (so we arn't updated)
+        {
+            Morph(data); //become what the server demands
+        }
+
+    }
+
+    public void Morph(WeaponData data) //unpack everything
+    {
+        title = data.title;
+        wattage = data.wattage;
+        thermalLoad = data.thermalLoad;
+        range = data.range;
+        clipSize = data.clipSize;
+        cycleTime = data.cycleTime;
+        shellSpeed = data.shellSpeed;
+    }
 
 }

@@ -43,7 +43,7 @@ public class DirectProjectile : MonoBehaviour
         if (entity == null) { Destroy(gameObject); return; }
         VesselHull hull = entity.hull;
         if (hull == null) { Destroy(gameObject); return; }
-        //object is damagable
+        //if we reach here, object is damagable
 
         Vector3 tarPos = target.transform.position;
         Vector3 diff = (tarPos - startPos);

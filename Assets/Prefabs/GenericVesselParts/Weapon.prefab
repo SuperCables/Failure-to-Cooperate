@@ -65,6 +65,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -125,7 +126,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
-  cores: {fileID: 0}
+  title: 
+  Cores: {fileID: 0}
   usability: 1
   wattage: 1
   thermalLoad: 7
@@ -135,12 +137,8 @@ MonoBehaviour:
   Mount: {fileID: 0}
   ammo: 2000
   maxAmmo: 2000
-  ammoMass: 2
-  reloadTime: 5
+  cycleTime: 1
   shellSpeed: 100
-  hullBreachMin: 3
-  hullBreachMax: 10
-  systemHitChance: 0.8
   muzzle: {fileID: 2374000144205162940}
   TemplateShell: {fileID: 0}
   fireEffectTemplate: {fileID: 1000010254994808, guid: 9defeac88977c0d448aa4541073ee9e4,
@@ -172,10 +170,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SceneId: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
+  serverOnly: 0
+  localPlayerAuthority: 0
   m_AssetId: df1ca4f7f766084449797abf6e804d94
+  m_SceneId: 0
 --- !u!1 &8061489542282478072
 GameObject:
   m_ObjectHideFlags: 0

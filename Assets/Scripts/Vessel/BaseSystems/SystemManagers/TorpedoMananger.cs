@@ -16,7 +16,7 @@ public class TorpedoMananger : BaseSystemManager
         Rebuild();
     }
 
-    void Rebuild()
+    public override void Rebuild()
     {
         tubes = GetComponentsInChildren<TorpedoTube>();
         torpedoArray = GetComponentsInChildren<TorpedoArray>();

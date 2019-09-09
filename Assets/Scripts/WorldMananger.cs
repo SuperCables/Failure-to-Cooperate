@@ -7,8 +7,9 @@ public class WorldMananger : MonoBehaviour
 {
 
     [Header("Assignment")]
-    public Vessel shipBase;
+    public Entity shipBase;
     public VesselHull testHull;
+    public Engine engineTemplate;
 
     void Start()
     {
@@ -22,12 +23,24 @@ public class WorldMananger : MonoBehaviour
 
     public void SpawnTest()
     {
-        Vessel v = Instantiate(shipBase);
-        VesselHull h = Instantiate(testHull);
-        h.transform.parent = v.transform;
-        v.transform.position = Vector3.forward * 200 + UnityEngine.Random.insideUnitSphere * 50;
-        NetworkServer.Spawn(v.gameObject);
-        NetworkServer.Spawn(h.gameObject);
+        Entity vessel = Instantiate(shipBase);
+        VesselHull hull = Instantiate(testHull);
+        hull.transform.parent = vessel.transform;
+        vessel.transform.position = Vector3.forward * 200 + UnityEngine.Random.insideUnitSphere * 50;
+        NetworkServer.Spawn(vessel.gameObject);
+        NetworkServer.Spawn(hull.gameObject);
+
+        //add reactor
+
+        EngineMount[] EngineMounts = hull.GetComponentsInChildren<EngineMount>();
+        foreach (EngineMount v in EngineMounts)
+        {
+            Engine engine = Instantiate(engineTemplate);
+            engine.transform.SetParent(v.transform, false);
+            NetworkServer.Spawn(engine.gameObject);
+
+        }
+        vessel.InvokeFullRebuild();
     }
 
 }

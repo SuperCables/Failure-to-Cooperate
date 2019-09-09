@@ -38,16 +38,18 @@ public class Entity : NetworkBehaviour
     //[HideInInspector]
     public VesselHull hull;
 
-    void Start () {
-        FullRebuild += Rebuild;
-
-        FullRebuild?.Invoke();
-
-        //Rebuild();
-        body.isKinematic = !isServer; //all cliants are kinimatic
+    void Awake()
+    {
+        Rebuild();
         Title = "Ship " + UnityEngine.Random.Range(10, 99);
-        InGame.global.AddUnit(this);
+    }
 
+    void Start()
+    {
+        InGame.global.AddUnit(this);
+        FullRebuild += Rebuild;
+        FullRebuild?.Invoke();
+        body.isKinematic = !isServer; //all cliants are kinimatic
     }
 
     void Rebuild()
@@ -56,6 +58,11 @@ public class Entity : NetworkBehaviour
         colliders = GetComponentsInChildren<Collider>();
         vessel = GetComponent<Vessel>();
         hull = GetComponentInChildren<VesselHull>();
+    }
+
+    public void InvokeFullRebuild()
+    {
+        FullRebuild?.Invoke();
     }
 
 	void FixedUpdate () {

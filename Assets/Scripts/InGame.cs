@@ -8,6 +8,7 @@ public class InGame : MonoBehaviour
 	public static Global global;
     public static NetGlobal netGlobal;
     public static WorldMananger worldMananger;
+    public static Definitions definitions;
     //public static Interface ui;
 
     void Awake() {
@@ -19,6 +20,8 @@ public class InGame : MonoBehaviour
         netGlobal = (NetGlobal)safeComponent(g, "NetGlobal");
         g = safeFind("WorldMananger"); // (some persistent gema object)
         worldMananger = (WorldMananger)safeComponent(g, "WorldMananger");
+        g = safeFind("Definitions"); // (some persistent gema object)
+        definitions = (Definitions)safeComponent(g, "Definitions");
 
         //g = safeFind("Canvas"); // (some persistent gema object)
         //ui = (Interface)safeComponent( g, "Interface" );

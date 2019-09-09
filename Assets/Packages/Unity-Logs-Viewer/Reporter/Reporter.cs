@@ -1590,8 +1590,8 @@ public class Reporter : MonoBehaviour
 
 	List<Vector2> gestureDetector = new List<Vector2>();
 	Vector2 gestureSum = Vector2.zero;
-	float gestureLength = 0;
-	int gestureCount = 0;
+	//float gestureLength = 0;
+	//int gestureCount = 0;
 	bool isGestureDone()
 	{
 
@@ -2023,9 +2023,11 @@ public class Reporter : MonoBehaviour
 
 
 
-		// float startTime = Time.realtimeSinceStartup;
-		WWW www = new WWW(url);
-		yield return www;
+        // float startTime = Time.realtimeSinceStartup;
+#pragma warning disable CS0618 // Type or member is obsolete
+        WWW www = new WWW(url);
+#pragma warning restore CS0618 // Type or member is obsolete
+        yield return www;
 
 		if (!string.IsNullOrEmpty(www.error)) {
 			Debug.LogError(www.error);

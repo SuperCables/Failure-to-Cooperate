@@ -47,10 +47,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncInterval: 0.1
+  title: Empty Engine
+  cost: 1
+  wattage: 2
+  thermalLoad: 1
   Cores: {fileID: 0}
   usability: 1
   thrust: 25
-  wattage: 2
+  torque: 5
 --- !u!114 &4419524649185109326
 MonoBehaviour:
   m_ObjectHideFlags: 0
