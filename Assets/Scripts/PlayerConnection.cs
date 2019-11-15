@@ -13,10 +13,8 @@ public class PlayerConnection : NetworkBehaviour
         if (isLocalPlayer)
         {
             InGame.global.localConnection = this;
-
-            //ship = GameObject.FindGameObjectWithTag("Player").GetComponent<Vessel>(); //replace with ship selecter!
         }
-        playerEntity = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>(); //TODO replace with ship selecter!
+        //playerEntity = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>(); //TODO replace with ship selecter!
     }
 
 

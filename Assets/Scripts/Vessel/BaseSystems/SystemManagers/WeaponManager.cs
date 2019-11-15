@@ -8,7 +8,7 @@ public class WeaponManager : BaseSystemManager
 {
 
     [Header("Self Assign")]
-    public BaseWeapon[] weaponMounts;
+    public Weapon[] weaponMounts;
     public WeaponBank[] weaponBanks;
     [Space(10)]
     public Entity Target1;
@@ -23,12 +23,11 @@ public class WeaponManager : BaseSystemManager
 
     public override void Rebuild()
     {
-        base.Rebuild();
-        weaponMounts = GetComponentsInChildren<BaseWeapon>();
+        weaponMounts = GetComponentsInChildren<Weapon>();
         weaponBanks = GetComponentsInChildren<WeaponBank>();
 
         float thisWattage = 0;
-        foreach (BaseWeapon v in weaponMounts)
+        foreach (Weapon v in weaponMounts)
         {
             if (v != null)
             {
@@ -36,6 +35,7 @@ public class WeaponManager : BaseSystemManager
             }
         }
         maxWattage = thisWattage;
+        base.Rebuild();
     }
 
     public override void Update()

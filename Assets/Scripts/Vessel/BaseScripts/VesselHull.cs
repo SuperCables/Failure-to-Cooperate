@@ -14,7 +14,7 @@ public class VesselHull : NetworkBehaviour
     public int shieldsSegments = 16;
     public float maxShields = 50;
     [Header("Misc")]
-    public float maxBoundsSize = 5; //furthest point from center (for display scaleing and such)
+    //public float maxBoundsSize = 5; //furthest point from center (for display scaleing and such)
     public float mass = 3;
 
     public SyncListFloat armor;
@@ -29,21 +29,24 @@ public class VesselHull : NetworkBehaviour
         GetComponentInParent<Entity>().FullRebuild += Rebuild;
         Rebuild();
     }
-	
+
     void Rebuild()
     {
         entity = GetComponentInParent<Entity>();
-        armor.Clear();
-        shields.Clear();
-
-        for (int i = 0; i < armorSegments; i++)
+        if (NetworkServer.active)
         {
-            armor.Add(maxArmor);
-        }
+            armor.Clear();
+            shields.Clear();
 
-        for (int i = 0; i < shieldsSegments; i++)
-        {
-            shields.Add(maxShields);
+            for (int i = 0; i < armorSegments; i++)
+            {
+                armor.Add(maxArmor);
+            }
+
+            for (int i = 0; i < shieldsSegments; i++)
+            {
+                shields.Add(maxShields);
+            }
         }
     }
 
@@ -54,7 +57,10 @@ public class VesselHull : NetworkBehaviour
 
     void FixedUpdate()
     {
-        ShieldFlow();
+        if (NetworkServer.active)
+        {
+            ShieldFlow();
+        }
     }
 
     public void TakeDamage (float ammount, Vector3 from, float shieldMul, float armorMul)
@@ -95,9 +101,9 @@ public class VesselHull : NetworkBehaviour
             shields[i] -= flow;
             shields[o] += flow;
 
-            if (shields[i] > maxShields)
+            if (shields[i] > maxShields + 1f)
             {
-                shields[i] = maxShields;
+                shields[i] = maxShields + 1f;
             }
 
             if (shields[i] < 0)

@@ -6,7 +6,6 @@ public class InGame : MonoBehaviour
 	
 	//public static Player player;
 	public static Global global;
-    public static NetGlobal netGlobal;
     public static WorldMananger worldMananger;
     public static Definitions definitions;
     //public static Interface ui;
@@ -16,8 +15,6 @@ public class InGame : MonoBehaviour
 
 		g = safeFind("Global"); // (some persistent gema object)
 		global = (Global)safeComponent( g, "Global" );
-        g = safeFind("NetGlobal"); // (some persistent gema object)
-        netGlobal = (NetGlobal)safeComponent(g, "NetGlobal");
         g = safeFind("WorldMananger"); // (some persistent gema object)
         worldMananger = (WorldMananger)safeComponent(g, "WorldMananger");
         g = safeFind("Definitions"); // (some persistent gema object)

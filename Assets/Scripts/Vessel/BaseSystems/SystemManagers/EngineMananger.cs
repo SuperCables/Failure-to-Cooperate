@@ -21,7 +21,6 @@ public class EngineMananger : BaseSystemManager
 
     public override void Rebuild()
     {
-        base.Rebuild();
         engines = GetComponentsInChildren<Engine>();
         float thisWattage = 0;
         float thisMaxThrust = 0;
@@ -35,6 +34,7 @@ public class EngineMananger : BaseSystemManager
         }
         maxWattage = thisWattage;
         maxThrust = thisMaxThrust;
+        base.Rebuild();
     }
 
     public override void Update()

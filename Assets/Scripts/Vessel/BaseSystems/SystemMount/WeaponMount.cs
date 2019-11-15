@@ -5,12 +5,13 @@ using UnityEngine;
 public class WeaponMount : BaseMount
 {
 
-    [Header("Self Assign")]
+    //[Header("Self Assign")]
     public WeaponBank Rack;
     //public BaseWeapon Gun;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         GetComponentInParent<Entity>().FullRebuild += Rebuild;
         Rebuild();
     }

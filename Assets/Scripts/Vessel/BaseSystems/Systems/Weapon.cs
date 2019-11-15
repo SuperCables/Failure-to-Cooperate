@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class ProjectileWeapon : BaseWeapon
+public class Weapon : BaseSystem
 {
 
-    [Header("Ammo")]
-    public int ammo = 2000;
-    public int clipSize;
+    [Header("Aiming")]
+    public float range;
 
     [Header("Fireing")]
     public float cycleTime;
     public float shellSpeed;
+
+    [Header("Ammo")]
+    public int ammo;
+    //public int clipSize;
+    //public float reloadTime;
 
     [Header("Assignment")]
     public Transform muzzle;
@@ -22,27 +26,47 @@ public class ProjectileWeapon : BaseWeapon
     float nextShot;
     float powerPerShot;
 
+    //self assign
+    [HideInInspector]
+    public Vessel MountedVessel;
+    [HideInInspector]
+    public WeaponManager WeaponManager;
+    [HideInInspector]
+    public WeaponMount Mount;
+    [HideInInspector]
+
+    [SyncVar]
+    Quaternion aimAngle;
+
     public override void Start()
     {
         base.Start();
+        GetComponentInParent<Entity>().FullRebuild += Rebuild;
+        Rebuild();
+    }
+
+    void Rebuild()
+    {
+        MountedVessel = GetComponentInParent<Vessel>();
+        WeaponManager = GetComponentInParent<WeaponManager>();
+        Mount = GetComponentInParent<WeaponMount>();
         powerPerShot = (wattage * cycleTime);
     }
 
     public override void Update()
     {
         base.Update();
-        
-
         if (nextShot > 0)
         {
             nextShot -= Time.deltaTime;
         }
+
     }
 
-    public override void HoldTrigger(Entity target) //attempts to shoot a target as if trigger held
+    public void HoldTrigger(Entity target) //attempts to shoot a target as if trigger held
     {//this is only called by the server, so this will never run on the client
         //is reloaded and has ammo and RPM < Inf and has power?
-        while ((nextShot <= 0) && (ammo > 0) && (cycleTime > 0) && (WeaponManager.energy > powerPerShot)) 
+        while ((nextShot <= 0) && (ammo > 0) && (cycleTime > 0) && (WeaponManager.energy > powerPerShot))
         {
             nextShot += cycleTime;
             ammo -= 1;
@@ -95,7 +119,7 @@ public class ProjectileWeapon : BaseWeapon
         {
             SpawnShell(target); //spawn our shell
         }
-        
+
     }
 
     [ClientRpc]
@@ -110,13 +134,19 @@ public class ProjectileWeapon : BaseWeapon
 
     public void Morph(WeaponData data) //unpack everything
     {
-        title = data.title;
-        wattage = data.wattage;
-        thermalLoad = data.thermalLoad;
-        range = data.range;
-        clipSize = data.clipSize;
-        cycleTime = data.cycleTime;
-        shellSpeed = data.shellSpeed;
+        //title = data.title;
+        //wattage = data.wattage;
+        //thermalLoad = data.thermalLoad;
+        //range = data.range;
+        //clipSize = data.clipSize;
+        //cycleTime = data.cycleTime;
+        //shellSpeed = data.shellSpeed;
     }
+
+}
+
+public struct WeaponData {
+
+
 
 }

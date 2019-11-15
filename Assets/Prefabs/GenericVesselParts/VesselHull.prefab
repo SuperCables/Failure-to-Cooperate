@@ -70,9 +70,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 548986638317194145}
-  - component: {fileID: 6013596711935110043}
-  - component: {fileID: 4172484767857434623}
-  - component: {fileID: 5634880186396541270}
   m_Layer: 0
   m_Name: VesselHull
   m_TagString: Untagged
@@ -92,68 +89,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 548986638705348015}
-  - {fileID: 4959866278529401718}
   - {fileID: 8525796247833920615}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6013596711935110043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548986638317194150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6142e59c6e947ca4ba18125137d09609, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncInterval: 0.3
-  hull: 100
-  maxHull: 100
-  armorSegments: 8
-  maxArmor: 25
-  shieldsSegments: 16
-  maxShields: 50
-  maxBoundsSize: 5
-  mass: 3
-  entity: {fileID: 0}
---- !u!114 &4172484767857434623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548986638317194150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 254779e5ac84bd547a6b09e456c794b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncInterval: 0.5
-  systems:
-  - {fileID: 2552588527340963468}
-  - {fileID: 0}
-  - {fileID: 327885417456128443}
-  batteryPower: 0
-  maxBatteryPower: 0
---- !u!114 &5634880186396541270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 548986638317194150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serverOnly: 0
-  localPlayerAuthority: 0
-  m_AssetId: 70584d0dd995e37439780fbc4e3673da
-  m_SceneId: 0
 --- !u!1 &548986638705348012
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6033516152125711521}
   m_Layer: 0
-  m_Name: TorpedoTubes
+  m_Name: Torpedo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -224,7 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6049510597300903740}
   m_Layer: 0
-  m_Name: Shields
+  m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +181,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8525796247833920615}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2552588527340963467
 GameObject:
@@ -255,7 +194,7 @@ GameObject:
   - component: {fileID: 4356678291616317386}
   - component: {fileID: 2552588527340963468}
   m_Layer: 0
-  m_Name: EngineMounts
+  m_Name: Engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,13 +264,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1768555422456318041}
-  - {fileID: 1207393673424316784}
+  - {fileID: 6049510597300903740}
   - {fileID: 4356678291616317386}
   - {fileID: 2117266089023855639}
   - {fileID: 6033516152125711521}
-  - {fileID: 6049510597300903740}
+  - {fileID: 1207393673424316784}
   m_Father: {fileID: 548986638317194145}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6503350301262394628
 GameObject:
@@ -361,7 +300,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8525796247833920615}
-  m_RootOrder: 1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7205022903977732747
 GameObject:
@@ -374,7 +313,7 @@ GameObject:
   - component: {fileID: 2117266089023855639}
   - component: {fileID: 327885417456128443}
   m_Layer: 0
-  m_Name: WeaponMounts
+  m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,70 +356,3 @@ MonoBehaviour:
   weaponBanks: []
   Target1: {fileID: 0}
   Target2: {fileID: 0}
---- !u!1 &8514625812708931472
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4959866278529401718}
-  - component: {fileID: 8514625812708931473}
-  - component: {fileID: 1369227591175867830}
-  m_Layer: 0
-  m_Name: Systems
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4959866278529401718
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8514625812708931472}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 548986638317194145}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8514625812708931473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8514625812708931472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 254779e5ac84bd547a6b09e456c794b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncInterval: 0.5
-  systems:
-  - {fileID: 2552588527340963468}
-  - {fileID: 0}
-  - {fileID: 327885417456128443}
-  batteryPower: 0
-  maxBatteryPower: 0
---- !u!114 &1369227591175867830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8514625812708931472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serverOnly: 0
-  localPlayerAuthority: 0
-  m_AssetId: 70584d0dd995e37439780fbc4e3673da
-  m_SceneId: 0

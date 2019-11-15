@@ -6,13 +6,13 @@ public class GenericMount : BaseMount
 {
     //Holds reactors, batterys, and expansions
 
-    void Start()
+    public override void Start()
     {
-        
+        base.Start();
     }
 
-    void Update()
+    public override void Update()
     {
-        
+        base.Update(); 
     }
 }

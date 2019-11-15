@@ -6,8 +6,9 @@ public class EngineMount : BaseMount
 {
     public Engine engine;
 
-    void Start()
+    public override void Start()
     {
+        base.Start();
         GetComponentInParent<Entity>().FullRebuild += Rebuild;
         Rebuild();
     }
@@ -17,9 +18,9 @@ public class EngineMount : BaseMount
         engine = GetComponentInChildren<Engine>();
     }
 
-    void Update()
+    public override void Update()
     {
-
+        base.Update();
     }
 
     void OnDrawGizmos()

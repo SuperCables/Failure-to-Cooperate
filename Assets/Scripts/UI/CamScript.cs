@@ -40,22 +40,21 @@ public class CamScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
     }
 	
 	// Update is called once per frame
 	void LateUpdate () {
-        if (follow == null) { return; }
-        transform.position = follow.position;
-		mount.rotation = follow.rotation;
 
-        //pitch = move.inputDive;
-
-        if (Input.GetMouseButton (1)) {
-			yaw += Input.GetAxisRaw ("Mouse X") * 2.8f;
+        if (Input.GetMouseButton(1))
+        {
+            yaw += Input.GetAxisRaw("Mouse X") * 2.8f;
             pitch -= Input.GetAxisRaw("Mouse Y") * 2.8f;
             pitch = Mathf.Clamp(pitch, -90, 90);
-        } else {
-			roundYaw =  Mathf.Round((yaw) / horInc) * horInc;
+        }
+        else
+        {
+            roundYaw = Mathf.Round((yaw) / horInc) * horInc;
             roundPitch = Mathf.Round((pitch) / vertInc) * vertInc;
 
             yaw = Mathf.SmoothDampAngle(yaw, roundYaw, ref camYawSpeedDamp, 0.4f);
@@ -65,8 +64,23 @@ public class CamScript : MonoBehaviour {
         }
         heightOffset = Mathf.SmoothDampAngle(heightOffset, targetHeight, ref camHeightSpeedDamp, 1.4f);
 
-        pivot.localRotation = Quaternion.Euler (pitch, yaw, 0);
+        pivot.localRotation = Quaternion.Euler(pitch, yaw, 0);
         offset.localPosition = new Vector3(0, heightOffset, 0);
+
+
+        if (follow == null) {
+            PlayerConnection con = InGame.global?.localConnection;
+            if (con != null)
+            {
+                follow = con?.playerEntity?.transform;
+            }
+        }
+
+        if (follow == null) { return; }
+        transform.position = follow.position;
+		mount.rotation = follow.rotation;
+
+        //pitch = move.inputDive;
 
     }
 }

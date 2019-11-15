@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 public class WeaponBank : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class WeaponBank : MonoBehaviour
 
     public Entity FireAt;
 
-    public BaseWeapon[] guns;
+    public Weapon[] guns;
     WeaponManager WeaponManager;
 
     void Start()
@@ -21,10 +22,10 @@ public class WeaponBank : MonoBehaviour
     void Rebuild()
     {
         WeaponManager = GetComponentInParent<WeaponManager>();
-        guns = GetComponentsInChildren<BaseWeapon>();
+        guns = GetComponentsInChildren<Weapon>();
 
         maxRange = 0;
-        foreach (BaseWeapon v in guns)
+        foreach (Weapon v in guns)
         {
             if (v.range > maxRange)
             {
@@ -35,7 +36,7 @@ public class WeaponBank : MonoBehaviour
 
     void Update()
     {
-        if (InGame.netGlobal.server)
+        if (NetworkServer.active)
         {
             FireAt = null;
             bool noTarget = true;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 public class MusicMananger : MonoBehaviour
 {
@@ -19,11 +20,11 @@ public class MusicMananger : MonoBehaviour
     void Start()
     {
         audioMananger = gameObject.GetComponent<AudioMananger>();
-        audioMananger.PlayMusic(SpaceBack, 1);
     }
 
     void Update()
     {
+        if (NetworkServer.active == false) { return; }
         //FIXME!
         musicCoolDown -= Time.deltaTime;
         if (musicCoolDown < 0) {

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class BaseMount : MonoBehaviour
 {
-    public HullRoom room;
-    void Start()
-    {
 
+    [Header("Self Assign")]
+    public HullRoom room;
+
+    public virtual void Start()
+    {
+        room = GetComponentInParent<HullRoom>();
     }
 
-    void Update()
+    public virtual void Update()
     {
 
     }

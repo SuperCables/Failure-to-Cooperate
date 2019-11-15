@@ -20,7 +20,7 @@ public enum EntityType
 public class Entity : NetworkBehaviour
 {
     public event Action FullRebuild; //for get component and such
-    public event Action FullRecalc; //for calculating constants like engine wattage
+    //public event Action FullRecalc; //for calculating constants like engine wattage
 
     [SyncVar]
     public string Title = "Namelessss123";
@@ -38,6 +38,8 @@ public class Entity : NetworkBehaviour
     //[HideInInspector]
     public VesselHull hull;
 
+    float FullRebuildTimer = -1;
+
     void Awake()
     {
         Rebuild();
@@ -52,12 +54,22 @@ public class Entity : NetworkBehaviour
         body.isKinematic = !isServer; //all cliants are kinimatic
     }
 
+    void Update()
+    {
+        if (FullRebuildTimer > 0)
+        {
+            FullRebuildTimer -= Time.deltaTime;
+            if (FullRebuildTimer <= 0) { FullRebuild?.Invoke(); }
+        }
+    }
+
     void Rebuild()
     {
         body = GetComponent<Rigidbody>();
         colliders = GetComponentsInChildren<Collider>();
         vessel = GetComponent<Vessel>();
-        hull = GetComponentInChildren<VesselHull>();
+        hull = GetComponent<VesselHull>();
+        print("Rebuild ship: " + Title);
     }
 
     public void InvokeFullRebuild()
@@ -65,7 +77,12 @@ public class Entity : NetworkBehaviour
         FullRebuild?.Invoke();
     }
 
-	void FixedUpdate () {
+    public void InvokeFullRebuildDelay()
+    {
+        FullRebuildTimer = 3;
+    }
+
+    void FixedUpdate () {
 
 	}
 

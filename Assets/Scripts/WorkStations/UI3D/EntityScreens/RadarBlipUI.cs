@@ -15,7 +15,10 @@ public class RadarBlipUI : BaseEntityBlipUI{ //an object on the radar
     public override void Start () {
         base.Start();
 
-        foreach (WeaponBank rack in repEntity?.vessel?.weaponManager?.weaponBanks) //for each weapon bank
+        WeaponManager wm = repEntity?.vessel?.weaponManager;
+        if (wm == null) { return; }
+
+        foreach (WeaponBank rack in wm.weaponBanks) //for each weapon bank
         {
             TurretArcUI go = Instantiate(arcTemplate); //create new turret arc UI
             go.transform.SetParent(turretArcs, false);

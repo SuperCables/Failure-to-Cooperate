@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Definitions : MonoBehaviour
 {
+    public VesselData[] hulls;
 
-    public EngineData[] engine;
+    //generic
+    public EngineData[] engines;
+    //shields
+    
 
     public WeaponData[] ProjectileWeapons;
 
@@ -19,3 +23,4 @@ public class Definitions : MonoBehaviour
         
     }
 }
+

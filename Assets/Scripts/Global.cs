@@ -34,7 +34,6 @@ public class Global : MonoBehaviour
 
     [Header("ImageLinks")]
     public Sprite[] TorpedosSprites;
-    public GameObject evil;
 
     void Start () {
         cameraMananger = GetComponentInChildren<CamScript>();
