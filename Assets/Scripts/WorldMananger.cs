@@ -12,9 +12,10 @@ public class WorldMananger : MonoBehaviour
     public HullRoom genericRoomTemplate;
     public HullRoom engineRoomTemplate;
     public HullRoom shieldRoomTemplate;
-    //public HullRoom shieldRoomTemplate;
+    //public HullRoom weaponRoomTemplate;
     [Space(10)]
     public Engine engineTemplate;
+    //public Shield engineTemplate;
     public Weapon weaponTemplate;
 
     void Start()
@@ -30,15 +31,26 @@ public class WorldMananger : MonoBehaviour
     public void SpawnTest()
     {
         Entity vessel = Instantiate(shipBase);
-        vessel.transform.position = Vector3.forward * 200 + UnityEngine.Random.insideUnitSphere * 50;
+        vessel.transform.position = Vector3.forward * 200 + Random.insideUnitSphere * 50;
         NetworkServer.Spawn(vessel.gameObject);
 
         //add reactor
 
         VesselData hullData = InGame.definitions.hulls[0];
 
+        //Add Engines
         EngineRoomData[] engineRoomsData = hullData.engineRooms;
-        EngineRoomData engineRoomData = engineRoomsData[0];
+        //EngineRoomData engineRoomData = engineRoomsData[0];
+
+        EngineMananger engineMananger = vessel.GetComponentInChildren<EngineMananger>();
+        print(engineMananger);
+
+        foreach (EngineRoomData v in engineRoomsData)
+        {
+            HullRoom engine = Instantiate(engineRoomTemplate, engineMananger.transform);
+            //NetworkServer.Spawn(engine.gameObject);
+
+        }
 
         EngineMount[] engineMounts = vessel.GetComponentsInChildren<EngineMount>();
         foreach (EngineMount v in engineMounts)
@@ -49,6 +61,7 @@ public class WorldMananger : MonoBehaviour
 
         }
 
+        //Add Weapons
         WeaponMount[] weaponMounts = vessel.GetComponentsInChildren<WeaponMount>();
         foreach (WeaponMount v in weaponMounts)
         {
