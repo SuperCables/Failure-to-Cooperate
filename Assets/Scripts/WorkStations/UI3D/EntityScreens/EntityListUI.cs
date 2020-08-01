@@ -13,7 +13,7 @@ public class EntityListUI : BaseEntityScreenUI
     public override void Update()
     {
         base.Update();
-        player = InGame.global?.entity;
+        player = G.global?.entity;
         if (player != null)
         {
 

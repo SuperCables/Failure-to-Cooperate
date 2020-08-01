@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class InGame : MonoBehaviour
+public class G : MonoBehaviour
 {
 	
 	//public static Player player;

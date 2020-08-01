@@ -9,10 +9,10 @@ public class PlayerConnection : NetworkBehaviour
 
     void Start()
     {
-        transform.SetParent(InGame.global.connectionHolder.transform);
+        transform.SetParent(G.global.connectionHolder.transform);
         if (isLocalPlayer)
         {
-            InGame.global.localConnection = this;
+            G.global.localConnection = this;
         }
         //playerEntity = GameObject.FindGameObjectWithTag("Player").GetComponent<Entity>(); //TODO replace with ship selecter!
     }
@@ -45,7 +45,7 @@ public class PlayerConnection : NetworkBehaviour
     [Command]
     public void CmdSummonEvil()
     {
-        InGame.worldMananger.SpawnTest();
+        G.worldMananger.SpawnTest();
     }
 
 }

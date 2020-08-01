@@ -48,7 +48,7 @@ public class Entity : NetworkBehaviour
 
     void Start()
     {
-        InGame.global.AddUnit(this);
+        G.global.AddUnit(this);
         FullRebuild += Rebuild;
         FullRebuild?.Invoke();
         body.isKinematic = !isServer; //all cliants are kinimatic
@@ -88,7 +88,7 @@ public class Entity : NetworkBehaviour
 
     void OnDestroy()
     {
-        InGame.global.RemoveUnit(this);
+        G.global.RemoveUnit(this);
     }
 
 }

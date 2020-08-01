@@ -69,7 +69,7 @@ public class CamScript : MonoBehaviour {
 
 
         if (follow == null) {
-            PlayerConnection con = InGame.global?.localConnection;
+            PlayerConnection con = G.global?.localConnection;
             if (con != null)
             {
                 follow = con?.playerEntity?.transform;

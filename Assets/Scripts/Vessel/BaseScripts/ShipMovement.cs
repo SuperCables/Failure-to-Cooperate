@@ -82,7 +82,7 @@ public class ShipMovement : NetworkBehaviour
             engineWattage = engineManager.maxWattage;
 
             angle = transform.rotation.eulerAngles.y % 360;
-            direction = InGame.DegreeToVector2(angle);
+            direction = G.DegreeToVector2(angle);
             UpdateImpulse();
             UpdateTurn();
         }

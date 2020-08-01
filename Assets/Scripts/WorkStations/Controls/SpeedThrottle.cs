@@ -37,8 +37,8 @@ public class SpeedThrottle : MonoBehaviour, IClickHoldable, IScrollable
 
     void UpdateGuage()
     {
-        if (InGame.global.localConnection == null) { return; }
-        moveing = InGame.global?.localConnection?.playerEntity?.vessel?.movement;
+        if (G.global.localConnection == null) { return; }
+        moveing = G.global?.localConnection?.playerEntity?.vessel?.movement;
         if (moveing == null) { return; } //if everything is set up, continue
 
         //Set Speed Arrow
@@ -61,14 +61,14 @@ public class SpeedThrottle : MonoBehaviour, IClickHoldable, IScrollable
         if (Mathf.Abs(ver) > 0.1f)
         {
             throttle = Mathf.Clamp01(throttle + ver * Time.deltaTime / 2);
-            InGame.global.localConnection.CmdSetShipThrust(throttle * direction); //tell the ship to change speed
+            G.global.localConnection.CmdSetShipThrust(throttle * direction); //tell the ship to change speed
         }
    }
 
     void ReverseClicked(bool rev)
     {
         direction = (rev) ? -1 : 1;
-        InGame.global.localConnection.CmdSetShipThrust(Mathf.Abs(moveing.inputThrottle) * direction);
+        G.global.localConnection.CmdSetShipThrust(Mathf.Abs(moveing.inputThrottle) * direction);
     }
 
     void Click(Vector3 pos)
@@ -80,7 +80,7 @@ public class SpeedThrottle : MonoBehaviour, IClickHoldable, IScrollable
 
     void SendThrottle(float throttle)
     {
-        InGame.global?.localConnection?.CmdSetShipThrust(throttle * direction);
+        G.global?.localConnection?.CmdSetShipThrust(throttle * direction);
     }
 
     void IClickHoldable.LeftHold(Vector3 pos)

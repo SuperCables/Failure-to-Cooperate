@@ -57,7 +57,7 @@ public class Vessel : MonoBehaviour
 
         foreach (EngineRoomData v in data.engineRooms)
         {
-            HullRoom room = Instantiate(InGame.worldMananger.engineRoomTemplate);
+            HullRoom room = Instantiate(G.worldMananger.engineRoomTemplate);
             //room.transform.SetParent();
         }
     }

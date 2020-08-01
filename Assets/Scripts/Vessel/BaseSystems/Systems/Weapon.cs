@@ -95,7 +95,7 @@ public class Weapon : BaseSystem
         Vector3 tarPos = target.transform.position;
         Vector3 diff = (tarPos - pos);
 
-        go.transform.SetParent(InGame.global.tempStuff, true);
+        go.transform.SetParent(G.global.tempStuff, true);
 
         go.timeTillImpact = (diff.magnitude / shellSpeed);
         go.isAHit = true; //TODO: Roll a die and decide if hit

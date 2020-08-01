@@ -33,9 +33,9 @@ public class DiveThrottle : MonoBehaviour, IClickHoldable, IScrollable
 
     void UpdateGuage()
     {
-        if (InGame.global.localConnection == null) { return; }
-        moveing = InGame.global?.localConnection?.playerEntity?.vessel?.movement;
-        body = InGame.global?.localConnection?.playerEntity?.body;
+        if (G.global.localConnection == null) { return; }
+        moveing = G.global?.localConnection?.playerEntity?.vessel?.movement;
+        body = G.global?.localConnection?.playerEntity?.body;
         if (moveing == null) { return; } //if everything is set up, continue
 
         //Set Speed Arrow
@@ -45,7 +45,7 @@ public class DiveThrottle : MonoBehaviour, IClickHoldable, IScrollable
             Vector2 hor = new Vector2(vector.x, vector.z);
             float diveAngle = Mathf.Atan2(hor.magnitude, vector.y) * Mathf.Rad2Deg;
 
-            arrowTargetAngle = 45 + (90 * InGame.Map(diveAngle, 180, 0, 0, 1));
+            arrowTargetAngle = 45 + (90 * G.Map(diveAngle, 180, 0, 0, 1));
         }
         else
         {
@@ -72,7 +72,7 @@ public class DiveThrottle : MonoBehaviour, IClickHoldable, IScrollable
 
     void SendThrottle(float throttle)
     {
-        InGame.global?.localConnection?.CmdSetShipDive(InGame.Map(throttle, 0, 1, 90, -90));
+        G.global?.localConnection?.CmdSetShipDive(G.Map(throttle, 0, 1, 90, -90));
     }
 
     void IClickHoldable.LeftHold(Vector3 pos)

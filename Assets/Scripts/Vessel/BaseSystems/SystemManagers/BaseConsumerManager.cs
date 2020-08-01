@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseSystemManager : MonoBehaviour //more of a consumer mananger, doesn't apply to reactors and batterys
+public class BaseConsumerManager : MonoBehaviour //more of a consumer mananger, doesn't apply to reactors and batterys
 {
 
     public float allocation = 1; //engeneers throttle

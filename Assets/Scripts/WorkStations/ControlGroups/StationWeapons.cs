@@ -24,26 +24,26 @@ public class StationWeapons : MonoBehaviour
 
     Entity selfTargetPlayer()
     {
-        if (InGame.global.selectedUnit == InGame.global.entity)
+        if (G.global.selectedUnit == G.global.entity)
         {
             return null;
         }
         else
         {
-            return InGame.global.selectedUnit;
+            return G.global.selectedUnit;
         }
     }
 
     void SetTarget1()
     {
         //TODO: Use a command to tell the server to change target, not just the client!
-        weaponManager = InGame.global.weaponManager;
+        weaponManager = G.global.weaponManager;
         weaponManager.Target1 = selfTargetPlayer();
     }
 
     void SetTarget2()
     {
-        weaponManager = InGame.global.weaponManager;
+        weaponManager = G.global.weaponManager;
         weaponManager.Target2 = selfTargetPlayer();
     }
 

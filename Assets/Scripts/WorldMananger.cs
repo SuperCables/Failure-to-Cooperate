@@ -36,7 +36,7 @@ public class WorldMananger : MonoBehaviour
 
         //add reactor
 
-        VesselData hullData = InGame.definitions.hulls[0];
+        VesselData hullData = G.definitions.hulls[0];
 
         //Add Engines
         EngineRoomData[] engineRoomsData = hullData.engineRooms;

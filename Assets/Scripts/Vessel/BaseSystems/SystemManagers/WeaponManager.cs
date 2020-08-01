@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum TargetPrioritys {Closest, Weakest }
 
-public class WeaponManager : BaseSystemManager
+public class WeaponManager : BaseConsumerManager
 {
 
     [Header("Self Assign")]

@@ -20,7 +20,7 @@ public class TorpedoTypeCount : MonoBehaviour
 
     void Start()
     {
-        Icon.sprite = InGame.global.GetTorpedoIcon(torpedoType);
+        Icon.sprite = G.global.GetTorpedoIcon(torpedoType);
         torpedoControlUI = GetComponentInParent<TorpedoControlUI>();
         LoadButton.Pressed += Clicked;
     }

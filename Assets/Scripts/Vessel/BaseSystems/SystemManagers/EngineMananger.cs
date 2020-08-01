@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EngineMananger : BaseSystemManager
+public class EngineMananger : BaseConsumerManager
 {
     
     [Header("Self Assign")]

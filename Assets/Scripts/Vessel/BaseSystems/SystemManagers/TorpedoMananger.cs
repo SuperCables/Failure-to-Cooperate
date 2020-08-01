@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TorpedoMananger : BaseSystemManager
+public class TorpedoMananger : BaseConsumerManager
 {
 
     public TorpedoTube[] tubes;

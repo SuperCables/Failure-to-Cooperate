@@ -8,7 +8,7 @@ public class Distributer : NetworkBehaviour
     ReactorManager reactorManager;
     BatteryMananger batteryMananger;
 
-    public BaseSystemManager[] systems;
+    public BaseConsumerManager[] systems;
 
     [SyncVar]
     public float batteryPower = 1000;
@@ -47,7 +47,7 @@ public class Distributer : NetworkBehaviour
     {
         float powerDemand = 0; //how much power do we want to use this frame?
         //Add Power Demands
-        foreach (BaseSystemManager v in systems) //for each system
+        foreach (BaseConsumerManager v in systems) //for each system
         {
             if (v != null) //if it exist
             {
@@ -77,7 +77,7 @@ public class Distributer : NetworkBehaviour
         {
             float satisfaction = Mathf.Min(batteryPower / powerDemand, 1); //track how well we can satisfy all the equipment
 
-            foreach (BaseSystemManager v in systems)
+            foreach (BaseConsumerManager v in systems)
             {
                 if (v != null) //if the system exist
                 {

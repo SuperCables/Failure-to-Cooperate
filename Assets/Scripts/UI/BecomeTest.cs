@@ -18,10 +18,10 @@ public class BecomeTest : MonoBehaviour
 
     public void Become()
     {
-        PlayerConnection con = InGame.global?.localConnection;
+        PlayerConnection con = G.global?.localConnection;
         if (con != null)
         {
-            con.playerEntity = InGame.global.allUnits[0];
+            con.playerEntity = G.global.allUnits[0];
         }
     }
 

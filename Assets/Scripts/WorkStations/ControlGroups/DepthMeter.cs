@@ -13,7 +13,7 @@ public class DepthMeter : MonoBehaviour
 
     void Update()
     {
-        Transform trans = InGame.global?.trans;
+        Transform trans = G.global?.trans;
         if (trans != null) { counter.count = Mathf.Abs(trans.position.y); } 
         
     }
