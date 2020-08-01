@@ -19,7 +19,7 @@ public class TargetInfoUI : MonoBehaviour
     QuadrentBarUI[] shieldsBars;
     QuadrentBarUI[] armorBars;
 
-    VesselHull hull;
+    Health hull;
     Entity repEntity;
 
     [Header("Assignment")]
@@ -92,7 +92,7 @@ public class TargetInfoUI : MonoBehaviour
     {
         repEntity = newTarget;
         display = repEntity;
-        hull = newTarget?.hull;
+        hull = newTarget?.health;
         //clean last round
 
         foreach (Transform child in ShieldQuadsHolder)
