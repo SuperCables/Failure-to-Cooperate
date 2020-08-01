@@ -23,7 +23,7 @@ public class Global : MonoBehaviour
     public Entity entity;
     public Vessel vessel;
     public ShipMovement moveing;
-    public Health hull;
+    public VesselHull hull;
     public WeaponManager weaponManager;
     public TorpedoMananger torpedoMananger;
     
@@ -54,7 +54,7 @@ public class Global : MonoBehaviour
         entity = localConnection?.playerEntity;
         if (entity == null) { return; }
         trans = entity?.transform;
-        hull = entity?.health;
+        hull = entity?.hull;
         vessel = entity?.vessel;
         moveing = vessel?.movement;
         weaponManager = vessel?.weaponManager;

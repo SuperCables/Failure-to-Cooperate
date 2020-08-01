@@ -69,7 +69,7 @@ MonoBehaviour:
   body: {fileID: 0}
   colliders: []
   vessel: {fileID: 0}
-  health: {fileID: 0}
+  hull: {fileID: 0}
 --- !u!114 &3303189156300953267
 MonoBehaviour:
   m_ObjectHideFlags: 0

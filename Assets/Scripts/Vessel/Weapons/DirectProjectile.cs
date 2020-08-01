@@ -41,7 +41,7 @@ public class DirectProjectile : MonoBehaviour
         if (target == null) { Destroy(gameObject); return; }
         Entity entity = target?.GetComponent<Entity>();
         if (entity == null) { Destroy(gameObject); return; }
-        Health hull = entity.health;
+        VesselHull hull = entity.hull;
         if (hull == null) { Destroy(gameObject); return; }
         //if we reach here, object is damagable
 

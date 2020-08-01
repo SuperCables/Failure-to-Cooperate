@@ -290,7 +290,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 490230161}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &15452104
 MonoBehaviour:
@@ -13066,9 +13066,9 @@ Transform:
   - {fileID: 974906355}
   - {fileID: 702737777}
   - {fileID: 655840821}
+  - {fileID: 1850429103}
   - {fileID: 607299201}
   - {fileID: 15452103}
-  - {fileID: 1850429103}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15746,7 +15746,7 @@ Transform:
   - {fileID: 1569318312}
   - {fileID: 239299819}
   m_Father: {fileID: 490230161}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &610509803
 GameObject:
@@ -39220,9 +39220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce3b956af523344ea52a55a37bc6878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipTemplate: {fileID: 3303189156300953276, guid: a58aac1182e04ab4aac8cbe6877954aa,
-    type: 3}
-  hullTemplate: {fileID: -4431040436429215247, guid: 70584d0dd995e37439780fbc4e3673da,
+  shipBase: {fileID: 5795381910909406447, guid: 44f061c8687a9b84dabc8d28d6035296,
     type: 3}
   genericRoomTemplate: {fileID: 9195462202635445156, guid: 09465f990d56f1b4596746310160fe4e,
     type: 3}
@@ -41548,7 +41546,7 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 3303189156300953274, guid: a58aac1182e04ab4aac8cbe6877954aa, type: 3}
-  - {fileID: 548986638317194150, guid: 70584d0dd995e37439780fbc4e3673da, type: 3}
+  - {fileID: 5795381910909406441, guid: 44f061c8687a9b84dabc8d28d6035296, type: 3}
   - {fileID: 3005308996426130186, guid: 5e4ebc33835e4bd4f878a40ca9c5b633, type: 3}
   - {fileID: 6179340110261085069, guid: df1ca4f7f766084449797abf6e804d94, type: 3}
   - {fileID: 2656985531808800190, guid: 07f7117f3de9f8040a0ca790a3a3cb45, type: 3}
@@ -51478,7 +51476,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 490230161}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1853906199
 GameObject:
