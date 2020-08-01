@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Mirror;
 
-[RequireComponent(typeof(Rigidbody))]
+//[RequireComponent(typeof(Rigidbody))]
 public class ShipMovement : NetworkBehaviour
 {
     //Moving config
@@ -58,7 +58,7 @@ public class ShipMovement : NetworkBehaviour
 
     void Rebuild()
     {
-        body = GetComponent<Rigidbody>();
+        body = GetComponentInParent<Rigidbody>();
         vessel = GetComponent<Vessel>();
         engineManager = GetComponentInChildren<EngineMananger>();
     }

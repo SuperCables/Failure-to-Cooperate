@@ -36,7 +36,7 @@ public class Entity : NetworkBehaviour
     //[HideInInspector]
     public Vessel vessel;
     //[HideInInspector]
-    public VesselHull hull;
+    public Health health;
 
     float FullRebuildTimer = -1;
 
@@ -51,6 +51,7 @@ public class Entity : NetworkBehaviour
         G.global.AddUnit(this);
         FullRebuild += Rebuild;
         FullRebuild?.Invoke();
+        InvokeFullRebuildDelay();
         body.isKinematic = !isServer; //all cliants are kinimatic
     }
 
@@ -67,8 +68,8 @@ public class Entity : NetworkBehaviour
     {
         body = GetComponent<Rigidbody>();
         colliders = GetComponentsInChildren<Collider>();
-        vessel = GetComponent<Vessel>();
-        hull = GetComponent<VesselHull>();
+        vessel = GetComponentInChildren<Vessel>();
+        health = GetComponentInChildren<Health>();
         print("Rebuild ship: " + Title);
     }
 

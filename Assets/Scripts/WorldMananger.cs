@@ -7,7 +7,8 @@ public class WorldMananger : MonoBehaviour
 {
 
     [Header("Assignment")]
-    public Entity shipBase;
+    public Entity shipTemplate;
+    public CompulsiveAssembly hullTemplate;
     [Space(10)]
     public HullRoom genericRoomTemplate;
     public HullRoom engineRoomTemplate;
@@ -30,46 +31,52 @@ public class WorldMananger : MonoBehaviour
 
     public void SpawnTest()
     {
-        Entity vessel = Instantiate(shipBase);
+        Entity vessel = Instantiate(shipTemplate);
         vessel.transform.position = Vector3.forward * 200 + Random.insideUnitSphere * 50;
         NetworkServer.Spawn(vessel.gameObject);
 
-        //add reactor
+        CompulsiveAssembly hull = Instantiate(hullTemplate);
+        NetworkServer.Spawn(hull.gameObject);
+        hull.targetID = vessel.netId;
 
-        VesselData hullData = G.definitions.hulls[0];
+        hull.transform.SetParent(vessel.transform, false); //delete this later
 
-        //Add Engines
-        EngineRoomData[] engineRoomsData = hullData.engineRooms;
-        //EngineRoomData engineRoomData = engineRoomsData[0];
+        ////add reactor
 
-        EngineMananger engineMananger = vessel.GetComponentInChildren<EngineMananger>();
-        print(engineMananger);
+        //VesselData hullData = G.definitions.hulls[0];
 
-        foreach (EngineRoomData v in engineRoomsData)
-        {
-            HullRoom engine = Instantiate(engineRoomTemplate, engineMananger.transform);
-            //NetworkServer.Spawn(engine.gameObject);
+        ////Add Engines
+        //EngineRoomData[] engineRoomsData = hullData.engineRooms;
+        ////EngineRoomData engineRoomData = engineRoomsData[0];
 
-        }
+        //EngineMananger engineMananger = vessel.GetComponentInChildren<EngineMananger>();
+        //print(engineMananger);
 
-        EngineMount[] engineMounts = vessel.GetComponentsInChildren<EngineMount>();
-        foreach (EngineMount v in engineMounts)
-        {
-            Engine engine = Instantiate(engineTemplate);
-            engine.transform.SetParent(v.transform, false);
-            NetworkServer.Spawn(engine.gameObject);
+        //foreach (EngineRoomData v in engineRoomsData)
+        //{
+        //    HullRoom engine = Instantiate(engineRoomTemplate, engineMananger.transform);
+        //    //NetworkServer.Spawn(engine.gameObject);
 
-        }
+        //}
 
-        //Add Weapons
-        WeaponMount[] weaponMounts = vessel.GetComponentsInChildren<WeaponMount>();
-        foreach (WeaponMount v in weaponMounts)
-        {
-            Weapon weapon = Instantiate(weaponTemplate);
-            weapon.transform.SetParent(v.transform, false);
-            NetworkServer.Spawn(weapon.gameObject);
+        //EngineMount[] engineMounts = vessel.GetComponentsInChildren<EngineMount>();
+        //foreach (EngineMount v in engineMounts)
+        //{
+        //    Engine engine = Instantiate(engineTemplate);
+        //    engine.transform.SetParent(v.transform, false);
+        //    NetworkServer.Spawn(engine.gameObject);
 
-        }
+        //}
+
+        ////Add Weapons
+        //WeaponMount[] weaponMounts = vessel.GetComponentsInChildren<WeaponMount>();
+        //foreach (WeaponMount v in weaponMounts)
+        //{
+        //    Weapon weapon = Instantiate(weaponTemplate);
+        //    weapon.transform.SetParent(v.transform, false);
+        //    NetworkServer.Spawn(weapon.gameObject);
+
+        //}
 
     }
 

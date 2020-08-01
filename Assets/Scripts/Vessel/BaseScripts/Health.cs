@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class VesselHull : NetworkBehaviour
+public class Health : NetworkBehaviour
 {
 	public float hull = 100;
 	public float maxHull = 100;
@@ -26,13 +26,15 @@ public class VesselHull : NetworkBehaviour
     // Use this for initialization
     void Start ()
     {
+        armor = new SyncListFloat();
+        shields = new SyncListFloat();
         GetComponentInParent<Entity>().FullRebuild += Rebuild;
         Rebuild();
     }
 
     void Rebuild()
     {
-        entity = GetComponentInParent<Entity>();
+
         if (NetworkServer.active)
         {
             armor.Clear();
@@ -47,6 +49,7 @@ public class VesselHull : NetworkBehaviour
             {
                 shields.Add(maxShields);
             }
+            entity = GetComponentInParent<Entity>();
         }
     }
 
