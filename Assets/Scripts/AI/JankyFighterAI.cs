@@ -5,8 +5,8 @@ using UnityEngine;
 public class JankyFighterAI : MonoBehaviour
 {
     [Header("Assignment")]
-    public Vessel body;
-    public Vessel target;
+    public Distributer body;
+    public Distributer target;
     [Space(10)]
     public float turnMin = 4;
     public float turnMax = 8;
@@ -27,8 +27,8 @@ public class JankyFighterAI : MonoBehaviour
         if (body == null) { return; } //if we arn't controling anyone, bail.
         if (target == null) { return; } //if we arn't doing anything, bail.
         if (move == null) {
-            if (body.movement == null) { return; }
-            move = body.movement;
+            if (body?.entity?.movement == null) { return; }
+            move = body.entity.movement;
         }
 
             Vector2 delta = G.V3toV2(body.transform.position - target.transform.position);

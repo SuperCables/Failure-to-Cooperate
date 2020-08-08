@@ -27,19 +27,19 @@ public class PlayerConnection : NetworkBehaviour
     [Command]
     public void CmdSetShipHeading(float direction)
     {
-        playerEntity.vessel.movement.inputAngle = direction;
+        playerEntity.movement.inputAngle = direction;
     }
 
     [Command]
     public void CmdSetShipThrust(float Thrust)
     {
-        playerEntity.vessel.movement.inputThrottle = Thrust;
+        playerEntity.movement.inputThrottle = Thrust;
     }
 
     [Command]
     public void CmdSetShipDive(float angle)
     {
-        playerEntity.vessel.movement.inputDive = angle;
+        playerEntity.movement.inputDive = angle;
     }
 
     [Command]

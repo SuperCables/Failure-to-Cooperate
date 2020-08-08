@@ -38,7 +38,7 @@ public class SpeedThrottle : MonoBehaviour, IClickHoldable, IScrollable
     void UpdateGuage()
     {
         if (G.global.localConnection == null) { return; }
-        moveing = G.global?.localConnection?.playerEntity?.vessel?.movement;
+        moveing = G.global?.localConnection?.playerEntity?.movement;
         if (moveing == null) { return; } //if everything is set up, continue
 
         //Set Speed Arrow

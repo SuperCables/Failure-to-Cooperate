@@ -7,7 +7,9 @@ public class WorldMananger : MonoBehaviour
 {
 
     [Header("Assignment")]
-    public Entity shipTemplate;
+    public Entity entityTemplate;
+    public Entity entityMoveTemplate;
+    public Entity entityShipTemplate;
     public CompulsiveAssembly hullTemplate;
     [Space(10)]
     public HullRoom genericRoomTemplate;
@@ -31,7 +33,7 @@ public class WorldMananger : MonoBehaviour
 
     public void SpawnTest()
     {
-        Entity vessel = Instantiate(shipTemplate);
+        Entity vessel = Instantiate(entityShipTemplate);
         vessel.transform.position = Vector3.forward * 200 + Random.insideUnitSphere * 50;
         NetworkServer.Spawn(vessel.gameObject);
 

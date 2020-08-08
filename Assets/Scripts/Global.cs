@@ -21,7 +21,7 @@ public class Global : MonoBehaviour
     [Header("Refrences to ship parts")]
     public Transform trans;
     public Entity entity;
-    public Vessel vessel;
+    public Distributer vessel;
     public ShipMovement moveing;
     public Health hull;
     public WeaponManager weaponManager;
@@ -56,7 +56,7 @@ public class Global : MonoBehaviour
         trans = entity?.transform;
         hull = entity?.health;
         vessel = entity?.vessel;
-        moveing = vessel?.movement;
+        moveing = entity?.movement;
         weaponManager = vessel?.weaponManager;
         torpedoMananger = vessel?.torpedoMananger;
     }

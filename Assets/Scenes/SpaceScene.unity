@@ -5067,8 +5067,8 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 247028366}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -23675,7 +23675,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831243859}
   m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 4.114998, y: 0.83000183, z: 0.055000305}
+  m_LocalPosition: {x: 0.2, y: 1.29, z: 0.055000305}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 394618451}
@@ -39220,7 +39220,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce3b956af523344ea52a55a37bc6878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipTemplate: {fileID: 3303189156300953276, guid: a58aac1182e04ab4aac8cbe6877954aa,
+  entityTemplate: {fileID: 3303189156300953276, guid: a58aac1182e04ab4aac8cbe6877954aa,
+    type: 3}
+  entityMoveTemplate: {fileID: 560349415258313421, guid: dd3c606c91fe85f4eb6d204d2d33ec82,
+    type: 3}
+  entityShipTemplate: {fileID: 2844382338388346253, guid: 5f38e85126f869747969c4947d73d6ff,
     type: 3}
   hullTemplate: {fileID: -4431040436429215247, guid: 70584d0dd995e37439780fbc4e3673da,
     type: 3}
@@ -41548,6 +41552,8 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 3303189156300953274, guid: a58aac1182e04ab4aac8cbe6877954aa, type: 3}
+  - {fileID: 560349415258313419, guid: dd3c606c91fe85f4eb6d204d2d33ec82, type: 3}
+  - {fileID: 2844382338388346251, guid: 5f38e85126f869747969c4947d73d6ff, type: 3}
   - {fileID: 548986638317194150, guid: 70584d0dd995e37439780fbc4e3673da, type: 3}
   - {fileID: 3005308996426130186, guid: 5e4ebc33835e4bd4f878a40ca9c5b633, type: 3}
   - {fileID: 6179340110261085069, guid: df1ca4f7f766084449797abf6e804d94, type: 3}
@@ -45346,7 +45352,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1771708892}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

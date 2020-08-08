@@ -34,7 +34,7 @@ public class DiveThrottle : MonoBehaviour, IClickHoldable, IScrollable
     void UpdateGuage()
     {
         if (G.global.localConnection == null) { return; }
-        moveing = G.global?.localConnection?.playerEntity?.vessel?.movement;
+        moveing = G.global?.localConnection?.playerEntity?.movement;
         body = G.global?.localConnection?.playerEntity?.body;
         if (moveing == null) { return; } //if everything is set up, continue
 
