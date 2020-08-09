@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class EngineMananger : BaseConsumerManager
+public class EngineManager : BaseConsumerManager
 {
     
     [Header("Self Assign")]

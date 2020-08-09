@@ -12,6 +12,8 @@ public class WorldMananger : MonoBehaviour
     public Entity entityShipTemplate;
     public CompulsiveAssembly hullTemplate;
     [Space(10)]
+    public BaseManager engineManager;
+    [Space(10)]
     public HullRoom genericRoomTemplate;
     public HullRoom engineRoomTemplate;
     public HullRoom shieldRoomTemplate;
@@ -42,6 +44,10 @@ public class WorldMananger : MonoBehaviour
         hull.targetID = vessel.netId;
 
         hull.transform.SetParent(vessel.transform, false); //delete this later
+
+        BaseManager man = Instantiate(engineManager);
+
+
 
         ////add reactor
 

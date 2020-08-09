@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class BaseConsumerManager : NetworkBehaviour //more of a consumer mananger, doesn't apply to reactors and batterys
+public class BaseConsumerManager : BaseManager //more of a consumer mananger, doesn't apply to reactors and batterys
 {
     [SyncVar]
     public float allocation = 1; //engeneers throttle
@@ -22,9 +22,9 @@ public class BaseConsumerManager : NetworkBehaviour //more of a consumer manange
     public float heat; //average heat
 
 
-    public virtual void Start()
+    public override void Start()
     {
-        
+        base.Start();
     }
 
     public virtual void Rebuild()
@@ -33,8 +33,9 @@ public class BaseConsumerManager : NetworkBehaviour //more of a consumer manange
         //maxEnergy = 50;
     }
 
-    public virtual void Update()
+    public override void Update()
     {
+        base.Update();
         demandSecond = demand / Time.deltaTime;
     }
 

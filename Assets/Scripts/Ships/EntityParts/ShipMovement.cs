@@ -48,7 +48,7 @@ public class ShipMovement : NetworkBehaviour
     [HideInInspector]
     public Distributer vessel;
     [HideInInspector]
-    public EngineMananger engineManager;
+    public EngineManager engineManager;
 
     void Start () {
         GetComponentInChildren<Distributer>().FullRebuild += Rebuild;
@@ -60,7 +60,7 @@ public class ShipMovement : NetworkBehaviour
     {
         body = GetComponentInParent<Rigidbody>();
         vessel = GetComponent<Distributer>();
-        engineManager = GetComponentInChildren<EngineMananger>();
+        engineManager = GetComponentInChildren<EngineManager>();
     }
 	
 	void Update () {

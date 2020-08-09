@@ -19,7 +19,6 @@ public class BaseSystem : NetworkBehaviour
     public virtual void Start()
     {
         Cores = GetComponent<CoreBank>();
-        GetComponentInParent<Distributer>().InvokeFullRebuildDelay();
     }
 
     public virtual void Update()

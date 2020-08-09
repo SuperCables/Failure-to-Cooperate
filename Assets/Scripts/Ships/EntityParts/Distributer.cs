@@ -16,11 +16,11 @@ public class Distributer : NetworkBehaviour //will be compulsive assembler!
     //[HideInInspector]
     BatteryMananger batteryMananger;
     //[HideInInspector]
-    public EngineMananger engineManager;
+    public EngineManager engineManager;
     //[HideInInspector]
     public WeaponManager weaponManager;
     //[HideInInspector]
-    public TorpedoMananger torpedoMananger;
+    public TorpedoManager torpedoManager;
     [Space(10)]
     public BaseConsumerManager[] consumers;
 
@@ -36,8 +36,6 @@ public class Distributer : NetworkBehaviour //will be compulsive assembler!
     //[HideInInspector]
     //[Header("Component Refrences")]
 
-    float FullRebuildTimer = -1;
-
     void Start()
     {
         FullRebuild += Rebuild;
@@ -46,13 +44,13 @@ public class Distributer : NetworkBehaviour //will be compulsive assembler!
 
     void Rebuild()
     {
+        entity = GetComponentInParent<Entity>();
+
         reactorManager = GetComponentInChildren<ReactorManager>();
         batteryMananger = GetComponentInChildren<BatteryMananger>();
-
-        entity = GetComponentInParent<Entity>();
-        engineManager = GetComponentInChildren<EngineMananger>();
+        engineManager = GetComponentInChildren<EngineManager>();
         weaponManager = GetComponentInChildren<WeaponManager>();
-        torpedoMananger = GetComponentInChildren<TorpedoMananger>();
+        torpedoManager = GetComponentInChildren<TorpedoManager>();
     }
 
     void Update()
@@ -70,11 +68,6 @@ public class Distributer : NetworkBehaviour //will be compulsive assembler!
             DistributePower();
         }
 
-        if (FullRebuildTimer > 0)
-        {
-            FullRebuildTimer -= Time.deltaTime;
-            if (FullRebuildTimer <= 0) { FullRebuild?.Invoke(); }
-        }
     }
 
     void DistributePower()
@@ -121,11 +114,6 @@ public class Distributer : NetworkBehaviour //will be compulsive assembler!
 
             batteryPower -= powerDemand * satisfaction; //consume the power
         }
-    }
-
-    public void InvokeFullRebuildDelay()
-    {
-        FullRebuildTimer = 3;
     }
 
     //public void Morph (VesselData data)

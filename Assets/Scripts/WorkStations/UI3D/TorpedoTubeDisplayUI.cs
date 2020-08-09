@@ -37,7 +37,7 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
     public int index = -1;
     TorpedoControlUI torpedoControlUI;
     public TorpedoClipSlotUI[] clipSlots;
-    public TorpedoMananger torpedoMananger;
+    public TorpedoManager torpedoManager;
     public TorpedoArray torpedoArray;
 
 
@@ -45,13 +45,13 @@ public class TorpedoTubeDisplayUI : MonoBehaviour //a single tube
     void Start()
     {
         torpedoControlUI = GetComponentInParent<TorpedoControlUI>();
-        torpedoMananger = G.global?.torpedoMananger; //set new refs
+        torpedoManager = G.global?.torpedoManager; //set new refs
         clipDefColor = ClipBack.color;
     }
 
     void NewTube()
     {
-        torpedoMananger = G.global?.torpedoMananger; //set new refs
+        torpedoManager = G.global?.torpedoManager; //set new refs
         repEntity = torpedoTube;
         torpedoArray = torpedoTube.torpedoArray;
 

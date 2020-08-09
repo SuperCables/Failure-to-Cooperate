@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class TorpedoControlUI : MonoBehaviour
 {
-    public TorpedoMananger torpedoMananger;
-    TorpedoMananger lastTorpedoMananger;
+    public TorpedoManager torpedoManager;
+    TorpedoManager lastTorpedoManager;
 
     public List<TorpedoType> loadOut = new List<TorpedoType>(); //the desired clip to be loaded
 
@@ -34,8 +34,8 @@ public class TorpedoControlUI : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        if (torpedoMananger == null) return;
-        TorpedoTube[] tubes = torpedoMananger.GetComponentsInChildren<TorpedoTube>(); //get all the tubes
+        if (torpedoManager == null) return;
+        TorpedoTube[] tubes = torpedoManager.GetComponentsInChildren<TorpedoTube>(); //get all the tubes
         displayRows = new TorpedoTubeDisplayUI[tubes.Length];
 
         for (int i = 0; i < tubes.Length; i++) //align display rows and control rows
@@ -53,9 +53,9 @@ public class TorpedoControlUI : MonoBehaviour
 
     void Update()
     {
-        if (torpedoMananger != lastTorpedoMananger && torpedoMananger.gameObject.activeInHierarchy)
+        if (torpedoManager != lastTorpedoManager && torpedoManager.gameObject.activeInHierarchy)
         {
-            lastTorpedoMananger = torpedoMananger;
+            lastTorpedoManager = torpedoManager;
             NewScreen();
         }
     }

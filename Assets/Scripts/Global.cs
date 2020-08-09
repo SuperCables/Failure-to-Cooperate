@@ -25,7 +25,7 @@ public class Global : MonoBehaviour
     public ShipMovement moveing;
     public Health hull;
     public WeaponManager weaponManager;
-    public TorpedoMananger torpedoMananger;
+    public TorpedoManager torpedoManager;
     
     [Header("UI")]
     public GameObject connectionHolder;
@@ -58,7 +58,7 @@ public class Global : MonoBehaviour
         vessel = entity?.vessel;
         moveing = entity?.movement;
         weaponManager = vessel?.weaponManager;
-        torpedoMananger = vessel?.torpedoMananger;
+        torpedoManager = vessel?.torpedoManager;
     }
 
 	public void AddUnit(Entity unit) {
